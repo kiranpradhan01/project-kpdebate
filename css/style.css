@@ -1,3 +1,7 @@
+body {
+  background-color: orange;
+}
+
 section, header {
   font-display: Arial, serif;
   width: 50%;

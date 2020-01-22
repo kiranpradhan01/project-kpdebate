@@ -5,15 +5,13 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-section, header {
-  font-display: Arial, serif;
-  width: 50%;
+main, header {
   margin-left: auto;
   margin-right: auto;
 }
 
 header {
-  width: 60%;
+  width: 85%;
   text-align: center;
   border-bottom: solid black 4px;
 }
@@ -24,7 +22,17 @@ h1 {
 
 h2 {
   margin: 10px;
+  font-size: 15px;
 }
+
+img {
+  max-width: 240px;
+}
+
+main {
+  width: 77%;
+}
+
 h3 {
   font-style: italic;
   margin-bottom: -10px;
@@ -34,10 +42,29 @@ hr {
   height: 2px;
   background-color: black;
   border: none;
-  width: 50%;
   margin-top: 25px;
 }
 
+
 ol li {
   margin-bottom: 10px;
+}
+
+@media (min-width: 400px) {
+  img {
+    max-width: none;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  header {
+    width: 60%;
+  }
+
+  main {
+    width: 50%;
+  }
+
 }

@@ -48,3 +48,11 @@ section {
 .btn-primary:visited {
   background-color: dodgerblue !important;
 }
+
+.navbar-brand {
+  
+}
+
+img {
+  margin: 3px;
+}

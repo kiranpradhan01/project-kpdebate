@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kiran Pradhan, Patrin Sinteppadon">
+    <meta name="description"
+        content="A debate 'game' that automates the mediation of a SPAR event. The game generates a random topic, times each speaking period for both competitors, and then allows the audience to vote on a winner.">
+    <meta name="keywords" content="Debate, National Forensics League, Speech, Random topic">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap css library -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="icon" type="img/png" href="img/law.png">
+
+    <!-- bootstrap JS libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
+    </script>
+    <!-- font awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <script src="js/create-game.js"></script> -->
+    <!-- !javascript under construction -->
+
+    <title>SPAR</title>
+</head>
+
+<body>
+    <!-- Section 1: Players -->
+    <h1><span class="player1">Patrin</span> <br> is in favor of Cats</h1>
+    <h1><span class="player2">Kiran</span> <br> is in favor of Dogs</h1>
+
+    <!-- Section 2: Timer -->
+
+    <div class="timer col-md-6">
+        <div class="card bg-light ">
+            <h3 class="card-title text-center">
+                <div class="d-flex flex-wrap justify-content-center mt-2">
+                    <span class="min">5</span> :
+                    <span class="sec">00</span>
+                </div>
+            </h3>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="btn-group btn-group-lg" role="group" aria-label="">
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                    class="fa fa-forward fa-flip-horizontal" aria-label="backward" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-pause"
+                    aria-label="pause" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-forward"
+                    aria-label="forward" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <!-- Vote -->
+    <div class="text-center">
+        <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto">Vote</button>
+    </div>
+
+    <!-- Audience Join -->
+    <div>
+        <p>
+            Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with code <span class="code">6078</span>
+        </p>
+    </div>
+
+    <!-- Voting -->
+    <div class="modal fade" id="modalRandomize" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalRandomizeLabel">Final Vote</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Who won the debate?</p>
+                    <input type="radio" name="winner" value="player1"> Patrin<br>
+                    <input type="radio" name="winnter" value="player2"> Kiran<br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Vote!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

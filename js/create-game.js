@@ -5,10 +5,11 @@
   function init() {
     // get all "input"s
     // give them all an event listener for checkReadyToStart
-    let textboxes = document.querySelectorAll("input");
-    textboxes.map(function(input) {
-      input.addEventListener("change", checkReadyToStart);
-    });
+    // ------- let textboxes = document.querySelectorAll("input");
+    for (let i = 0; i < textboxes.length; i++) {
+      let textbox = textboxes[i];
+      textbox.addEventListener("onchange", checkReadyToStart);
+    }
 
     let btnStart = document.getElementById("start");
     btnStart.addEventListener("click", startGame);

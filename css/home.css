@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans&display=swap');
 
-/* * {
-  box-sizing: border-box;
-} */
-
 .accent-card {
   font-family: 'Open Sans', serif;
   background-color: #fff9f5;
@@ -22,9 +18,6 @@ body {
   margin-right: auto;
 }
 
-footer {
-    left: 0;
-}
 
 h3 {
   font-size: 1.4rem;
@@ -41,6 +34,7 @@ hr {
 a, #nav-links{
   color: black;
   font-size: 18px;
+  font-weight: 700;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -93,9 +87,13 @@ input {
 }
 
 footer {
+  font-size: 16px;
+  left: 0;
   width: 100%;
-  font-family: 'Open Sans', serif;
+  font-family: 'Open Sans',
+    serif;
   margin-top: 5rem;
   position: absolute;
   background-color: #fff9f5;
+  padding: 5px;
 }

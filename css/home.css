@@ -81,6 +81,9 @@ input {
 }
 
 footer {
+  position: absolute;
+  height: 60px;
+  line-height: 60px;
   width: 100%;
   background-color: #fff9f5;
   text-align: center;

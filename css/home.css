@@ -38,11 +38,11 @@ hr {
   width: 85%;
 }
 
-#nav-links a {
+a, #nav-links{
   color: black;
-  font-size: 16px;
-  padding-left: 3px;
-  padding-right: 3px;
+  font-size: 18px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .w-70 {

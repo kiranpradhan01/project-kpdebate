@@ -3,6 +3,7 @@
   window.addEventListener("load", init);
 
   function init() {
+    console.log("test");
     let btnStart = document.getElementById("btn-start");
     btnStart.addEventListener("click", startGame);
 

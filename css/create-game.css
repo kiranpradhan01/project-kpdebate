@@ -21,3 +21,12 @@
 .w-100 {
     font-family: 'Open Sans', serif;
 }
+
+.content-image-container {
+    text-align: center;
+    margin-top: -3rem;
+}
+
+#btn-start {
+    margin-top: -11rem !important;
+}

@@ -10,6 +10,13 @@ body {
     text-align: center;
 }
 
+footer {
+    /* position: fixed; */
+    font-size: 15px;
+    text-align: left;
+
+    background-color: teal;
+}
 .player1, .player2 {
     font-size: 40px;
 }

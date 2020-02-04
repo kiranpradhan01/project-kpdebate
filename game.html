@@ -11,7 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- bootstrap css library -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="icon" type="img/png" href="img/law.png">
 
@@ -22,12 +23,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
     </script>
     <!-- font awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet">
 
     <title>Game Session - DebateNOW</title>
 </head>
 
 <body>
+    <nav class="navbar fixed-top navbar-light" style="background-color: #fff9f5;">
+        <a class="navbar-brand" href="#">
+          <img src="img/law.png" width="30" height="30" class="d-inline-block align-top logo" alt="A gavel">
+          DebateNOW
+        </a>
+    </nav>
+
     <!-- Section 1: Players -->
     <div class="row">
         <div class="col">
@@ -57,34 +66,38 @@
     <div class="text-center">
         <div class="btn-group btn-group-lg" role="group" aria-label="">
             <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                    class="fa fa-forward fa-flip-horizontal" aria-label="backward"  aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-pause"
-                    aria-label="pause" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-forward"
-                    aria-label="forward" aria-hidden="true"></i></button>
+                    class="fa fa-forward fa-flip-horizontal" aria-label="backward"
+                    aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                    class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                    class="fa fa-forward" aria-label="forward" aria-hidden="true"></i></button>
         </div>
     </div>
 
     <!-- Vote -->
     <div class="text-center">
         <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
-        data-target="#modalVote">Vote</button>
+            data-target="#modalVote">Vote</button>
     </div>
 
     <!-- Audience Join -->
     <div>
         <p>
-            Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with game code <span class="code">6078</span>
+            Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with game code
+            <span class="code">6078</span>
         </p>
     </div>
 
     <!-- Voting -->
-    <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel" aria-hidden="true">
+    <div class="modal fade" id="modalVote" tabindex="-1" role="dialog"
+        aria-labelledby="modalVoteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalVoteLabel">Final Vote</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -92,22 +105,28 @@
                     <p>Who won the debate?</p>
                     <div id="modal-vote-row" class="row mx-auto">
                         <div class="col">
-                            <button id="btn-player-1" class="btn btn-secondary mx-auto" data-dismiss="modal">Patrin</button>
+                            <button id="btn-player-1" class="btn btn-secondary mx-auto"
+                                data-dismiss="modal">Patrin</button>
                         </div>
                         <div class="col">
                             <p class="my-2">OR</p>
                         </div>
                         <div class="col">
-                            <button id="btn-player-2" class="btn btn-secondary mx-auto" data-dismiss="modal">Kiran</button>
+                            <button id="btn-player-2" class="btn btn-secondary mx-auto"
+                                data-dismiss="modal">Kiran</button>
                         </div>
                     </div>
-                    
-                    
-                    
+
+
+
                 </div>
             </div>
         </div>
     </div>
+    <footer class="text-left font-small">
+        <!-- Author Info -->
+        <p>This application was created by Patrin Sinteppadon and Kiran Pradhan.</p>
+      </footer>
 
 </body>
 

@@ -22,6 +22,16 @@
   box-sizing: border-box;
 } */
 
+.accent-card {
+  font-family: 'Open Sans', serif;
+  background-color: #fff9f5;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 14px 14px 32px 0 rgba(102, 123, 139, .16);
+}
+
 body {
   font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
@@ -39,6 +49,7 @@ body {
 }
 
 input {
+  font-family: 'Open Sans', serif;
   border: none;
   border-bottom: solid black 2px;
   padding: .5rem;
@@ -66,13 +77,4 @@ input {
 
 .content-image {
   margin: 2rem;
-}
-
-.accent-card {
-  background-color: #fff9f5;
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 14px 14px 32px 0 rgba(102, 123, 139, .16);
 }

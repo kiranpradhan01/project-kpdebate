@@ -34,6 +34,13 @@ hr {
   width: 85%;
 }
 
+#nav-links a {
+  color: black;
+  font-size: 16px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
 .w-70 {
   width: 70%;
 }

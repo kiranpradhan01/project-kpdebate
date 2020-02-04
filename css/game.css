@@ -4,6 +4,15 @@ body {
     text-align: center;
 }
 
+<<<<<<< HEAD
+footer {
+    /* position: fixed; */
+    font-size: 15px;
+    text-align: left;
+
+    background-color: teal;
+}
+=======
 .first {
     padding-top: 7rem;
 }
@@ -12,6 +21,7 @@ body {
     margin-bottom: 0;
 }
 
+>>>>>>> 94978c3a5068b7ffcf906418ed2c50a190ad3ac1
 .player1, .player2 {
     font-size: 40px;
 }

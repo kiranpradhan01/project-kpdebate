@@ -10,14 +10,8 @@ body {
     text-align: center;
 }
 
-.player1 {
-    text-align: left;
-}
-
-.player2 { text-align: right; }
-
 .player1, .player2 {
-    font-size: 54px;
+    font-size: 40px;
 }
 
 .code {
@@ -57,4 +51,8 @@ body {
 .btn-primary:active,
 .btn-primary:visited {
     background-color: dodgerblue !important;
+}
+
+#modal-vote-row {
+    width: 60%;
 }

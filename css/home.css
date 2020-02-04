@@ -23,16 +23,17 @@ body {
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 ul {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 hr {
   width: 85%;
 }
+
 .w-70 {
   width: 70%;
 }
@@ -42,7 +43,7 @@ hr {
 }
 
 .container {
-  margin-bottom: 20rem;
+  margin-bottom: 18rem;
 }
 
 input {
@@ -81,10 +82,9 @@ input {
 }
 
 footer {
-  position: absolute;
-  height: 60px;
-  line-height: 60px;
   width: 100%;
+  font-family: 'Open Sans', serif;
+  margin-top: 5rem;
+  position: absolute;
   background-color: #fff9f5;
-  text-align: center;
 }

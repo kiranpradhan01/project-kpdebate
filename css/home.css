@@ -78,3 +78,13 @@ input {
 .content-image {
   margin: 2rem;
 }
+
+.content-image-container {
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  background-color: #fff9f5;
+  text-align: center;
+}

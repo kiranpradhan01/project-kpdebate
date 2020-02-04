@@ -12,7 +12,8 @@ body {
     margin-bottom: 0;
 }
 
-.player1, .player2 {
+.player1,
+.player2 {
     font-size: 40px;
 }
 
@@ -33,7 +34,8 @@ body {
     margin-right: auto;
 }
 
-.min, .sec {
+.min,
+.sec {
     font-size: 36px;
 }
 

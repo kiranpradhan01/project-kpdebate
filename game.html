@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- bootstrap css library -->
-    <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="icon" type="img/png" href="img/law.png">
 
@@ -38,19 +38,22 @@
     </nav>
 
     <!-- Section 1: Players -->
-    <div class="row">
-        <div class="col">
-            <h1>Patrin</h1>
-            <h2>is arguing Pro</h2>
-        </div>
+    <section class="first container">
+        <div class="row">
+            <div class="col">
+                <h1>Patrin</h1>
+                <h2>is arguing Pro</h2>
+            </div>
 
-        <div class="col">
-            <h1>Kiran</h1>
-            <h2>is arguing Con</h2>
+            <div class="col">
+                <h1>Kiran</h1>
+                <h2>is arguing Con</h2>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Section 2: Timer -->
+    <section class="container">
     <div class="timer col-md-6">
         <div class="card bg-light ">
             <h3 class="card-title text-center">
@@ -63,35 +66,40 @@
         </div>
     </div>
 
+
     <div class="text-center">
         <div class="btn-group btn-group-lg" role="group" aria-label="">
             <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                    class="fa fa-forward fa-flip-horizontal" aria-label="backward"
-                    aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                    class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                    class="fa fa-forward" aria-label="forward" aria-hidden="true"></i></button>
+                    class="fa fa-forward fa-flip-horizontal" aria-label="backward" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-pause"
+                    aria-label="pause" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-forward"
+                    aria-label="forward" aria-hidden="true"></i></button>
         </div>
     </div>
+    </section>
 
     <!-- Vote -->
+    <section class="container">
     <div class="text-center">
         <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
             data-target="#modalVote">Vote</button>
     </div>
+    </section>
 
     <!-- Audience Join -->
+    <section class="container">
     <div>
         <p>
-            Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with game code
-            <span class="code">6078</span>
+            Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with game code <span
+                class="code">6078</span>
         </p>
     </div>
+    </section>
 
     <!-- Voting -->
-    <div class="modal fade" id="modalVote" tabindex="-1" role="dialog"
-        aria-labelledby="modalVoteLabel" aria-hidden="true">
+    <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

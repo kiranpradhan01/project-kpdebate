@@ -30,8 +30,11 @@ body {
   margin-right: auto;
 }
 
-.container {
+.first {
   padding-top: 10rem;
+}
+
+.container {
   margin-bottom: 20rem;
 }
 
@@ -41,7 +44,6 @@ input {
   padding: .5rem;
   vertical-align: bottom;
 }
-
 
 .btn-primary,
 .btn-primary:hover,
@@ -66,7 +68,7 @@ input {
   margin: 2rem;
 }
 
-.accent-card-component {
+.accent-card {
   background-color: #fff9f5;
   padding: 5%;
   display: flex;

@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans&display=swap');
 
 body {
-    font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
     text-align: center;
+}
+
+.first {
+    padding-top: 7rem;
+}
+
+.container {
+    margin-bottom: 0;
 }
 
 .player1, .player2 {
@@ -44,13 +46,6 @@ body {
 
 .text-center {
     padding-bottom: 20px;
-}
-
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited {
-    background-color: dodgerblue !important;
 }
 
 #modal-vote-row {

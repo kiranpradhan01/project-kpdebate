@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+<<<<<<< HEAD
 
 section, header {
   font-display: Arial, serif;
   width: 50%;
 }
+=======
+>>>>>>> master
 
 body {
   background-color: orange;
@@ -40,7 +43,6 @@ main {
 
 h3 {
   font-style: italic;
-  margin-bottom: -10px;
 }
 
 hr {

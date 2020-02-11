@@ -1,3 +1,9 @@
+/**
+  red: #ff4047
+  yellow: #ffae27
+  blue: #0182e5
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans&display=swap');
 
 .accent-card {
@@ -10,12 +16,30 @@
   box-shadow: 14px 14px 32px 0 rgba(102, 123, 139, .16);
 }
 
+nav {
+  /* background-color: #fff9f5; */
+  background-color: #0182e5;
+}
+
+footer {
+  font-size: 16px;
+  left: 0;
+  width: 100%;
+  font-family: 'Open Sans',
+    serif;
+  margin-top: 5rem;
+  position: absolute;
+  background-color: #e6af2e;
+  padding: 5px;
+}
+
 body {
   font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+  /* background-color: #FFF9A5; */
 }
 
 h3 {
@@ -30,13 +54,16 @@ hr {
   width: 85%;
 }
 
-a,
-#nav-links {
-  color: black;
+a, #nav-links {
+  color: white;
   font-size: 18px;
   font-weight: 700;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.navbar-brand {
+  color: white !important;
 }
 
 .w-70 {
@@ -63,7 +90,8 @@ input {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited {
-  background-color: dodgerblue !important;
+  background-color: #ff4047 !important;
+  border-color: #ff4047;
 }
 
 .join {
@@ -82,14 +110,7 @@ input {
   text-align: center;
 }
 
-footer {
-  font-size: 16px;
-  left: 0;
-  width: 100%;
-  font-family: 'Open Sans',
-    serif;
-  margin-top: 5rem;
-  position: absolute;
-  background-color: #fff9f5;
-  padding: 5px;
+.social-media {
+  width: 35px;
+  height: 35px;
 }

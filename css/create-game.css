@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+
+/* default for extra-small screens */
+
+#nav-links, .logo-name {
+    display: none;
+}
 
 .first {
     padding-top: 7rem;
@@ -8,18 +14,19 @@
     margin-bottom: 2rem;
 }
 
-#players input {
+input {
     width: 75%;
-}
-
-#start {
-    margin-left: auto;
 }
 
 .modal-body,
 .mb-3,
 .w-100 {
-    font-family: 'Open Sans', serif;
+    font-family: 'Lato', serif;
+
+}
+
+#start {
+    margin-left: auto;
 }
 
 .content-image-container {
@@ -30,3 +37,11 @@
 #btn-start {
     margin-top: -11rem !important;
 }
+
+@media (min-width: 768px) {
+   #nav-links, .logo-name {
+       display: block;
+   }
+
+}
+

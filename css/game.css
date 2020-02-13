@@ -4,6 +4,14 @@ body {
     text-align: center;
 }
 
+#nav-links {
+    display: none;
+}
+
+h1 {
+    font-weight: 700;
+}
+
 .first {
     padding-top: 7rem;
 }
@@ -18,9 +26,9 @@ body {
 }
 
 .code {
-    font-size: 24px;
-    color: navy;
-    font-weight: bold;
+    font-size: 32px;
+    color: #FFAE27;
+    font-weight: 900;
 }
 
 .fa {
@@ -52,4 +60,23 @@ body {
 
 #modal-vote-row {
     width: 60%;
+}
+
+.modal {
+    background-color: #FFAE27;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited {
+    background-color: #ffae27 !important;
+    border-color: #EFEFEF;
+    color: black;
+}
+
+@media (min-width: 768px) {
+    #nav-links {
+        display: initial;
+    }
 }

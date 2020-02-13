@@ -25,7 +25,7 @@ footer {
   width: 100%;
   font-family: 'Open Sans', serif;
   margin-top: 5rem;
-  position: absolute;
+  position: absolute; 
   background-color: #e6af2e;
   padding: 5px;
 }

@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-light" style="background-color: #fff9f5;">
+    <nav class="navbar fixed-top navbar-light" style="background-color: white;">
         <div class="d-flex justify-content-between">
             <a class="navbar-brand" href="index.html">
                 <img src="img/law.png" width="30" height="30" class="d-inline-block align-top logo" alt="A gavel">
@@ -77,8 +77,8 @@
                     <button type="button" class="btn btn-outline-primary btn-secondary"><i
                             class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
                             aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-pause"
-                            aria-label="pause" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
+                            class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
                     <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-step-forward"
                             aria-label="forward" aria-hidden="true"></i></button>
                 </div>
@@ -97,16 +97,15 @@
     <section class="container">
         <div>
             <p>
-                Audience can join debate at <a href="kpdebate.com">kpdebate.com</a> with game code <span
-                    class="code">6078</span>
+                Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game code<span class="code"> 6078</span>
             </p>
         </div>
     </section>
 
-    <!-- Voting -->
+    <!-- MODAL: Voting -->
     <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalVoteLabel">Final Vote</h5>
@@ -133,10 +132,15 @@
     </div>
 
     <footer>
-        <p>To add to the game, please send a PR at our<a href="github.com/info340a-w20/project-kpdebate">GitHub.</a>
-            Read up on why we made this tool<a href="proposal.html">here.</a> <br>
-            © 2020 Kiran Pradhan and Patrin Sinteppadon
-        </p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <p class="mb-0">Read up on why we made this tool<a href="proposal.html">here.</a></p>
+                <p class="mb-0">&copy; 2020 Kiran Pradhan and Patrin Sinteppadon</p>
+            </div>
+            <a href="https://github.com/info340a-w20/project-kpdebate">
+                <img class="social-media" src="img/github.svg" alt="Github logo">
+            </a>
+        </div>
     </footer>
 </body>
 

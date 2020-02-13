@@ -2,7 +2,7 @@
 
 /* default for extra-small screens */
 
-#nav-links, .logo-name {
+#nav-links {
     display: none;
 }
 
@@ -22,26 +22,39 @@ input {
 .mb-3,
 .w-100 {
     font-family: 'Lato', serif;
+}
 
+.modal {
+    background-color: #FFAE27;
 }
 
 #start {
     margin-left: auto;
 }
 
-.content-image-container {
-    text-align: center;
-    margin-top: -3rem;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
 }
 
-#btn-start {
-    margin-top: -11rem !important;
+footer {
+    /* content less than full page */
+    bottom: 0;
 }
 
 @media (min-width: 768px) {
-   #nav-links, .logo-name {
-       display: block;
+   #nav-links {
+       display: initial;
    }
 
+   /* bring back if we bring back picture
+   .content-image-container {
+        text-align: center;
+        display: initial;
+        margin-top: -3rem;
+   }
+    
+    #btn-start {
+        margin-top: -11rem !important;
+    } */
 }
 

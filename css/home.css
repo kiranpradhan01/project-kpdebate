@@ -5,34 +5,84 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+/* The minimum-sized screen shit. CONFIRMED as being functioning on small screens. */
+body {
+  font-size: 10pt;
+}
 
+.img-title {
+  display: none;
+}
+
+/* Medium-sized screens. */
+@media (min-width: 1050px) {
+  .img-title {
+    max-width: 180px;
+  }
+
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Largest screens. */
+@media (min-width: 1220px) {
+  .img-title {
+    max-width: 235px;
+  }
+}
+
+/* EVERYTHING ELSE ---------------------------- */
 .accent-card {
-  background-color: #FFAE27;
+  /* background-color: #F9C784; */
+  background-color: #cfcce0;
+  border: solid lightgray 1px;
   padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 14px 14px 32px 0 rgba(18, 19, 19, 0.379);
 }
-
+/* .col {border: solid black 1px;} for DEBUG */
 nav {
-  border-bottom: solid gray 1px;
+  background-color: white;
+  border-bottom: solid #efefef 1px;
+}
+
+nav a:hover {
+  color: black;
+  text-decoration: none;
 }
 
 footer {
-  font-size: 16px;
+  background-color: #ffae27;
+
+  padding: 5px;
+  margin-top: 5rem;
+  border-top: solid #F9C784 1px;
+
+  position: absolute;
   left: 0;
   width: 100%;
-  font-family: 'Open Sans', serif;
-  margin-top: 5rem;
-  position: absolute; 
-  background-color: #e6af2e;
-  padding: 5px;
+}
+
+#floating-img-div {
+  position: absolute;
+  width: 100%;
+}
+
+/* ---------------------------- */
+
+footer, footer a {
+  font-size: 16px;
+}
+
+footer a {
+  text-decoration: underline;
 }
 
 body {
   font-family: 'Lato', serif;
-  font-size: 18px;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -43,16 +93,9 @@ header {
   font-weight: 900;
 }
 
-.img-title {
-  position: absolute;
-  left: 0px;
-  top: 127px;
-  width: 235px;
-}
-
-#left-img {
+/* #left-img {
   left: -31px;
-}
+} */
 
 h3 {
   font-size: 1.4rem;
@@ -87,7 +130,6 @@ a, #nav-links {
 }
 
 input {
-  font-family: 'Open Sans', serif;
   border: none;
   border-bottom: solid black 2px;
   padding: .5rem;
@@ -99,8 +141,13 @@ input {
 .btn-primary:active,
 .btn-primary:visited {
   background-color: #ffae27 !important;
-  border-color: #ffae27;
+  border-color: #F9C784;
   color: black;
+}
+
+.subtitle {
+  margin-top: -20px;
+  font-size: 24px;
 }
 
 .join {

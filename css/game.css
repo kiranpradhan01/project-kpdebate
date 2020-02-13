@@ -1,35 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
-/** TODO: the TIME block has troubles on wide screens ====================================== */
 /** TODO: HAMBURGER MENU ====================================== */
+
+/** Body and General Styling */
 body {
     text-align: center;
-}
-
-#nav-links {
-    display: none;
-}
-
-h1 {
-    font-weight: 700;
-}
-
-.first {
-    padding-top: 7rem;
 }
 
 .container {
     margin-bottom: 0;
 }
 
-.player1,
-.player2 {
-    font-size: 40px;
-} 
+/** Navigation */
+#nav-links {
+    display: none;
+}
 
-.code {
-    font-size: 32px;
-    color: #FFAE27;
-    font-weight: 900;
+/** Players Container */
+#player-container {
+    padding-top: 7rem;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/** Timer */
+.timer {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 435px;
+}
+
+.card {
+    padding: 40px 80px 40px 80px;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
 }
 
 .fa {
@@ -37,34 +44,8 @@ h1 {
     padding: .3rem;
 }
 
-.timer {
-    padding-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.min,
-.sec {
+.minutes {
     font-size: 36px;
-}
-
-.card {
-    padding: 80px;
-    margin: 0 auto;
-    float: none;
-    margin-bottom: 10px;
-}
-
-.text-center {
-    padding-bottom: 20px;
-}
-
-#modal-vote-row {
-    width: 60%;
-}
-
-.modal {
-    background-color: #FFAE27;
 }
 
 .btn-outline-primary,
@@ -74,6 +55,33 @@ h1 {
     background-color: #ffae27 !important;
     border-color: #EFEFEF;
     color: black;
+}
+
+/** Join Code */
+.code {
+    font-size: 32px;
+    color: #FFAE27;
+    font-weight: 900;
+}
+
+/** Voting Modal */
+#modal-vote-row {
+    width: 60%;
+}
+
+.modal {
+    background-color: #FFAE27;
+}
+
+@media (min-width: 600px) {
+    #nav-links {
+        display: initial;
+    }
+
+    .card {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
 }
 
 @media (min-width: 768px) {

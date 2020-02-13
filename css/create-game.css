@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 
 /* default for extra-small screens */
-/** TODO: at 575px, the input lines widen again ============================================= */
 /** TODO: HAMBURGER MENU ====================================== */
 #nav-links {
     display: none;
@@ -18,13 +17,6 @@
 input {
     width: 75%;
 }
-
-.modal-body,
-.mb-3,
-.w-100 {
-    font-family: 'Lato', serif;
-}
-
 .modal {
     background-color: #FFAE27;
 }

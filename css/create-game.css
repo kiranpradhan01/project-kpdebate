@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+
+/* default for extra-small screens */
+/** TODO: HAMBURGER MENU ====================================== */
+#nav-links {
+    display: none;
+}
 
 .first {
     padding-top: 7rem;
@@ -8,25 +14,40 @@
     margin-bottom: 2rem;
 }
 
-#players input {
+input {
     width: 75%;
+}
+.modal {
+    background-color: #FFAE27;
 }
 
 #start {
     margin-left: auto;
 }
 
-.modal-body,
-.mb-3,
-.w-100 {
-    font-family: 'Open Sans', serif;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
 }
 
-.content-image-container {
-    text-align: center;
-    margin-top: -3rem;
+footer {
+    /* content less than full page */
+    bottom: 0;
 }
 
-#btn-start {
-    margin-top: -11rem !important;
+@media (min-width: 768px) {
+   #nav-links {
+       display: initial;
+   }
+
+   /* bring back if we bring back picture
+   .content-image-container {
+        text-align: center;
+        display: initial;
+        margin-top: -3rem;
+   }
+    
+    #btn-start {
+        margin-top: -11rem !important;
+    } */
 }
+

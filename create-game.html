@@ -28,11 +28,10 @@
 </head>
 
 <body>
-  <nav class="navbar fixed-top navbar-light" style="background-color: #fff9f5;">
+  <nav class="navbar fixed-top navbar-light" style="background-color: white;">
     <div class="d-flex justify-content-between">
       <a class="navbar-brand" href="index.html">
-        <img src="img/law.png" width="30" height="30" class="d-inline-block align-top logo" alt="A gavel">
-        DebateNOW
+        <img src="img/law.png" width="30" height="30" class="d-inline-block align-top logo" alt="A gavel"> DebateNOW
       </a>
     </div>
     <div id="nav-links">
@@ -69,11 +68,11 @@
       <div class="card-body">
         <h4 class="card-title">Players</h4>
         <div class="mx-3">
-          <div class="text-center">
-            <form class="w-50 mx-auto">
-              <input id="input-player1" class="mb-3" type="text" placeholder="Enter Player One...">
-              <input id="input-player2" class="mb-3" type="text" placeholder="Enter Player Two...">
-            </form>
+          <div class="row">
+            <form class="col-sm-8 col-md-6 mx-auto">
+              <input id="input-topic" class="w-100" type="text" placeholder="Enter Player One......">
+              <input id="input-topic" class="w-100" type="text" placeholder="Enter Player Two......">
+            </form> 
           </div>
         </div>
       </div>
@@ -82,9 +81,9 @@
 
   <!-- Section 3 - Start Button -->
   <section class="container">
-    <div class="content-image-container"><img src="img/chatboxes.jpg" class="content-image"
+    <!-- <div class="content-image-container"><img src="img/chatboxes.jpg" class="content-image"
         alt="Two men talking with empty cartoon chatboxes">
-    </div>
+    </div> -->
     <div class="text-center">
       <!-- <button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button> -->
       <!-- ! this will be the actual button for later. As a way of ensuring HTML validation -->
@@ -94,7 +93,7 @@
 
   <!-- Section 4 - The Modal [ELEMENT IS HIDDEN] -->
   <div class="modal fade" id="modalRandomize" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div id="modal-categ-screen">
           <!-- Section 4A - Category Screen -->
@@ -139,11 +138,15 @@
   </div>
 
   <footer>
-    <p>To add to the game, please send a PR at our<a href="https://github.com/info340a-w20/project-kpdebate">GitHub.</a>
-      Read up
-      on why we made this tool<a href="proposal.html">here.</a> <br>
-      © 2020 Kiran Pradhan and Patrin Sinteppadon
-    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <p class="mb-0">Read up on why we made this tool<a href="proposal.html">here.</a></p>
+        <p class="mb-0">&copy; 2020 Kiran Pradhan and Patrin Sinteppadon</p>
+      </div>
+      <a href="https://github.com/info340a-w20/project-kpdebate">
+        <img class="social-media" src="img/github.svg" alt="Github logo">
+      </a>
+    </div>
   </footer>
 </body>
 

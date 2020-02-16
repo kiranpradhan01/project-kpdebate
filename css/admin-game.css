@@ -15,12 +15,6 @@ body {
     display: none;
 }
 
-#error {
-    margin-top: 150px;
-    position: absolute;
-    left: 25%;
-}
-
 /** Players Container */
 #player-container {
     padding-top: 7rem;
@@ -54,6 +48,16 @@ h1 {
     font-size: 36px;
 }
 
+/* button group */
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:disabled {
+    background-color: #ffae27 !important;
+    border-color: #EFEFEF;
+    color: black;
+}
 
 /** Join Code */
 .code {

@@ -3,9 +3,15 @@
   window.addEventListener("load", init);
 
   function init() {
-    console.log("test");
-    let btnStart = document.getElementById("btn-start");
-    btnStart.addEventListener("click", startGame);
+    console.log("init-ing");
+    // 'Begin Debate' button disabled till all inputs are not empty
+    document.querySelector("#btn-start").disabled = true;
+    document.querySelector("#input-topic").addEventListener("keyup", checkReadyToStart);
+    document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
+    document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
+    
+    // button can only detect click if not disabled
+    document.getElementById("btn-start").addEventListener("click", startGame);
 
     let btnRandomize = document.getElementById("randomize");
     btnRandomize.addEventListener("click", function() {
@@ -14,7 +20,7 @@
       firstScreen.classList.remove("d-none");
       
       let secondScreen = document.getElementById("modal-choice-screen");
-    secondScreen.classList.add("d-none");
+      secondScreen.classList.add("d-none");
     });
 
     let btnTopic = document.getElementById("btn-get-topic");
@@ -22,10 +28,16 @@
   }
 
   function checkReadyToStart() {
-    // if every "input" element doesn't have an empty (i.e. user has typed something into all)
-    //  then enable id="start"
-    //  else disable id="start"
-    console.log("hello");
+    // if every "input" element is not empty (i.e. user has typed something into all)
+    //  then enable button
+    //  else disable button
+    if (document.querySelector("#input-topic").value.trim().length > 0 &&
+        document.querySelector("#input-player1").value.trim().length > 0 &&
+        document.querySelector("#input-player2").value.trim().length > 0) {
+      document.querySelector("#btn-start").disabled = false;
+    } else {
+      document.querySelector("#btn-start").disabled = true;
+    }
   }
 
   /**
@@ -55,7 +67,7 @@
    * Also restores first screen of the modal
    */
   function assignTopic() {
-    let topicBox = document.getElementById("input-topic");
+    let topicBox = document.querySelector("#input-topic");
     topicBox.value = "Are dogs better than cats?";
 
     // restore first screen of modal
@@ -67,12 +79,12 @@
    * links the user to the game screen.
    */
   function startGame() {
-    alert("Hello! This is mainly a static webpage for now, but this button is supposed to evaluate that all required fields have been filled by the user, and then link them to the main game page if everything is correct. Otherwise a red error notice appears.");
-    // evaluate that all required fields are filled
-
+    // alert("Hello! This is mainly a static webpage for now, but this button is supposed to evaluate that all required fields have been filled by the user, and then link them to the main game page if everything is correct. Otherwise a red error notice appears.");
     // create a websession id
-
+    let sessionID = Math.floor(1000 + Math.random() * 9000)
+    console.log(sessionID);
     // link to main game page
+    window.location.href = "admin-game.html";
   }
 
 })();

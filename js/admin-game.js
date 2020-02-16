@@ -1,0 +1,1 @@
+// the HTML page that the person who creates the game will see

@@ -77,7 +77,7 @@ input {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited,
-.btn-priamry:disabled {
+.btn-primary:disabled {
   background-color: #ffae27 !important;
   border-color: #F9C784;
   color: black;

@@ -10,6 +10,12 @@ body {
     margin-bottom: 0;
 }
 
+#error {
+    margin-top: 150px;
+    position: absolute;
+    left: 25%;
+}
+
 /** Navigation */
 #nav-links {
     display: none;
@@ -48,7 +54,7 @@ h1 {
     font-size: 36px;
 }
 
-/* button group */
+/* Button Group */
 .btn-outline-primary,
 .btn-outline-primary:hover,
 .btn-outline-primary:active,

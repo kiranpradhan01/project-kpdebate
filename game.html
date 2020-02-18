@@ -46,25 +46,25 @@
         </a>
     </nav>
 
-    <h2 id="error" class="d-none mx-auto">Error: Session ID was invalid</h2>
-    
     <div id="game-interface">
-        <!-- Section 1: Players -->
-        <section id="player-container" class="container">
-            <div class="row">
-                <div class="col">
-                    <h1>Patrin</h1>
-                    <h2>is arguing Pro</h2>
-                </div>
+        <!-- Players -->
+        <header>
+            <section id="player-container" class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Patrin</h1>
+                        <h2>is arguing Pro</h2>
+                    </div>
 
-                <div class="col">
-                    <h1>Kiran</h1>
-                    <h2>is arguing Con</h2>
+                    <div class="col">
+                        <h1>Kiran</h1>
+                        <h2>is arguing Con</h2>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </header>
 
-        <!-- Section 2: Timer -->
+        <!-- Timer -->
         <section class="container">
             <div class="timer col-md-6">
                 <div class="card bg-light ">
@@ -83,29 +83,30 @@
                                 aria-hidden="true"></i></button>
                         <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
                                 class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-step-forward"
-                                aria-label="forward" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                                class="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
                     </div>
-                </h3>
+                    </h3>
+                </div>
+        </section>
+
+        <!-- Vote -->
+        <section class="container">
+            <div class="text-center">
+                <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
+                    data-target="#modalVote">Vote</button>
             </div>
-    </section>
+        </section>
 
-    <!-- Vote -->
-    <section class="container">
-        <div class="text-center">
-            <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
-                data-target="#modalVote">Vote</button>
-        </div>
-    </section>
-
-    <!-- Audience Join -->
-    <section class="container">
-        <div>
-            <p>
-                Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game code<span class="code"> XXXX</span>
-            </p>
-        </div>
-    </section>
+        <!-- Audience Join -->
+        <section class="container">
+            <div>
+                <p>
+                    Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game
+                    code<span class="code"> XXXX</span>
+                </p>
+            </div>
+        </section>
 
         <!-- MODAL: Voting -->
         <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel"
@@ -122,7 +123,8 @@
                         <p>Who won the debate?</p>
                         <div id="modal-vote-row" class="row mx-auto">
                             <div class="col">
-                                <button class="btn-player btn btn-secondary mx-auto" data-dismiss="modal">Patrin</button>
+                                <button class="btn-player btn btn-secondary mx-auto"
+                                    data-dismiss="modal">Patrin</button>
                             </div>
                             <div class="col">
                                 <p class="my-2">OR</p>

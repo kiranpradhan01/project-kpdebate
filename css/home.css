@@ -149,7 +149,7 @@ footer a {
   height: 35px;
 }
 
-/* Specifically for resizing images. */
+/* Specifically for resizing images */
 @media (min-width: 880px) {
   .display-1 {
     font-size: 6rem;
@@ -173,7 +173,7 @@ footer a {
   }
 }
 
-/* Medium-sized screens. */
+/* Medium-sized screens */
 @media (min-width: 1050px) {
   .img-title {
     max-width: 180px;
@@ -197,7 +197,7 @@ footer a {
   }
 }
 
-/* Largest screens. */
+/* Largest screens */
 @media (min-width: 1220px) {
   .img-title {
     max-width: 235px;

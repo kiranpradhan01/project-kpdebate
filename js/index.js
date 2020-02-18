@@ -18,11 +18,8 @@
     document.getElementById("btn-join").addEventListener("click", linkToGame);
   }
 
-  /**
-   * evaluates validity of the input
-   * For now, we'll assume game sessions are all 6 characters long.
-   * 
-   */
+  // evaluates validity of input element as a 4-digit session number
+  // if valid, enable join button, else disable join button
   function checkValidInput() {
     if (this.value.length >= 4) {
       document.getElementById("btn-join").disabled = false;
@@ -31,23 +28,19 @@
     }
   }
 
-  /**
-   * pre-condition: some kind of input is in the textbox
-   * In the future this should evaluate the current sessions available in firebase.
-   * Links to the game page. 
-   */
+  // pre-condition: 4-digit number added to text box
+  // links to game page if session ID is valid
   function linkToGame() {
     let sessionID = document.getElementById("session-name").value;
-    let idIsValid = true; /** perform firebase validating here */
+    let idIsValid = true; /** in the future, perform session validation in firebase here */
 
     if (idIsValid) {
       let a = document.createElement("a");
       a.href = "game.html?session=" + sessionID;
       a.click();
     } else {
-      alert("Error: This is not the ID of an ongoing game.");
+      alert("Error: This is not the ID of an current game.");
     }
-    
   }
 
 })();

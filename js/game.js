@@ -3,13 +3,18 @@
   window.addEventListener("load", init);
 
   function init() {
+    // update audience join code, return error on page if not successful
     const urlParams = new URLSearchParams(window.location.search);
     const sessionID = urlParams.get("session");
     if (sessionID) {
-      document.querySelector(".code").textContent = sessionID;
+      document.querySelector(".code").textContent = " " + sessionID;
     } else {
       document.getElementById("game-interface").classList.add("invisible");
-      document.getElementById("error").classList.remove("d-none");
+      let h2 = document.createElement("h2");
+      h2.classList.add("mx-auto");
+      h2.id = "error";
+      h2.textContent = 'Error: Session ID was invalid';
+      document.querySelector('body').prepend(h2);
     }
 
     let btnVote = document.getElementsByClassName("btn-player");

@@ -1,13 +1,11 @@
 (function() {
   "use strict"
   window.addEventListener("load", init);
-
-  const phases = [
-    {
+  const phases = [{
       name: "opening-stmt",
       appendedMessage: "'s Opening Statement",
       time: 60
-    }, 
+    },
     {
       name: "rebuttal",
       appendedMessage: "'s Rebuttal",
@@ -27,17 +25,23 @@
       name: "voting",
       appendedMessage: "Debate is Over! Begin voting once the admin unlocks it.",
       time: null
-    }];
+    }
+  ];
 
   let state = {
-    sessionID: "4343",
-    playerNames: ["Patrin", "Kiran"],
-    topic: "Is cereal a soup?",
-    
-    currentPhase: phases[0],
-    currentSpeaker: 0,
-    timer: null
+    // sessionID: "4343",
+    // playerNames: ["Patrin", "Kiran"],
+    // topic: "Is cereal a soup?",
+    // currentPhase: phases[0],
+    // currentSpeaker: 0,
+    // timer: null
   };
+
+  // load data
+  d3.csv("data/topics.csv").then(function (data) {
+    state.data = data;
+    console.log(state.data[12]);
+  })
 
   function init() {
     // check for session
@@ -49,6 +53,8 @@
       /* 
         access Firebase to get state.playerNames, state.topic, as well as currentPhase/speaker/timer.
       */
+     state.topic = state.data[12].topic;
+     console.log(state.topic);
     } else {
       document.getElementById("game-interface").classList.add("invisible");
       let h2 = document.createElement("h2");

@@ -1,6 +1,12 @@
 (function() {
   "use strict"
   window.addEventListener("load", init);
+  let state = {};
+  // load data
+  d3.csv("data/topics.csv").then(function (data) {
+    state.data = data;
+    console.log(state.data[12]);
+  })
 
   function init() {
     // 'Begin Debate' button disabled till all inputs are not empty
@@ -23,6 +29,9 @@
 
     let btnTopic = document.getElementById("btn-get-topic");
     btnTopic.addEventListener("click", getRandomTopics);
+
+    document.querySelector("#btn-choice-1").addEventListener("click", assignTopic("#btn-choice-1")); // will be one or the other
+    document.querySelector("#btn-choice-2").addEventListener("click", assignTopic("#btn-choice-2")); // will be one or the other
   }
 
   // if every "input" element is not empty, enable start button, else disable start button
@@ -54,6 +63,9 @@
 
     let firstScreen = document.getElementById("modal-categ-screen");
     firstScreen.classList.add("d-none");
+
+    // restore screen of modal
+    firstScreen.value("0");
   }
 
   /**
@@ -62,15 +74,16 @@
    * Binds the selected topic to the Topic textbox on the main page.
    * Also restores first screen of the modal
    */
-  function assignTopic() {
+  function assignTopic(btnID) {
+    let choice = document.querySelector(btnID);
+    console.log(choice.textContent);
     let topicBox = document.querySelector("#input-topic");
-    topicBox.value = "Are dogs better than cats?";
-
-    // restore first screen of modal
+    topicBox.value = choice.textContent;
+    return choice.textContent;
   }
 
   // generates random 4-number session ID for the game and links the user to admin game screen
-  function linkToGame() {
+  function linkToGame(selectedTopic) {
     // create a session ID
     let sessionID = Math.floor(1000 + Math.random() * 9000)
     console.log(sessionID);
@@ -78,7 +91,7 @@
 
     // link to admin game page
     let a = document.createElement("a");
-    a.href = "admin-game.html?session=" + sessionID;
+    a.href = "admin-game.html?session=" + sessionID + "game=" + selectedTopic;
     a.click();
   }
 

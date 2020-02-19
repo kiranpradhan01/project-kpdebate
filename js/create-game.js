@@ -15,7 +15,7 @@
     document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
     document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
 
-    // add event listeners
+    // add event listeners  
     document.getElementById("btn-start").addEventListener("click", linkToGame);
     document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
     document.getElementById("btn-choice-1").addEventListener("click", assignTopic);

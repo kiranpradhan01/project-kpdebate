@@ -10,13 +10,14 @@
   <meta name="keywords" content="Debate, National Forensics League, Speech, Random topic">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- bootstrap css library -->
+  <!-- load css libraries -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/create-game.css">
   <link rel="icon" type="img/png" href="img/law.png">
 
-  <!-- bootstrap JS libraries -->
+  <!-- load JS libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
   </script>
@@ -28,6 +29,7 @@
 </head>
 
 <body>
+  <!-- Navbar -->
   <nav class="navbar fixed-top navbar-light" style="background-color: white;">
     <div class="d-flex justify-content-between">
       <a class="navbar-brand" href="index.html">
@@ -42,7 +44,7 @@
     </a>
   </nav>
 
-  <!-- Section 1 - Topic -->
+  <!-- Section 1: Input topic -->
   <section id="topic" class="first container">
     <div class="card">
       <div class="card-body">
@@ -62,7 +64,7 @@
     </div>
   </section>
 
-  <!-- Section 2 - Players -->
+  <!-- Section 2: Input players -->
   <section id="players" class="container">
     <div class="card">
       <div class="card-body">
@@ -70,8 +72,8 @@
         <div class="mx-3">
           <div class="row">
             <form class="col-sm-8 col-md-6 mx-auto">
-              <input id="input-topic" class="w-100" type="text" placeholder="Enter Player One......">
-              <input id="input-topic" class="w-100" type="text" placeholder="Enter Player Two......">
+              <input id="input-player1" class="w-100" type="text" placeholder="Enter Player One......">
+              <input id="input-player2" class="w-100" type="text" placeholder="Enter Player Two......">
             </form> 
           </div>
         </div>
@@ -79,15 +81,15 @@
     </div>
   </section>
 
-  <!-- Section 3 - Start Button -->
+  <!-- Section 3: Start debate -->
   <section class="container">
     <!-- <div class="content-image-container"><img src="img/chatboxes.jpg" class="content-image"
         alt="Two men talking with empty cartoon chatboxes">
     </div> -->
     <div class="text-center">
-      <!-- <button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button> -->
-      <!-- ! this will be the actual button for later. As a way of ensuring HTML validation -->
-      <a id="btn-start" class="btn btn-primary btn-lg create" href="game.html" role="button">Begin Debate</a>
+      <button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button>
+      <!-- ! ^ this is the actual button. As a way of ensuring HTML validation -->
+      <!-- <a id="btn-start" class="btn btn-primary btn-lg create" href="game.html" role="button">Begin Debate</a> -->
     </div>
   </section>
 
@@ -96,7 +98,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div id="modal-categ-screen">
-          <!-- Section 4A - Category Screen -->
+          <!-- Section 4A: Category Screen -->
           <div class="modal-header">
             <h5 class="modal-title" id="modalRandomizeLabel">Get random topic</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -106,7 +108,7 @@
           <div class="modal-body text-center">
             <p>Select a general category for your topic choices.</p>
             <select class="browser-default custom-select w-50">
-              <option selected>Anything</option>
+              <option value="0" selected>Anything</option>
               <option value="1">Food</option>
               <option value="2">Animals</option>
               <option value="3">Sports</option>
@@ -119,7 +121,7 @@
 
         </div>
         <div id="modal-choice-screen" class="d-none">
-          <!-- Section 4B - Choice Screen -->
+          <!-- Section 4B: Choice Screen -->
           <div class="modal-header">
             <h5 class="modal-title" id="modal-choice-label">Debate about:</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -137,6 +139,7 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <div class="d-flex justify-content-between align-items-center">
       <div>

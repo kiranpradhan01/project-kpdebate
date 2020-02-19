@@ -10,13 +10,14 @@
     <meta name="keywords" content="Debate, National Forensics League, Speech, Random topic">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- bootstrap css library -->
+    <!-- load css libraries -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="icon" type="img/png" href="img/law.png">
 
-    <!-- bootstrap JS libraries -->
+    <!-- load JS libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
     </script>
@@ -30,6 +31,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar fixed-top navbar-light" style="background-color: white;">
         <div class="d-flex justify-content-between">
             <a class="navbar-brand" href="index.html">
@@ -45,85 +47,93 @@
         </a>
     </nav>
 
-    <!-- Section 1: Players -->
-    <section id="player-container" class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Patrin</h1>
-                <h2>is arguing Pro</h2>
-            </div>
+    <div id="game-interface">
+        <!-- Players -->
+        <section id="player-container" class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 id="player-1">Patrin</h1>
+                    <h2>is arguing Pro</h2>
+                </div>
 
-            <div class="col">
-                <h1>Kiran</h1>
-                <h2>is arguing Con</h2>
+                <div class="col">
+                    <h1 id="player-2">Kiran</h1>
+                    <h2>is arguing Con</h2>
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="row">
+                <h3 id="topic" class="font-weight-bold mb-0"></h3>
+            </div>
+        </section>
 
-    <!-- Section 2: Timer -->
-    <section class="container">
-        <div class="timer col-md-6">
-            <div class="card bg-light ">
-                <h3 class="card-title text-center">
-                    <div class="d-flex flex-wrap justify-content-center mt-2">
-                        <p>Patrin's Opening Statement</p>
-                        <p class="minutes mb-0">5:00</p>
+        <!-- Timer -->
+        <section class="container">
+            <div class="timer col-md-6">
+                <div id="timer-card" class="card bg-light ">
+                    <h3 class="card-title text-center">
+                        <div class="d-flex flex-wrap justify-content-center mt-2">
+                            <p id="timer-label">Patrin's Opening Statement</p>
+                            <p id="timer"class="mb-0">5:00</p>
+                        </div>
+                    </h3>
+                </div>
+
+                <div class="text-center">
+                    <div class="btn-group btn-group-lg" role="group" aria-label="">
+                        <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                                class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
+                                aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
+                                class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                                class="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
                     </div>
-                </h3>
-            </div>
+                    </h3>
+                </div>
+        </section>
 
+        <!-- Vote -->
+        <section class="container">
             <div class="text-center">
-                <div class="btn-group btn-group-lg" role="group" aria-label="">
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                            class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
-                            aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
-                            class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-step-forward"
-                            aria-label="forward" aria-hidden="true"></i></button>
-                </div>
+                <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
+                    data-target="#modalVote">Vote</button>
             </div>
-    </section>
+        </section>
 
-    <!-- Vote -->
-    <section class="container">
-        <div class="text-center">
-            <button id="vote" class="btn btn-primary btn-lg mt-2 mx-auto" data-toggle="modal"
-                data-target="#modalVote">Vote</button>
-        </div>
-    </section>
+        <!-- Audience Join -->
+        <section class="container">
+            <div>
+                <p>
+                    Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game
+                    code<span class="code"> XXXX</span>
+                </p>
+            </div>
+        </section>
 
-    <!-- Audience Join -->
-    <section class="container">
-        <div>
-            <p>
-                Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game code<span class="code"> 6078</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- MODAL: Voting -->
-    <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalVoteLabel">Final Vote</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <p>Who won the debate?</p>
-                    <div id="modal-vote-row" class="row mx-auto">
-                        <div class="col">
-                            <button class="btn-player btn btn-secondary mx-auto" data-dismiss="modal">Patrin</button>
-                        </div>
-                        <div class="col">
-                            <p class="my-2">OR</p>
-                        </div>
-                        <div class="col">
-                            <button class="btn-player btn btn-secondary mx-auto" data-dismiss="modal">Kiran</button>
+        <!-- MODAL: Voting -->
+        <div class="modal fade" id="modalVote" tabindex="-1" role="dialog" aria-labelledby="modalVoteLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalVoteLabel">Final Vote</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Who won the debate?</p>
+                        <div id="modal-vote-row" class="row mx-auto">
+                            <div class="col">
+                                <button class="btn-player btn btn-secondary mx-auto"
+                                    data-dismiss="modal">Patrin</button>
+                            </div>
+                            <div class="col">
+                                <p class="my-2">OR</p>
+                            </div>
+                            <div class="col">
+                                <button class="btn-player btn btn-secondary mx-auto" data-dismiss="modal">Kiran</button>
+                            </div>
                         </div>
                     </div>
                 </div>

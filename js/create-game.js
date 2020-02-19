@@ -1,11 +1,21 @@
 (function() {
   "use strict"
   window.addEventListener("load", init);
+  let state = {};
+  // load data
+  d3.csv("data/topics.csv").then(function (data) {
+    state.data = data;
+    console.log(state.data[12]);
+  })
 
   function init() {
-    console.log("test");
-    let btnStart = document.getElementById("btn-start");
-    btnStart.addEventListener("click", startGame);
+    // 'Begin Debate' button disabled till all inputs are not empty
+    document.querySelector("#btn-start").disabled = true;
+    document.querySelector("#input-topic").addEventListener("keyup", checkReadyToStart);
+    document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
+    document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
+    // button can only detect click if not disabled
+    document.getElementById("btn-start").addEventListener("click", linkToGame);
 
     let btnRandomize = document.getElementById("randomize");
     btnRandomize.addEventListener("click", function() {
@@ -14,18 +24,25 @@
       firstScreen.classList.remove("d-none");
       
       let secondScreen = document.getElementById("modal-choice-screen");
-    secondScreen.classList.add("d-none");
+      secondScreen.classList.add("d-none");
     });
 
     let btnTopic = document.getElementById("btn-get-topic");
     btnTopic.addEventListener("click", getRandomTopics);
+
+    document.querySelector("#btn-choice-1").addEventListener("click", assignTopic("#btn-choice-1")); // will be one or the other
+    document.querySelector("#btn-choice-2").addEventListener("click", assignTopic("#btn-choice-2")); // will be one or the other
   }
 
+  // if every "input" element is not empty, enable start button, else disable start button
   function checkReadyToStart() {
-    // if every "input" element doesn't have an empty (i.e. user has typed something into all)
-    //  then enable id="start"
-    //  else disable id="start"
-    console.log("hello");
+    if (document.querySelector("#input-topic").value.trim().length > 0 &&
+        document.querySelector("#input-player1").value.trim().length > 0 &&
+        document.querySelector("#input-player2").value.trim().length > 0) {
+      document.querySelector("#btn-start").disabled = false;
+    } else {
+      document.querySelector("#btn-start").disabled = true;
+    }
   }
 
   /**
@@ -46,6 +63,9 @@
 
     let firstScreen = document.getElementById("modal-categ-screen");
     firstScreen.classList.add("d-none");
+
+    // restore screen of modal
+    firstScreen.value("0");
   }
 
   /**
@@ -54,25 +74,25 @@
    * Binds the selected topic to the Topic textbox on the main page.
    * Also restores first screen of the modal
    */
-  function assignTopic() {
-    let topicBox = document.getElementById("input-topic");
-    topicBox.value = "Are dogs better than cats?";
-
-    // restore first screen of modal
+  function assignTopic(btnID) {
+    let choice = document.querySelector(btnID);
+    console.log(choice.textContent);
+    let topicBox = document.querySelector("#input-topic");
+    topicBox.value = choice.textContent;
+    return choice.textContent;
   }
 
-  /**
-   * evaluates whether user has filled out all required fields.
-   * If so, creates a session ID for the game, and then 
-   * links the user to the game screen.
-   */
-  function startGame() {
-    alert("Hello! This is mainly a static webpage for now, but this button is supposed to evaluate that all required fields have been filled by the user, and then link them to the main game page if everything is correct. Otherwise a red error notice appears.");
-    // evaluate that all required fields are filled
+  // generates random 4-number session ID for the game and links the user to admin game screen
+  function linkToGame(selectedTopic) {
+    // create a session ID
+    let sessionID = Math.floor(1000 + Math.random() * 9000)
+    console.log(sessionID);
+    /** add sessionID to firebase here */
 
-    // create a websession id
-
-    // link to main game page
+    // link to admin game page
+    let a = document.createElement("a");
+    a.href = "admin-game.html?session=" + sessionID + "game=" + selectedTopic;
+    a.click();
   }
 
 })();

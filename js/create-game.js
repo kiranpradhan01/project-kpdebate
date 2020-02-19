@@ -1,14 +1,12 @@
 (function() {
   "use strict"
   window.addEventListener("load", init);
-
   let topicData = null;
 
   function init() {
     // load data
     d3.csv("data/topics.csv").then(function (data) {
       topicData = data;
-      console.log(topicData);
     });
 
     // 'Begin Debate' button disabled till all inputs are not empty
@@ -19,6 +17,9 @@
 
     // add event listeners
     document.getElementById("btn-start").addEventListener("click", linkToGame);
+    document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
+    document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
+    document.getElementById("btn-choice-2").addEventListener("click", assignTopic);
     document.getElementById("open-modal").addEventListener("click", function() { // reveal first screen
       let firstScreen = document.getElementById("modal-categ-screen");
       firstScreen.classList.remove("d-none");
@@ -26,10 +27,6 @@
       let secondScreen = document.getElementById("modal-choice-screen");
       secondScreen.classList.add("d-none");
     });
-    document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
-    document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
-    document.getElementById("btn-choice-2").addEventListener("click", assignTopic);
-    
   }
 
   // if every "input" element is not empty, enable start button, else disable start button
@@ -103,6 +100,9 @@
 
     let firstScreen = document.getElementById("modal-categ-screen");
     firstScreen.classList.add("d-none");
+
+    // restore screen of modal
+    firstScreen.value("0");
   }
 
   /**
@@ -117,7 +117,7 @@
   }
 
   // generates random 4-number session ID for the game and links the user to admin game screen
-  function linkToGame() {
+  function linkToGame(selectedTopic) {
     // create a session ID
     let sessionID = Math.floor(1000 + Math.random() * 9000)
     console.log(sessionID);
@@ -125,7 +125,7 @@
 
     // link to admin game page
     let a = document.createElement("a");
-    a.href = "admin-game.html?session=" + sessionID;
+    a.href = "admin-game.html?session=" + sessionID + "game=" + selectedTopic;
     a.click();
   }
 

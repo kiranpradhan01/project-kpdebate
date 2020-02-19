@@ -20,7 +20,7 @@
     document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
     document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
     document.getElementById("btn-choice-2").addEventListener("click", assignTopic);
-    document.getElementById("open-modal").addEventListener("click", function () { // reveal first screen
+    document.getElementById("open-modal").addEventListener("click", function() { // reveal first screen
       let firstScreen = document.getElementById("modal-categ-screen");
       firstScreen.classList.remove("d-none");
 
@@ -56,7 +56,7 @@
       categoryTopics = [];
       topicData.forEach((topic) => {
         if (topic.category === categ)
-          categoryTopics.push(topic);
+        categoryTopics.push(topic);
       });
     } else {
       categoryTopics = topicData;
@@ -67,7 +67,7 @@
     let displayedTopics = [];
     let firstTopic = Math.floor((Math.random() * categoryTopics.length));
     let secondTopic = null;
-
+    
     displayedTopics.push(categoryTopics[firstTopic]);
     while (secondTopic === null || secondTopic === firstTopic) { // do this to avoid duplicates
       secondTopic = Math.floor((Math.random() * categoryTopics.length));
@@ -81,7 +81,7 @@
     // bind options to the modal's second screen
     bindRandomTopics(displayedTopics);
 
-
+    
   }
 
   /**

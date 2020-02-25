@@ -1,37 +1,32 @@
 (function() {
   "use strict"
   window.addEventListener("load", init);
-  let state = {};
-  // load data
-  d3.csv("data/topics.csv").then(function (data) {
-    state.data = data;
-    console.log(state.data[12]);
-  })
+  let topicData = null;
 
   function init() {
+    // load data
+    d3.csv("data/topics.csv").then(function (data) {
+      topicData = data;
+    });
+
     // 'Begin Debate' button disabled till all inputs are not empty
     document.querySelector("#btn-start").disabled = true;
     document.querySelector("#input-topic").addEventListener("keyup", checkReadyToStart);
     document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
     document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
-    // button can only detect click if not disabled
-    document.getElementById("btn-start").addEventListener("click", linkToGame);
 
-    let btnRandomize = document.getElementById("randomize");
-    btnRandomize.addEventListener("click", function() {
-      // reveal first screen
+    // add event listeners
+    document.getElementById("btn-start").addEventListener("click", linkToGame);
+    document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
+    document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
+    document.getElementById("btn-choice-2").addEventListener("click", assignTopic);
+    document.getElementById("open-modal").addEventListener("click", function() { // reveal first screen
       let firstScreen = document.getElementById("modal-categ-screen");
       firstScreen.classList.remove("d-none");
       
       let secondScreen = document.getElementById("modal-choice-screen");
       secondScreen.classList.add("d-none");
     });
-
-    let btnTopic = document.getElementById("btn-get-topic");
-    btnTopic.addEventListener("click", getRandomTopics);
-
-    document.querySelector("#btn-choice-1").addEventListener("click", assignTopic("#btn-choice-1")); // will be one or the other
-    document.querySelector("#btn-choice-2").addEventListener("click", assignTopic("#btn-choice-2")); // will be one or the other
   }
 
   // if every "input" element is not empty, enable start button, else disable start button
@@ -52,10 +47,52 @@
    */
   function getRandomTopics() {
     // get current SELECT box value
-    
-    // query backend for 2 options
+    let categ = document.querySelector("select").value;
+    console.log(categ);
 
-    // bind options ot the modal's second screen
+    // evaluate what subcategory to "query" from
+    let categoryTopics = null;
+    if (categ !== "all") {
+      categoryTopics = [];
+      topicData.forEach((topic) => {
+        if (topic.category === categ)
+        categoryTopics.push(topic);
+      });
+    } else {
+      categoryTopics = topicData;
+    }
+
+    // randomly select 2 topics from the described category
+    console.log(categoryTopics);
+    let displayedTopics = [];
+    let firstTopic = Math.floor((Math.random() * categoryTopics.length));
+    let secondTopic = null;
+    
+    displayedTopics.push(categoryTopics[firstTopic]);
+    while (secondTopic === null || secondTopic === firstTopic) { // do this to avoid duplicates
+      secondTopic = Math.floor((Math.random() * categoryTopics.length));
+    }
+    displayedTopics.push(categoryTopics[secondTopic]);
+
+    console.log(firstTopic);
+    console.log(secondTopic);
+    console.log(displayedTopics);
+
+    // bind options to the modal's second screen
+    bindRandomTopics(displayedTopics);
+
+    
+  }
+
+  /**
+   * part of the Randomize Topic functionality.
+   * Once two random topics are selected, change the text content of btn-choice-1 and btn-choice-2
+   * to reflect your choices.
+   * @param {array} displayedTopics - array of topics in the same format as seen in the csv.
+   */
+  function bindRandomTopics(displayedTopics) {
+    document.getElementById("btn-choice-1").textContent = displayedTopics[0].topic;
+    document.getElementById("btn-choice-2").textContent = displayedTopics[1].topic;
 
     // reveal second screen, hide first screen
     let secondScreen = document.getElementById("modal-choice-screen");
@@ -74,12 +111,9 @@
    * Binds the selected topic to the Topic textbox on the main page.
    * Also restores first screen of the modal
    */
-  function assignTopic(btnID) {
-    let choice = document.querySelector(btnID);
-    console.log(choice.textContent);
+  function assignTopic() {
     let topicBox = document.querySelector("#input-topic");
-    topicBox.value = choice.textContent;
-    return choice.textContent;
+    topicBox.value = this.textContent;
   }
 
   // generates random 4-number session ID for the game and links the user to admin game screen

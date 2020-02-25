@@ -1,4 +1,4 @@
-(function() {
+(function () { 
   "use strict"
   window.addEventListener("load", init);
   let topicData = null;
@@ -15,15 +15,16 @@
     document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
     document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
 
-    // add event listeners
+    // add event listeners  
     document.getElementById("btn-start").addEventListener("click", linkToGame);
     document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
     document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
     document.getElementById("btn-choice-2").addEventListener("click", assignTopic);
-    document.getElementById("open-modal").addEventListener("click", function() { // reveal first screen
+    document.getElementById("open-modal").addEventListener("click", function() { 
+      // reveal first screen
       let firstScreen = document.getElementById("modal-categ-screen");
       firstScreen.classList.remove("d-none");
-      
+
       let secondScreen = document.getElementById("modal-choice-screen");
       secondScreen.classList.add("d-none");
     });
@@ -32,8 +33,8 @@
   // if every "input" element is not empty, enable start button, else disable start button
   function checkReadyToStart() {
     if (document.querySelector("#input-topic").value.trim().length > 0 &&
-        document.querySelector("#input-player1").value.trim().length > 0 &&
-        document.querySelector("#input-player2").value.trim().length > 0) {
+      document.querySelector("#input-player1").value.trim().length > 0 &&
+      document.querySelector("#input-player2").value.trim().length > 0) {
       document.querySelector("#btn-start").disabled = false;
     } else {
       document.querySelector("#btn-start").disabled = true;
@@ -117,7 +118,7 @@
   }
 
   // generates random 4-number session ID for the game and links the user to admin game screen
-  function linkToGame(selectedTopic) {
+  function linkToGame() {
     // create a session ID
     let sessionID = Math.floor(1000 + Math.random() * 9000)
     console.log(sessionID);
@@ -125,7 +126,7 @@
 
     // link to admin game page
     let a = document.createElement("a");
-    a.href = "admin-game.html?session=" + sessionID + "game=" + selectedTopic;
+    a.href = "admin-game.html?session=" + sessionID;
     a.click();
   }
 

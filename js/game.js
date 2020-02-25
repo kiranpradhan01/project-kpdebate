@@ -40,7 +40,6 @@
   // load data
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
-    console.log(state.data[12]);
   })
 
   function init() {

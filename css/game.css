@@ -66,8 +66,15 @@ h1 {
     font-size: 36px;
 }
 
-.bg-yellow {
-    background-color: #ffae27!important;
+/* Button Group */
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:disabled {
+    background-color: #ffae27 !important;
+    border-color: #EFEFEF;
+    color: black;
 }
 
 /** Join Code */

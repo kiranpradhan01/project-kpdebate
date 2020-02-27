@@ -41,12 +41,14 @@
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
     console.log(state.data[12]);
+    startCountdown(60);
   })
 
   function init() {
     // check for session
     const urlParams = new URLSearchParams(window.location.search);
     state.sessionID = urlParams.get("session");
+    
     // update audience join code, return error on page if not successful
     if (state.sessionID) {
       document.querySelector(".code").textContent = " " + state.sessionID;
@@ -92,6 +94,7 @@
     * @param {number} timerLength - the length of the timer in seconds.
     */
    function startCountdown(timerLength) {
+     console.log("hello");
      let i = timerLength;
      let timerActor = document.getElementById("timer");
      document.getElementById("timer-card").classList.remove("bg-yellow");

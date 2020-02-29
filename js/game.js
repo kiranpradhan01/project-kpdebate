@@ -40,13 +40,14 @@
   // load data
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
-    console.log(state.data[12]);
+    startCountdown(60);
   })
 
   function init() {
     // check for session
     const urlParams = new URLSearchParams(window.location.search);
     state.sessionID = urlParams.get("session");
+    
     // update audience join code, return error on page if not successful
     if (state.sessionID) {
       document.querySelector(".code").textContent = " " + state.sessionID;
@@ -54,7 +55,6 @@
         access Firebase to get state.playerNames, state.topic, as well as currentPhase/speaker/timer.
       */
      state.topic = state.data[12].topic;
-     console.log(state.topic);
     } else {
       document.getElementById("game-interface").classList.add("invisible");
       let h2 = document.createElement("h2");

@@ -2,6 +2,7 @@
   "use strict"
   window.addEventListener("load", init);
   let topicData = null;
+  let state = {};
 
   function init() {
     // load data
@@ -36,16 +37,12 @@
    * adds topic categories from the CSV into the dropdown.
    */
   function generateTopicCategories() {
-    console.log(topicData[0]);
     let dropdown = document.querySelector("select");
     let prevTopic = "";
     for (let i = 0; i < topicData.length; i++) {
       let topic = topicData[i];
-      console.log(topic);
       if (topic.category !== prevTopic) {
         prevTopic = topic.category;
-        console.log("New category! " + topic.category);
-        console.log(prevTopic);
         
         let newOption = document.createElement("option");
         newOption.value = topic.category;
@@ -57,6 +54,10 @@
 
   // if every "input" element is not empty, enable start button, else disable start button
   function checkReadyToStart() {
+    state.topic = document.querySelector("#input-topic").value.trim();
+    state.player1 = document.querySelector("#input-player1").value.trim();
+    state.player2 = document.querySelector("#input-player2").value.trim();
+    console.log(state);
     if (document.querySelector("#input-topic").value.trim().length > 0 &&
       document.querySelector("#input-player1").value.trim().length > 0 &&
       document.querySelector("#input-player2").value.trim().length > 0) {
@@ -113,6 +114,8 @@
   function bindRandomTopics(displayedTopics) {
     document.getElementById("btn-choice-1").textContent = displayedTopics[0].topic;
     document.getElementById("btn-choice-2").textContent = displayedTopics[1].topic;
+    state.topic = document.querySelector("#input-topic").value.trim();
+    console.log(state);
 
     // reveal second screen, hide first screen
     let secondScreen = document.getElementById("modal-choice-screen");

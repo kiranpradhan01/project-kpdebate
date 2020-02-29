@@ -40,7 +40,6 @@
   // load data
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
-    console.log(state.data[12]);
     startCountdown(60);
   })
 
@@ -56,7 +55,6 @@
         access Firebase to get state.playerNames, state.topic, as well as currentPhase/speaker/timer.
       */
      state.topic = state.data[12].topic;
-     console.log(state.topic);
     } else {
       document.getElementById("game-interface").classList.add("invisible");
       let h2 = document.createElement("h2");
@@ -94,7 +92,6 @@
     * @param {number} timerLength - the length of the timer in seconds.
     */
    function startCountdown(timerLength) {
-     console.log("hello");
      let i = timerLength;
      let timerActor = document.getElementById("timer");
      document.getElementById("timer-card").classList.remove("bg-yellow");

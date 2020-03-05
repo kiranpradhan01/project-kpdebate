@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputTopic } from './Components/CreateGame/InputTopic.js';
-import { InputPlayers } from './Components/CreateGame/InputPlayers.js';
+import { InputTopic } from './CreateGame/InputTopic.js';
+import { InputPlayers } from './CreateGame/InputPlayers.js';
 
 class CreateGame extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class CreateGame extends React.Component {
                         <button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button>
                     </div>
                 </section>
+                <TopicModal/>
             </div>
         )
     }

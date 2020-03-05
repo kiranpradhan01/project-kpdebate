@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Components/Navbar.js';
 import TitleCard from './Components/Home/TitleCard.js';
 import HowToPlay from './Components/Home/HowToPlay.js';
 import './css/home.css';
@@ -16,7 +15,7 @@ class Home extends React.Component {
         <HowToPlay />
       </div>
     );
-    
+
   }
 }
 

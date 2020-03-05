@@ -30,8 +30,7 @@
 
   let state = {
     // sessionID: "4343",
-    // player1: "Patrin", 
-    // player2: "Kiran",
+    playerNames: ["Patrin", "Kiran"]
     // topic: "Is cereal a soup?",
     // currentPhase: phases[0],
     // currentSpeaker: 0,
@@ -41,7 +40,10 @@
   // load data
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
-    startCountdown(phases[0].time);
+    state.currentPhase = 0;
+    state.currentSpeaker = 0;
+    state.remainingTime = phases[state.currentPhase].time;
+    state.timer = startCountdown();
   })
 
   function init() {
@@ -55,7 +57,6 @@
       /* 
         access Firebase to get state.playerNames, state.topic, as well as currentPhase/speaker/timer.
       */
-     state.topic = state.data[12].topic;
     } else {
       document.getElementById("game-interface").classList.add("invisible");
       let h2 = document.createElement("h2");
@@ -74,10 +75,9 @@
     state.currentPhase = phases[0];
     state.currentSpeaker = 0;
 
-    // Bind the information to the page
-    let timerLabel = document.getElementById("timer-label");
-    timerLabel.textContent = state.playerNames[state.currentSpeaker] + state.currentPhase.appendedMessage;
-    state.timer = startCountdown(state.currentPhase.time);
+    document.getElementById("btn-pause").addEventListener("click", pauseTimer);
+    document.getElementById("btn-ff").addEventListener("click", nextPhase);
+    document.getElementById("btn-rw").addEventListener("click", prevPhase);
 
     // init modal winners
     let btnVote = document.getElementsByClassName("btn-player");
@@ -88,13 +88,92 @@
     }
   }
 
+  function pauseTimer() {
+    let pauseIcon = document.querySelector("#btn-pause i");
+    if (state.timer) {
+      clearInterval(state.timer);
+      state.timer = null;
+      pauseIcon.classList.add("fa-pause");
+      pauseIcon.classList.remove( "fa-play");
+    } else {
+      clearInterval(state.timer);
+      state.timer = null;
+      state.timer = startCountdown();
+      pauseIcon.classList.remove("fa-pause");
+      pauseIcon.classList.add("fa-play");
+    }
+  }
+
+  function prevPhase() {
+    if (state.currentSpeaker === 1) { // player 2 still needs to talk for this phase
+      state.currentSpeaker--; // update game
+
+      // manage timer
+      clearInterval(state.timer);
+      state.timer = null;
+      state.remainingTime = phases[state.currentPhase].time;
+      startCountdown();
+
+      updateScoreBoard();
+    } else if (phases[state.currentPhase - 1]) {
+      // update game
+      state.currentPhase--;
+      state.currentSpeaker = 1;
+
+      // manage timer
+      clearInterval(state.timer);
+      state.timer = null;
+      state.remainingTime = phases[state.currentPhase].time;
+      startCountdown();
+
+      updateScoreBoard();
+    } else {
+      state.remainingTime = phases[state.currentPhase].time;
+    }
+  }
+
+  function nextPhase() {
+    if (state.currentSpeaker === 0) { // player 2 still needs to talk for this phase
+      state.currentSpeaker++; // update game
+
+      // manage timer
+      clearInterval(state.timer);
+      state.timer = null;
+      state.remainingTime = phases[state.currentPhase].time;
+      startCountdown();
+
+
+      updateScoreBoard();
+      console.log("speaker is 0");
+    } else if (phases[state.currentPhase + 1]) {
+      // update game
+      state.currentPhase++;
+      state.currentSpeaker = 0;
+
+      // manage timer
+      clearInterval(state.timer);
+      state.timer = null;
+      state.remainingTime = phases[state.currentPhase].time;
+      startCountdown();
+
+      updateScoreBoard();
+      console.log("moving to next phase");
+    } else {
+      state.remainingTime = 1;
+      console.log("there is no next phase");
+    }
+  }
+
   /**
     * initializes a timer that updates the visual element of a timer very second.
-    * @param {number} timerLength - the length of the timer in seconds.
     */
-   function startCountdown(timerLength) {
-     let i = timerLength;
-     let timerActor = document.getElementById("timer");
+   function startCountdown() { 
+    let i = state.remainingTime;
+    let timerActor = document.getElementById("timer");
+
+    timerActor.textContent = convertToMinutes(state.remainingTime);
+    updateScoreBoard();
+
      document.getElementById("timer-card").classList.remove("bg-yellow");
  
      let timerID = setInterval(function() {
@@ -106,6 +185,7 @@
        } else {
          timerActor.textContent = convertToMinutes(i);
          i--;
+         state.remainingTime = i;
        }
      }, 1000);
 
@@ -124,6 +204,12 @@
       sec = "0" + sec;
     }
     return min + ":" + sec;
+  }
+
+  function updateScoreBoard() {
+    // Bind the information to the page
+    let timerLabel = document.getElementById("timer-label");
+    timerLabel.textContent = state.playerNames[state.currentSpeaker] + phases[state.currentPhase].appendedMessage;
   }
 
 })();

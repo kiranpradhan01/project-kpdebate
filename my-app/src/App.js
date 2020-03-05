@@ -13,7 +13,7 @@ function App() {
         <Home />
         <Footer />
       </div>
-      <div className="Home">
+      <div className="CreateGame">
         <Navbar/>
         <CreateGame/>
         <Footer/>

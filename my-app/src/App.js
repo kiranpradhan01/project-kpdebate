@@ -2,24 +2,32 @@ import React from 'react';
 import Home from './Home.js';
 import Navbar from './Components/Navbar.js';
 import Footer from './Components/Footer.js';
-import CreateGame from './Components/CreateGame.js/index.js';
+import CreateGame from './Components/CreateGame/CreateGame.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      {/* In the future we'll need to set up a react router here */}
-      <div className="Home">
-        <Navbar />
-        <Home />
-        <Footer />
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/create-game">
+              <CreateGame />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+          <Footer />
+      </Router>
       </div>
-      <div className="CreateGame">
-        <Navbar/>
-        <CreateGame/>
-        <Footer/>
-      </div>
-    </div>
-  );
+    );
+  } 
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 /**
  * renders the website navbar.
  * static
@@ -10,15 +10,15 @@ class Navbar extends React.Component {
     return(
       <nav className="navbar fixed-top navbar-light">
         <div className="d-flex justify-content-between">
-          <a className="navbar-brand" href="index.html">
+          <Link to="/" className="navbar-brand">
             <img src="img/law.png" width="30" height="30" className="d-inline-block align-top logo" alt="A gavel"/>
             DebateNOW
-          </a>
+          </Link>
         </div>
         <div id="nav-links">
-          <a href="index.html">Home</a>
-          <a href="index.html#how-to-play">How to Play</a>
-          <a href="create-game.html">Create New Game</a>
+          <Link to="/">Home</Link>
+          <Link to="/#how-to-play">How to Play</Link>
+          <Link to="/create-game">Create New Game</Link>
         </div>
       </nav>
     );

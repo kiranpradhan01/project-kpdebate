@@ -1,6 +1,8 @@
 import React from 'react';
-import { InputTopic } from './CreateGame/InputTopic.js';
-import { InputPlayers } from './CreateGame/InputPlayers.js';
+import { InputTopic } from './InputTopic.js';
+import { InputPlayers } from './InputPlayers.js';
+import { TopicModal } from './TopicModal.js';
+import './css/create-game.css';
 
 class CreateGame extends React.Component {
     constructor(props) {

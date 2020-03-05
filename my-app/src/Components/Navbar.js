@@ -10,10 +10,6 @@ class Navbar extends React.Component {
     return(
       <nav className="navbar fixed-top navbar-light">
         <div className="d-flex justify-content-between">
-          {/* <a className="navbar-brand" href="index.html">
-            <img src="img/law.png" width="30" height="30" className="d-inline-block align-top logo" alt="A gavel"/>
-            DebateNOW
-          </a> */}
           <Link to="/" className="navbar-brand">
             <img src="img/law.png" width="30" height="30" className="d-inline-block align-top logo" alt="A gavel"/>
             DebateNOW

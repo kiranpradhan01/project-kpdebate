@@ -6,8 +6,7 @@ import CreateGame from './CreateGame.js';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'; 
 
 class App extends React.Component {
@@ -15,24 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-        <div>
-          {/* <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-            </ul>
-          </nav> */}
           <Navbar />
-  
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/create-game">
               <CreateGame />
@@ -41,25 +23,13 @@ class App extends React.Component {
               <Home />
             </Route>
           </Switch>
-
           <Footer />
-        </div>
       </Router>
-        {/* <div className="Home">
-          <Navbar />
-          <Home />
-          <Footer />
-        </div>
-        <div className="Home">
-          <Navbar/>
-          <CreateGame/>
-          <Footer/>
-        </div> */}
       </div>
     );
   }
 
-  Home() {
+  Home() { // todo: pretty sure these are unused
     return <Home />
   }
 

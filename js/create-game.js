@@ -2,7 +2,11 @@
   "use strict"
   window.addEventListener("load", init);
   let topicData = null;
-  let state = {};
+  let state = {
+    player1: "",
+    player2: "",
+    topic: ""
+  };
 
   function init() {
     // load data
@@ -17,8 +21,10 @@
     document.querySelector("#input-player1").addEventListener("keyup", checkReadyToStart);
     document.querySelector("#input-player2").addEventListener("keyup", checkReadyToStart);
     
-
     // add event listeners  
+    document.getElementById("input-topic").addEventListener("change" , (e) => this.setState({"topic": e.target.value}));
+    document.getElementById("input-player1").addEventListener("input", (e) => this.setState({"player1": e.target.value}));
+    document.getElementById("input-player2").addEventListener("input", (e) => this.setState({"player2": e}));
     document.getElementById("btn-start").addEventListener("click", linkToGame);
     document.getElementById("btn-get-topic").addEventListener("click", getRandomTopics);
     document.getElementById("btn-choice-1").addEventListener("click", assignTopic);
@@ -34,7 +40,7 @@
   }
 
    /**
-   * adds topic categories from the CSV into the dropdown.
+   * Adds topic categories from the CSV into the dropdown.
    */
   function generateTopicCategories() {
     let dropdown = document.querySelector("select");
@@ -51,13 +57,13 @@
       }
     }
   }
-
-  // if every "input" element is not empty, enable start button, else disable start button
+  /**
+   * If every "input" element is not empty, enable start button, else disable start button
+   */
   function checkReadyToStart() {
     state.topic = document.querySelector("#input-topic").value.trim();
     state.player1 = document.querySelector("#input-player1").value.trim();
     state.player2 = document.querySelector("#input-player2").value.trim();
-    console.log(state);
     if (document.querySelector("#input-topic").value.trim().length > 0 &&
       document.querySelector("#input-player1").value.trim().length > 0 &&
       document.querySelector("#input-player2").value.trim().length > 0) {
@@ -115,7 +121,6 @@
     document.getElementById("btn-choice-1").textContent = displayedTopics[0].topic;
     document.getElementById("btn-choice-2").textContent = displayedTopics[1].topic;
     state.topic = document.querySelector("#input-topic").value.trim();
-    console.log(state);
 
     // reveal second screen, hide first screen
     let secondScreen = document.getElementById("modal-choice-screen");
@@ -124,6 +129,7 @@
     let firstScreen = document.getElementById("modal-categ-screen");
     firstScreen.classList.add("d-none");
 
+    // revert select option to 'Anything'
     document.querySelector("select").value = "Anything";
   }
 

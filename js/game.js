@@ -30,7 +30,8 @@
 
   let state = {
     // sessionID: "4343",
-    // playerNames: ["Patrin", "Kiran"],
+    // player1: "Patrin", 
+    // player2: "Kiran",
     // topic: "Is cereal a soup?",
     // currentPhase: phases[0],
     // currentSpeaker: 0,
@@ -40,7 +41,7 @@
   // load data
   d3.csv("data/topics.csv").then(function (data) {
     state.data = data;
-    startCountdown(60);
+    startCountdown(phases[0].time);
   })
 
   function init() {

@@ -17,6 +17,7 @@
     <link rel="icon" type="img/png" href="img/law.png">
 
     <!-- bootstrap JS libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">
     </script>
@@ -50,39 +51,43 @@
     <section id="player-container" class="container">
         <div class="row">
             <div class="col">
-                <h1>Patrin</h1>
+                <h1 id="player-1">Patrin</h1>
                 <h2>is arguing Pro</h2>
             </div>
 
             <div class="col">
-                <h1>Kiran</h1>
+                <h1 id="player-2">Kiran</h1>
                 <h2>is arguing Con</h2>
             </div>
+        </div>
+        <div class="row">
+            <h3 id="topic" class="font-weight-bold mb-0"></h3>
         </div>
     </section>
 
     <!-- Section 2: Timer -->
     <section class="container">
         <div class="timer col-md-6">
-            <div class="card bg-light ">
+            <div id="timer-card" class="card bg-light ">
                 <h3 class="card-title text-center">
                     <div class="d-flex flex-wrap justify-content-center mt-2">
-                        <p>Patrin's Opening Statement</p>
-                        <p class="minutes mb-0">5:00</p>
+                        <p id="timer-label">Potato</p>
+                        <p id="timer"class="mb-0">1:00</p>
                     </div>
                 </h3>
             </div>
 
             <div class="text-center">
                 <div class="btn-group btn-group-lg" role="group" aria-label="">
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
+                    <button id="btn-rw" type="button" class="btn btn-outline-primary btn-secondary"><i
                             class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
                             aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
+                    <button id="btn-pause" type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
                             class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i class="fa fa-step-forward"
-                            aria-label="forward" aria-hidden="true"></i></button>
+                    <button id="btn-ff" type="button" class="btn btn-outline-primary btn-secondary"><i
+                            class="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
                 </div>
+                </h3>
             </div>
     </section>
 

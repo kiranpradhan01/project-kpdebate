@@ -1,14 +1,13 @@
 import React from 'react';
-import Home from './Home.js';
-import Navbar from './Components/Navbar.js';
-import Footer from './Components/Footer.js';
+import Home from './Components/Home/Home.js';
+import Navbar from './Components/General/Navbar.js';
+import Footer from './Components/General/Footer.js';
 import CreateGame from './Components/CreateGame/CreateGame.js';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom'; 
-import CreateGame from './Components/CreateGame.js/index.js';
 
 class App extends React.Component {
   render() {

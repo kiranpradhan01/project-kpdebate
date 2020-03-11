@@ -1,7 +1,7 @@
 import React from 'react';
-import TitleCard from './Components/Home/TitleCard.js';
-import HowToPlay from './Components/Home/HowToPlay.js';
-import './css/home.css';
+import TitleCard from './TitleCard.js';
+import HowToPlay from './HowToPlay.js';
+import '../../css/home.css';
 
 class Home extends React.Component {
   constructor(props) {

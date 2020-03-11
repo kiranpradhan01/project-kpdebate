@@ -93,14 +93,14 @@
     if (state.timer) {
       clearInterval(state.timer);
       state.timer = null;
-      pauseIcon.classList.add("fa-pause");
-      pauseIcon.classList.remove( "fa-play");
+      pauseIcon.classList.add("fa-play");
+      pauseIcon.classList.remove( "fa-pause");
     } else {
       clearInterval(state.timer);
       state.timer = null;
       state.timer = startCountdown();
-      pauseIcon.classList.remove("fa-pause");
-      pauseIcon.classList.add("fa-play");
+      pauseIcon.classList.remove("fa-play");
+      pauseIcon.classList.add("fa-pause");
     }
   }
 

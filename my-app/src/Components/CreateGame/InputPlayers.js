@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/create-game.css'
 
 export class InputPlayers extends React.Component {
     render() {

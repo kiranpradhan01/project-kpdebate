@@ -3,6 +3,7 @@
   yellow: #ffae27
   blue: #0182e5
 */
+/** TODO: HAMBURGER MENU ====================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
 
@@ -124,13 +125,14 @@ h3 {
 /** Footer */
 footer {
   background-color: #ffae27;
-
   padding: 5px;
   margin-top: 5rem;
   border-top: solid #F9C784 1px;
 
-  position: absolute;
-  left: 0;
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
   width: 100%;
 }
 

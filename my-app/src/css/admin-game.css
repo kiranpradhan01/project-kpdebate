@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+/** TODO: HAMBURGER MENU ====================================== */
+
+/** Body and General Styling */
+body {
+    text-align: center;
+}
+
+.container {
+    margin-bottom: 0;
+}
+
+#error {
+    margin-top: 150px;
+    position: absolute;
+    left: 25%;
+}
+
+/** Navigation */
+#nav-links {
+    display: none;
+}
+
+/** Players Container */
+#player-container {
+    padding-top: 7rem;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/** Timer */
+.timer {
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 435px;
+}
+
+.card {
+    padding: 40px 80px 40px 80px;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+.fa {
+    font-size: 1.5rem;
+    padding: .3rem;
+}
+
+.minutes {
+    font-size: 36px;
+}
+
+/* Button Group */
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:disabled {
+    background-color: #ffae27 !important;
+    border-color: #EFEFEF;
+    color: black;
+}
+
+/** Join Code */
+.code {
+    font-size: 32px;
+    color: #FFAE27;
+    font-weight: 900;
+}
+
+/** Voting Modal */
+#modal-vote-row {
+    width: 60%;
+}
+
+.modal {
+    background-color: #FFAE27;
+}
+
+@media (min-width: 600px) {
+    #nav-links {
+        display: initial;
+    }
+
+    .card {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+@media (min-width: 768px) {
+    #nav-links {
+        display: initial;
+    }
+}

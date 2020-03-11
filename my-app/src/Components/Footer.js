@@ -15,7 +15,7 @@ class Footer extends React.Component {
                   <p class="mb-0">&copy; 2020 Kiran Pradhan and Patrin Sinteppadon</p>
               </div>
               <a href="https://github.com/info340a-w20/project-kpdebate">
-                  <img class="social-media" src="img/github.svg" alt="Github logo" />
+                  <img class="social-media" src={require("../img/github.svg")} alt="Github logo" />
               </a>
           </div>
       </footer>

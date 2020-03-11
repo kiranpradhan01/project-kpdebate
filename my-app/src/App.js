@@ -1,8 +1,10 @@
 import React from 'react';
+import Navbar from './Components/Navbar.js';
+import Footer from './Components/Footer.js';
 import Home from './Components/Home/Home.js';
-import Navbar from './Components/General/Navbar.js';
-import Footer from './Components/General/Footer.js';
 import CreateGame from './Components/CreateGame/CreateGame.js';
+import Game from './Components/Game/Game.js'
+import history from './history.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,17 +12,35 @@ import {
 } from 'react-router-dom'; 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // sessionID: "4343",
+      // playerNames: ["Patrin", "Kiran"],
+      // topic: "Is cereal a soup?",
+      // currentPhase: phases[0],
+      // currentSpeaker: 0,
+      // timer: null
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <Router>
-          <Navbar />
+        <Router history={history}>
+          <Navbar />  
           <Switch>
-            <Route path="/create-game">
+            <Route path="/create-game" component={CreateGame}>
               <CreateGame />
             </Route>
-            <Route path="/">
-              <Home />
+            <Route path="/game" component={Game}> 
+              <Game/>
+            <Route path="/#how-to-play">
+              
+            </Route>
+            </Route>
+            <Route path="/" component={Home}>
+              <Home/>
             </Route>
           </Switch>
           <Footer />

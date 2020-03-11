@@ -24,7 +24,7 @@ class HowToPlay extends React.Component {
           </ul>
         </div>
         <div class="text-center">
-          <img srcset="img/how-to-play.png 1.2x" class="content-image" alt="Two men thinking" />
+          <img src={require("../../img/howtoplay.png")} class="content-image" alt="Two men thinking" />
         </div>
       </div>
     );

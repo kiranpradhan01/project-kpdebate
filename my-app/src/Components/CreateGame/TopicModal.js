@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/create-game.css'
 
 class TopicModal extends React.Component {
   render() {

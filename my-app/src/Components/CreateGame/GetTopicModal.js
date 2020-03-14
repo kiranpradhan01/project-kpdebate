@@ -7,8 +7,16 @@ class GetTopicModal extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        nestedModal: false
+        data: this.props.data,
+        nestedModal: false,
+        category: 'Anything'
       }
+      console.log(this.props.randomTopics);
+  }
+
+  onCategorySelected = (event, value) => {
+    this.setState({category: event.target.value});
+    this.props.onCategorySelection(event, value);
   }
 
   render() {
@@ -20,8 +28,9 @@ class GetTopicModal extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <p>Select a general category for your topic choices.</p>
-            <select class="browser-default custom-select w-50">
-            <option value="Anything" selected>Anything</option>
+            <select class="browser-default custom-select w-50" value={this.state.category} onChange={this.onCategorySelected}>
+              <option value="Anything">Anything</option>
+              {this.props.options}
             </select>
           </Modal.Body>
           <Modal.Footer>

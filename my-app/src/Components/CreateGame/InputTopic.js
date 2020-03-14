@@ -1,16 +1,27 @@
 import React from 'react';
-import '../../css/create-game.css'
 import GetTopicModal from './GetTopicModal.js';
-
+import * as d3 from 'd3';
+import topics from '../../data/topics.csv';
+import '../../css/create-game.css'
 
 export class InputTopic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            data: [],
             modal: false,
-            closeAll: false
+            closeAll: false,
+            category: "" // how to send category up to inputtopic from gettopicmodal
             // has no knowledge of nested modal
         }
+    }
+
+    componentDidMount() {
+        d3.csv(topics).then((data) => {
+            this.setState({
+                data: data
+            });
+        });
     }
 
     showModal = () => {
@@ -19,6 +30,43 @@ export class InputTopic extends React.Component {
 
     closeModal = () => {
         this.setState({modal: false})
+    }
+
+    generateCategories() {
+        let options = [];
+        let topicsVisited = [];
+        for (let i = 0; i < this.state.data.length; i++) {
+            let topic = this.state.data[i];
+            if (!topicsVisited.includes(topic.category)) {
+                topicsVisited.push(topic.category);
+                options.push(<option key={i} value={topic.category}>{topic.category}</option>);
+            }
+        }
+        return options;
+    }
+
+    getRandomTopics() {
+        let categoryTopics = null;
+        // evaluate what subcategory to "query" from
+        if (this.state.category !== "Anything") {
+            categoryTopics = [];
+            this.state.data.forEach((topic) => {
+                if (topic.category === this.state.category)
+                    categoryTopics.push(topic);
+            });
+        } else {
+            categoryTopics = this.state.data;
+        }
+        // randomly select 2 topics from the described category
+        let displayedTopics = [];
+        let firstTopic = Math.floor((Math.random() * categoryTopics.length));
+        let secondTopic = null;
+        displayedTopics.push(categoryTopics[firstTopic]);
+        while (secondTopic === null || secondTopic === firstTopic) { // do this to avoid duplicates
+            secondTopic = Math.floor((Math.random() * categoryTopics.length));
+        }
+        displayedTopics.push(categoryTopics[secondTopic]);
+        return displayedTopics;
     }
 
     render(){
@@ -38,7 +86,7 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.modal} handleClose={this.closeModal}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal} onCategorySelection={(event, value)=> this.setState({category: event.target.value})} data={this.state.data} randomTopics={this.getRandomTopics()} options={this.generateCategories()}/>
             </div>
             </section>
         )

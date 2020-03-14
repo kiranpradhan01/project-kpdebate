@@ -7,14 +7,14 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
     }
   }
 
   render() {
     return(
       <div className="w-70 mx-auto">
-        <TitleCard />
+        <TitleCard onInput={this.props.updateGame}/>
         <HowToPlay />
       </div>
     );

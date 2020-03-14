@@ -9,10 +9,20 @@ import { Link } from 'react-router-dom';
  * onClick={() => history.push('/create-game')}
  */
 class TitleCard extends React.Component {
-  handleChange(event) {
-    this.setState({
-      title: event.target.value
-    })
+  constructor(props) {
+    super(props);
+    this.state= {
+      disabled: true
+    }
+  }
+
+  handleInput = (event) => {
+    let buttonDisabled = (this.state.sessionID !== null || this.state.sessionID.length < 4);
+    let stateChanges = {
+      disabled: buttonDisabled
+    };
+    this.setState(stateChanges);
+    console.log(this.state.sessionID);
   }
 
   render() {
@@ -38,11 +48,11 @@ class TitleCard extends React.Component {
             {/* New game / Join Game */}
             <div className="col text-center">
               <div className="d-flex justify-content-center align-items-center">
-                <form className="mr-2">
+                <form className="mb-2 mr-sm-2">
                   <input id="session-name" className="border border-secondary" type="text"
-                    placeholder="Enter Game Code" maxlength={4} onChange={this.handleChange.bind(this)}/> 
+                    placeholder="Enter Game Code" maxLength={4} onChange={(event, value) => this.props.onInput("sessionID", event.target.value)}/>
                 </form>
-                <Link to="/game"><button id="btn-join" className="btn btn-primary btn-md join" href="game.html" role="button" disabled={true}>Join!</button></Link>
+                <Link to="/game"><button id="btn-join" className="btn btn-primary btn-md join" href="game.html" role="button" disabled={this.state.disabled}>Join!</button></Link>
               </div>
               <h2 className="lead my-4">OR</h2>
               <Link to="/create-game"><a className="btn btn-primary btn-lg create" href="create-game.html" role="button">Create New Game</a></Link>

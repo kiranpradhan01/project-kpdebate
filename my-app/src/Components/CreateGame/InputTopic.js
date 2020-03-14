@@ -5,13 +5,14 @@ import '../../css/create-game.css'
 export class InputTopic extends React.Component {
     render(){
         return (
-            <div class="card">
+            <section id="topic" class="first container">
+                <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Topic</h4>
                         <div class="mx-3">
                             <div class="row">
                                 <form class="col-sm-8 col-md-6 mx-auto">
-                                    <input id="input-topic" class="w-100" type="text" placeholder="Enter a debate topic..."/>
+                                    <input id="input-topic" class="w-100" type="text" placeholder="Enter a debate topic..." onChange={(event, value) => this.props.onInput("topic", event.target.value)}/>
                                 </form>
                             </div>
                         <div class="row">
@@ -22,6 +23,7 @@ export class InputTopic extends React.Component {
 
                 <TopicModal />
             </div>
+            </section>
         )
     }
 } 

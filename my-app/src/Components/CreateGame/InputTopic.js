@@ -1,4 +1,5 @@
 import React from 'react';
+import { TopicModal } from './TopicModal.js';
 import '../../css/create-game.css'
 
 export class InputTopic extends React.Component {
@@ -18,6 +19,8 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                <TopicModal />
             </div>
         )
     }

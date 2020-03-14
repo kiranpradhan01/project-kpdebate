@@ -4,9 +4,9 @@ class Timer extends React.Component {
 
     render() {
         return (
-        <section class="container">
+        <section class="gameContainer">
             <div class="timer col-md-6">
-                <div id="timer-card" class="card bg-light ">
+                <div id="timer-card" class="card timerCard bg-light">
                     <h3 class="card-title text-center">
                         <div class="d-flex flex-wrap justify-content-center mt-2">
                             <p id="timer-label">Patrin's Opening Statement</p>

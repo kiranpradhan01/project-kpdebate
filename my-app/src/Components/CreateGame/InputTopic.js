@@ -1,12 +1,11 @@
 import React from 'react';
-import { TopicModal } from './TopicModal.js';
 import '../../css/create-game.css'
 
 export class InputTopic extends React.Component {
     render(){
         return (
             <section id="topic" class="createGameFirst createGameContainer">
-                <div class="card">
+                <div class="card createGameCard">
                 <div class="card-body">
                     <h4 class="card-title">Topic</h4>
                         <div class="mx-3">
@@ -21,7 +20,6 @@ export class InputTopic extends React.Component {
                     </div>
                 </div>
 
-                <TopicModal />
             </div>
             </section>
         )

@@ -3,7 +3,7 @@ import React from 'react';
 class Player extends React.Component {
     render() {
         return (
-            <section id="player-container" class="container">
+            <section class="first gameContainer">
                 <div class="row">
                     <div class="col">
                         <h1 id="player-1">Patrin</h1>

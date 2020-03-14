@@ -5,7 +5,7 @@ export class InputPlayers extends React.Component {
     render() {
         return (
             <section id="players" class="createGameContainer">
-                <div class="card">
+                <div class="card createGameCard">
                     <div class="card-body">
                         <h4 class="card-title">Players</h4>
                         <div class="mx-3">

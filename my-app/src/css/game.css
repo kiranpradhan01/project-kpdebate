@@ -14,7 +14,7 @@ footer {
     padding-top: 7rem;
 }
 
-.container {
+.gameContainer {
     margin-bottom: 0;
 }
 
@@ -30,10 +30,6 @@ footer {
 }
 
 /** Players Container */
-#player-container {
-    padding-top: 7rem;
-}
-
 h1 {
     font-weight: 700;
 }
@@ -50,7 +46,7 @@ h1 {
     max-width: 435px;
 }
 
-.card {
+.timerCard {
     padding: 40px 80px 40px 80px;
     margin: 0 auto;
     float: none;
@@ -102,7 +98,7 @@ h1 {
         display: initial;
     }
 
-    .card {
+    .timerCard {
         padding-top: 80px;
         padding-bottom: 80px;
     }

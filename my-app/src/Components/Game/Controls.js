@@ -3,7 +3,7 @@ import React from 'react';
 class Controls extends React.Component {
     render() {
         return (
-            <div class="text-center">
+            <div class="text-center"> 
                 <div class="btn-group btn-group-lg" role="group" aria-label="">
                     <button type="button" class="btn btn-outline-primary btn-secondary"><i
                             class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"

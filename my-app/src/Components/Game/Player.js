@@ -16,7 +16,7 @@ class Player extends React.Component {
                     </div>
                 </div>
                 <div class="row">
-                    <h3 id="topic" class="font-weight-bold mb-0"></h3>
+                    <h3 id="topic" class="font-weight-bold mb-0"><br/>Pass topic through props here</h3>
                 </div>
             </section>
     )}

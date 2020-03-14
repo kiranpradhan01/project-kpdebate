@@ -4,7 +4,7 @@ import '../../css/create-game.css'
 export class InputTopic extends React.Component {
     render(){
         return (
-            <section id="topic" class="first container">
+            <section id="topic" class="createGameFirst createGameContainer">
                 <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Topic</h4>

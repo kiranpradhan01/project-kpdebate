@@ -16,9 +16,9 @@ class CreateGame extends React.Component {
             <div>
                 <InputTopic onInput={this.props.updateGame}/>
                 <InputPlayers onInput={this.props.updateGame}/>
-                <section class="container">
+                <section class="createGameContainer">
                     <div class="text-center">
-                        <Link to="/game"><button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button></Link>
+                        <Link to="/admin-game"><button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button></Link>
                     </div>
                 </section>
                 {/* <TopicModal/> */}

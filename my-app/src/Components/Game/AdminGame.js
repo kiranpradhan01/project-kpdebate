@@ -2,20 +2,20 @@ import React from 'react';
 import AudienceJoin from './AudienceJoin.js';
 import Player from './Player.js';
 import Timer from './Timer.js';
-import Vote from './Vote.js';
+import Controls from './Controls';
 import '../../css/game.css';
 
-class Game extends React.Component {
+class AdminGame extends React.Component {
     render() {
         return(
             <div>
                 <Player/>
                 <Timer/>
-                <Vote/>
+                <Controls/>
                 <AudienceJoin/>
             </div>
         );
     }
 }
 
-export default Game;
+export default AdminGame;

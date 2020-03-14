@@ -18,7 +18,7 @@ class Navbar extends React.Component {
         </div>
         <div id="nav-links">
           <Link to="/">Home</Link>
-          <Scrollchor to="/#how-to-play">How to Play</Scrollchor>
+          {/* <Scrollchor to="/#how-to-play">How to Play</Scrollchor>*/}
           <Link to="/#how-to-play">How to Play</Link>
           <Link to="/create-game">Create New Game</Link>
         </div>

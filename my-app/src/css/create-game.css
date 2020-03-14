@@ -7,7 +7,7 @@
 }
 
 .first {
-    padding-top: 7rem;
+    padding-top: 7rem; 
 }
 
 .container {
@@ -17,6 +17,7 @@
 input {
     width: 75%;
 }
+
 .modal {
     background-color: #FFAE27;
 }

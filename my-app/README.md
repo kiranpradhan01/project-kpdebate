@@ -10,5 +10,6 @@ We hope you will find this web app useful in debate club, for public speaking cl
 ## The Game
 Here is a direct link to the game: https://info340a-w20.github.io/project-kpdebate/
 
-### Happy debating! 
-### From the Creators- Kiran Pradhan and Patrin Sinteppadon
+
+### Happy debating!
+From the Creators- Kiran Pradhan and Patrin Sinteppadon

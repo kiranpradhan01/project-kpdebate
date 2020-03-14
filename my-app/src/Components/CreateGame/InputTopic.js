@@ -7,16 +7,18 @@ export class InputTopic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            modal: false,
+            closeAll: false
+            // has no knowledge of nested modal
         }
     }
 
     showModal = () => {
-        this.setState({showModal: true})
+        this.setState({modal: true})
     }
 
     closeModal = () => {
-        this.setState({showModal: false})
+        this.setState({modal: false})
     }
 
     render(){
@@ -36,7 +38,7 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.showModal} handleClose={this.closeModal}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal}/>
             </div>
             </section>
         )

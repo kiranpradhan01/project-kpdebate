@@ -85,9 +85,9 @@ h1 {
 }
 
 /** Voting Modal */
-#modal-vote-row {
-    width: 60%;
-}
+/* .modal-vote-row {
+   
+} */
 
 .modal {
     background-color: #FFAE27;

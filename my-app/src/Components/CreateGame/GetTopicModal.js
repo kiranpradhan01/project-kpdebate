@@ -1,22 +1,21 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import RandomTopicModal from './RandomTopicModal.js';
 import '../../css/create-game.css';
 
 class GetTopicModal extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          showModal: false
+        nestedModal: false
       }
   }
 
   render() {
     return (
       <div>
-        <Modal show={this.props.show} centered>
-          <Modal.Header >
+        <Modal show={this.props.show} onHide={this.props.handleClose} centered>
+          <Modal.Header closeButton>
             <Modal.Title>Get random topics</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -26,15 +25,30 @@ class GetTopicModal extends React.Component {
             </select>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={() => {this.setState({showModal: true})}}>
+            <Button variant="primary" onClick={() => {this.setState({nestedModal: true})}}>
               Get Topics
             </Button>
+            <Modal show={this.state.nestedModal} onHide={() => {this.setState({nestedModal: false})}} centered>
+            <Modal.Header closeButton>
+              <Modal.Title>Debate about:</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Button variant="secondary" onClick={this.props.handleClose}>
+                    Is Adidas better than Nike?
+                </Button>
+                <p class="my-2">OR</p>
+                <Button variant="secondary" onClick={this.props.handleClose}>
+                  Is cereal a soup?
+                </Button>
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+          </Modal>
             <Button variant="secondary" onClick={this.props.handleClose}>
               Close
             </Button>
           </Modal.Footer>
         </Modal>
-        <RandomTopicModal show={this.state.showModal} handleClose={() => {this.setState({showModal: false})}}/>
       </div>
     )
   }

@@ -1,10 +1,8 @@
 import React from 'react';
 import { InputTopic } from './InputTopic.js';
 import { InputPlayers } from './InputPlayers.js';
-import { TopicModal } from './TopicModal.js';
 import { Link } from 'react-router-dom';
 import '../../css/create-game.css';
-import Footer from '../Footer.js';
 
 class CreateGame extends React.Component {
     constructor(props) {
@@ -21,7 +19,6 @@ class CreateGame extends React.Component {
                         <Link to="/admin-game"><button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto">Begin Debate</button></Link>
                     </div>
                 </section>
-                {/* <TopicModal/> */}
             </div>
         )
     }

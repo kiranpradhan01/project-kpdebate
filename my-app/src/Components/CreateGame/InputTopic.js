@@ -1,11 +1,28 @@
 import React from 'react';
 import '../../css/create-game.css'
+import GetTopicModal from './GetTopicModal.js';
+
 
 export class InputTopic extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showModal: false
+        }
+    }
+
+    showModal = () => {
+        this.setState({showModal: true})
+    }
+
+    closeModal = () => {
+        this.setState({showModal: false})
+    }
+
     render(){
         return (
             <section id="topic" class="createGameFirst createGameContainer">
-                <div class="card createGameCard">
+            <div class="card createGameCard">
                 <div class="card-body">
                     <h4 class="card-title">Topic</h4>
                         <div class="mx-3">
@@ -15,11 +32,11 @@ export class InputTopic extends React.Component {
                                 </form>
                             </div>
                         <div class="row">
-                            <button id="open-modal" class="btn btn-dark mt-2 ml-auto" data-toggle="modal" data-target="#modalRandomize">Randomize!</button>
+                            <button id="open-modal" class="btn btn-dark mt-2 ml-auto" data-toggle="modal" data-target="#modalRandomize" onClick={()=> {this.showModal()}}>Randomize!</button>
                         </div>
                     </div>
                 </div>
-
+                <GetTopicModal show={this.state.showModal} handleClose={this.closeModal}/>
             </div>
             </section>
         )

@@ -6,12 +6,17 @@
     display: none;
 }
 
-.first {
+.createGameFirst {
     padding-top: 7rem; 
 }
 
-.container {
+.createGameContainer {
     margin-bottom: 2rem;
+}
+
+.createGameCard {
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .modal {

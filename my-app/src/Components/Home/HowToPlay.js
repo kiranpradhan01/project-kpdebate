@@ -6,7 +6,7 @@ import React from 'react';
  */
 class HowToPlay extends React.Component {
   render() {
-    return(
+    return( 
       <div id="how-to-play">
         <h2 class="text-center display-4 font-weight-bold"> How to Play </h2>
         <div>

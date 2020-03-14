@@ -2,6 +2,7 @@ import React from 'react';
 import AudienceJoin from './AudienceJoin.js';
 import Scoreboard from './Scoreboard.js';
 import Timer from './Timer.js';
+import Vote from './Vote.js';
 import '../../css/game.css';
 
 /**
@@ -24,6 +25,8 @@ class Game extends React.Component {
                     topic={this.props.topic} 
                 />
                 <Timer /> {/*TODO: the font-awesome icons arent implemented*/}
+                {/* <Vote />
+                <AudienceJoin /> */}
             </div>
         );
         

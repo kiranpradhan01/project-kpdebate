@@ -44,12 +44,12 @@ class App extends React.Component {
               <CreateGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/game" component={Game}> 
-              <Game/>
+              <Game player1={"Patrin"} player2={"Kiran"} topic={"Qdoba is better than Chipotle"} />
             <Route path="/#how-to-play">
               {/* how do we route to a lower part of the page */}
             </Route>
             </Route>
-            <Route exact path="/" component={Home}>
+            <Route path="/" component={Home}>
               <Home updateGame={this.handleChange.bind(this)}/>
             </Route>
           </Switch>

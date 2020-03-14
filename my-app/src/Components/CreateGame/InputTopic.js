@@ -1,5 +1,6 @@
 import React from 'react';
-import { TopicModal } from './TopicModal.js';
+import TopicModal from './TopicModal.js';
+import Modal from './ModalExample.js';
 import '../../css/create-game.css'
 
 export class InputTopic extends React.Component {
@@ -21,7 +22,8 @@ export class InputTopic extends React.Component {
                     </div>
                 </div>
 
-                <TopicModal />
+                {/* <TopicModal /> */}
+                <Modal onClose={console.log("close the modal")} show={true} children={null} />
             </div>
             </section>
         )

@@ -67,6 +67,7 @@ hr {
 }
 
 input {
+  width: 100%;
   border: none;
   border-bottom: solid black 2px;
   padding: .5rem;

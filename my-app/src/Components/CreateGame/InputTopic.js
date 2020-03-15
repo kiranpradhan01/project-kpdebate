@@ -9,10 +9,12 @@ export class InputTopic extends React.Component {
         super(props);
         this.state = {
             data: [],
-            modal: false,
+            modal: false, // has no knowledge of nested modal
             closeAll: false,
-            category: "" // how to send category up to inputtopic from gettopicmodal
-            // has no knowledge of nested modal
+            category: "Anything", // how to send category up to input topic from gettopicmodal?
+            selectedTopic: "",
+            topic1: "Is Adidas better than Nike?",
+            topic2: "Is cereal a soup?" // start with default topics
         }
     }
 
@@ -21,6 +23,7 @@ export class InputTopic extends React.Component {
             this.setState({
                 data: data
             });
+            console.log(this.state.data)
         });
     }
 
@@ -28,8 +31,15 @@ export class InputTopic extends React.Component {
         this.setState({modal: true})
     }
 
-    closeModal = () => {
-        this.setState({modal: false})
+    closeModal = (value) => {
+        let stateChanges = {
+            selectedTopic: value,
+            modal: false
+        };
+        this.setState(stateChanges);
+        // bind selected topic to the topic textbox on the create-game page
+
+        console.log(this.state);
     }
 
     generateCategories() {
@@ -46,47 +56,61 @@ export class InputTopic extends React.Component {
     }
 
     getRandomTopics() {
-        let categoryTopics = null;
+        let categoryTopics = [];
         // evaluate what subcategory to "query" from
         if (this.state.category !== "Anything") {
-            categoryTopics = [];
-            this.state.data.forEach((topic) => {
-                if (topic.category === this.state.category)
-                    categoryTopics.push(topic);
-            });
+        for (let i = 0; i < this.state.data.length; i++) {
+            let topic = this.state.data[i];
+            if (topic.category === this.state.category) {
+                categoryTopics.push(topic);
+                console.log(topic);
+            }
+        }
         } else {
             categoryTopics = this.state.data;
+            console.log('anything data');
         }
         // randomly select 2 topics from the described category
-        let displayedTopics = [];
+        // let twoTopics = []
         let firstTopic = Math.floor((Math.random() * categoryTopics.length));
         let secondTopic = null;
-        displayedTopics.push(categoryTopics[firstTopic]);
-        while (secondTopic === null || secondTopic === firstTopic) { // do this to avoid duplicates
+        this.setState({"topic1": categoryTopics[firstTopic]});
+        // twoTopics.push(categoryTopics[firstTopic]);
+        console.log(categoryTopics)
+        console.log('topic1, ' + firstTopic);
+        while (secondTopic === null || secondTopic === firstTopic) { // to avoid duplicates
             secondTopic = Math.floor((Math.random() * categoryTopics.length));
         }
-        displayedTopics.push(categoryTopics[secondTopic]);
-        return displayedTopics;
+        this.setState({"topic2": categoryTopics[secondTopic]});
+        // twoTopics.push(categoryTopics[secondTopic]);
+        console.log('topic2, ' + secondTopic);
+        // return twoTopics;
+    }
+
+    onSelection = (event, value) => {
+        this.setState({category: event.target.value});
+        this.getRandomTopics(); // after a category is selected, generate 2 random topics
+        console.log('set category to', this.state.category);
     }
 
     render(){
         return (
-            <section id="topic" class="createGameFirst createGameContainer">
-            <div class="card createGameCard">
-                <div class="card-body">
-                    <h4 class="card-title">Topic</h4>
-                        <div class="mx-3">
-                            <div class="row">
-                                <form class="col-sm-8 col-md-6 mx-auto">
-                                    <input id="input-topic" class="w-100" type="text" placeholder="Enter a debate topic..." onChange={(event, value) => this.props.onInput("topic", event.target.value)}/>
+            <section id="topic" className="createGameFirst createGameContainer">
+            <div className="card createGameCard">
+                <div className="card-body">
+                    <h4 className="card-title">Topic</h4>
+                        <div className="mx-3">
+                            <div className="row">
+                                <form className="col-sm-8 col-md-6 mx-auto">
+                                    <input id="input-topic" className="w-100" type="text" placeholder="Enter a debate topic..." value={this.state.selectedTopic} onChange={(event) => this.props.onInput("topic", event.target.value)}/>
                                 </form>
                             </div>
-                        <div class="row">
-                            <button id="open-modal" class="btn btn-dark mt-2 ml-auto" data-toggle="modal" data-target="#modalRandomize" onClick={()=> {this.showModal()}}>Randomize!</button>
+                        <div className="row">
+                            <button id="open-modal" className="btn btn-dark mt-2 ml-auto" data-toggle="modal" data-target="#modalRandomize" onClick={()=> {this.showModal()}}>Randomize!</button>
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.modal} handleClose={this.closeModal} onCategorySelection={(event, value)=> this.setState({category: event.target.value})} data={this.state.data} randomTopics={this.getRandomTopics()} options={this.generateCategories()}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal.bind(this)} onCategorySelection={this.onSelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
             </div>
             </section>
         )

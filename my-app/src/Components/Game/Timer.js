@@ -11,6 +11,9 @@ import '../../css/game.css';
 class Timer extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            backgroundCol: "bg-light"
+        }
         this.startCountdown();
     }
 
@@ -19,7 +22,7 @@ class Timer extends React.Component {
         return (
         <section className="gameContainer"> 
             <div className="timer col-md-6">
-                <div id="timer-card" className="card timerCard bg-light">
+                <div id="timer-card" className={"card timerCard " + this.state.backgroundCol}>
                     <h3 className="card-title text-center">
                         <div className="d-flex flex-wrap justify-content-center mt-2">
                             <p id="timer-label">{this.props.timerLabel}</p>
@@ -65,6 +68,7 @@ class Timer extends React.Component {
             document.getElementById("timer-card").classList.add("bg-yellow");
             return "Time's up!";
         } else {
+            // document.getElementById("timer-card").classList.remove("bg-yellow");
             let min = Math.trunc(seconds / 60);
             let sec = seconds % 60; // number of seconds left in the current minute
             if (sec < 10) {

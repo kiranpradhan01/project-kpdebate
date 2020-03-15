@@ -78,7 +78,7 @@ class App extends React.Component {
                 topic={gameProps.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
-                timerLabel={"Patrin's Opening Statement"}
+                timerLabel={this.state.timerLabel}
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
@@ -91,7 +91,18 @@ class App extends React.Component {
               <CreateGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/admin-game" component={Game}> 
-              <AdminGame updateGame={this.handleChange.bind(this)}/>
+              <AdminGame 
+                sessionID={gameProps.code}
+                player1={gameProps.p1} 
+                player2={gameProps.p2} 
+                topic={gameProps.topic} 
+                timerObject={this.state.timerObject}
+                timeLeft={this.state.timeLeft}
+                timerLabel={this.state.timerLabel}
+                updateGame={this.handleChange.bind(this)}
+                disableVoting={!this.state.enable}
+                displayWinner={this.state.displayWinner}
+                />
             </Route>
             <Route path="/" component={Home}>
               <Home updateGame={this.handleChange.bind(this)}/>

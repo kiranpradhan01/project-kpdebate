@@ -14,6 +14,7 @@
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
     "react-dropdown-input": "^0.1.11",
+    "react-firebaseui": "^4.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-scrollchor": "^6.0.0"

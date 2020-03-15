@@ -91,8 +91,6 @@ export class InputTopic extends React.Component {
         console.log('topic2, ' + secondTopic);
         // return twoTopics;
         this.setState({category: selected}); // update state with category selected
-
-        // return firstTopic;
     }
 
     onInput = (input) => {

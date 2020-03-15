@@ -16,10 +16,10 @@ class AdminGame extends React.Component {
     render() {
         return(
             <div>
-                <Scoreboard/>
+                {/* <Scoreboard/>
                 <Timer/>
                 <Controls onClick={this.props.updateGame}/>
-                <AudienceJoin/>
+                <AudienceJoin/> */}
             </div>
         );
     }

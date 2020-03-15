@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom'; 
 
 import firebase from 'firebase/app';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import 'firebase/auth';
 import 'firebase/database';
 
@@ -28,6 +29,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// TODO: Whenever state of the current game changes in Firebase, update this.state
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +45,7 @@ class App extends React.Component {
       enable: false,
       displayWinner: false,
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 5
+      timeLeft: 60
     }
     console.log(this.state);
   }

@@ -1,4 +1,7 @@
 import React from 'react';
+import TopicModal from './GetTopicModal.js';
+import Modal from './ModalExample.js';
+import '../../css/create-game.css'
 import GetTopicModal from './GetTopicModal.js';
 import * as d3 from 'd3';
 import topics from '../../data/topics.csv';

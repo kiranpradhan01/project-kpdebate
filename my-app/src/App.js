@@ -28,6 +28,7 @@ class App extends React.Component {
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
       timeLeft: 5
     }
+    console.log(this.state);
   }
 
   handleChange = (key, value) => {
@@ -35,7 +36,6 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    console.log(this.state);
   }
 
   render() {

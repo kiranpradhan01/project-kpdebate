@@ -15,7 +15,7 @@ class Controls extends React.Component {
     buttonClicked = (key) => {
         // update state to toggle button disabled
         let stateChanges = {};
-        if (key == "enable") {
+        if (key === "enable") {
             stateChanges = {
                 "enable": true,
                 "disable": false,
@@ -23,7 +23,7 @@ class Controls extends React.Component {
             };
             // lift up voting state to App
             this.props.onClick("enable", true); // enable audience voting
-        } else if (key == "disable") {
+        } else if (key === "disable") {
             stateChanges = {
                 "enable": false,
                 "disable": true,

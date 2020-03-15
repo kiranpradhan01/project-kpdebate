@@ -19,8 +19,6 @@ class TitleCard extends React.Component {
     this.props.onInput("sessionID", event.target.value);
     let buttonDisabled = (event.target.value.length !== 4)
     this.setState({disabled: buttonDisabled});
-    console.log(event.target.value);
-    console.log(buttonDisabled);
   }
 
   render() {

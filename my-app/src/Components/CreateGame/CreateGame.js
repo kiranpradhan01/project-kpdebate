@@ -2,8 +2,6 @@ import React from 'react';
 import { InputTopic } from './InputTopic.js';
 import { InputPlayers } from './InputPlayers.js';
 import { Link } from 'react-router-dom';
-// import * as d3 from 'd3';
-// import topics from '../../data/topics.csv';
 import '../../css/create-game.css';
 
 class CreateGame extends React.Component {
@@ -26,7 +24,6 @@ class CreateGame extends React.Component {
                 [key]: false // update state to toggle button disabled
             });
         }
-        console.log(this.state)
         this.props.updateGame(key, value);
     }
 

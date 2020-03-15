@@ -39,7 +39,6 @@ export class InputTopic extends React.Component {
         this.setState(stateChanges);
         // bind selected topic to the topic textbox on the create-game page
 
-        console.log(this.state);
     }
 
     generateCategories() {

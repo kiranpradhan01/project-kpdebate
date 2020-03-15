@@ -11,6 +11,23 @@ import {
   Route
 } from 'react-router-dom'; 
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBRMu88J7_n4IVzqLYfrObctzfSi-_FnP0",
+  authDomain: "project-kpdebate.firebaseapp.com",
+  databaseURL: "https://project-kpdebate.firebaseio.com",
+  projectId: "project-kpdebate",
+  storageBucket: "project-kpdebate.appspot.com",
+  messagingSenderId: "14281407017",
+  appId: "1:14281407017:web:8d8edc6edc9fa427fe7a38",
+  measurementId: "G-L8RHQ63M0E"
+};
+
+firebase.initializeApp(firebaseConfig);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +53,7 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
+    console.log(this.state);
   }
 
   render() {

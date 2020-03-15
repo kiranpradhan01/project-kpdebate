@@ -12,6 +12,9 @@ class CreateGame extends React.Component {
             player1: false,
             player2: false
         }
+        // generate and lift up random sessionID
+        let sessionID = Math.floor(1000 + Math.random() * 9000);
+        this.props.updateGame("sessionID", sessionID);
     }
     
     onChange = (key, value) => {

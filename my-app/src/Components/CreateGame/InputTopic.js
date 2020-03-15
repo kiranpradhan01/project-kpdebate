@@ -16,6 +16,7 @@ export class InputTopic extends React.Component {
             topic1: "Is Adidas better than Nike?",
             topic2: "Is cereal a soup?" // start with default topics
         }
+        console.log(this.state)
     }
 
     componentDidMount() {
@@ -54,17 +55,22 @@ export class InputTopic extends React.Component {
         return options;
     }
 
-    getRandomTopics() {
+    // after a category is selected in GetTopicModal,
+    // update state and generate 2 random topics from category
+    onCategorySelection = (event, value) => {
+        let selected = event.target.value
+        console.log('set category to', selected);
+        // after a category is selected, generate 2 random topics
         let categoryTopics = [];
         // evaluate what subcategory to "query" from
-        if (this.state.category !== "Anything") {
-        for (let i = 0; i < this.state.data.length; i++) {
-            let topic = this.state.data[i];
-            if (topic.category === this.state.category) {
-                categoryTopics.push(topic);
-                console.log(topic);
+        if (selected !== "Anything") {
+            for (let i = 0; i < this.state.data.length; i++) {
+                let topic = this.state.data[i];
+                if (topic.category === selected) {
+                    categoryTopics.push(topic);
+                    console.log(topic);
+                }
             }
-        }
         } else {
             categoryTopics = this.state.data;
             console.log('anything data');
@@ -84,12 +90,14 @@ export class InputTopic extends React.Component {
         // twoTopics.push(categoryTopics[secondTopic]);
         console.log('topic2, ' + secondTopic);
         // return twoTopics;
+        this.setState({category: selected}); // update state with category selected
+
+        // return firstTopic;
     }
 
-    onSelection = (event, value) => {
-        this.setState({category: event.target.value});
-        this.getRandomTopics(); // after a category is selected, generate 2 random topics
-        console.log('set category to', this.state.category);
+    onInput = (input) => {
+        this.setState({"selectedTopic": input})
+        this.props.onInput("topic", input);
     }
 
     render(){
@@ -101,7 +109,7 @@ export class InputTopic extends React.Component {
                         <div className="mx-3">
                             <div className="row">
                                 <form className="col-sm-8 col-md-6 mx-auto">
-                                    <input id="input-topic" className="w-100" type="text" placeholder="Enter a debate topic..." value={this.state.selectedTopic} onChange={(event) => this.props.onInput("topic", event.target.value)}/>
+                                    <input id="input-topic" className="w-100" type="text" placeholder="Enter a debate topic..." value={this.state.selectedTopic} onChange={(event, value) => this.onInput(event.target.value)}/>
                                 </form>
                             </div>
                         <div className="row">
@@ -109,7 +117,7 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.modal} handleClose={this.closeModal.bind(this)} onCategorySelection={this.onSelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal.bind(this)} onCategorySelection={this.onCategorySelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
             </div>
             </section>
         )

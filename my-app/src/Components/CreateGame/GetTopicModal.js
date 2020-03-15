@@ -13,6 +13,7 @@ class GetTopicModal extends React.Component {
         topic2: this.props.topic2
       }
       console.log(this.state.topic1 + ',' + this.state.topic2);
+      console.log('modal' + this.props.data);
   }
 
   onCategorySelected = (event, value) => {

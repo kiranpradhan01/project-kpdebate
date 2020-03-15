@@ -18,7 +18,7 @@ class Timer extends React.Component {
         return (
         <section className="gameContainer">
             <div className="timer col-md-6">
-                <div id="timer-card" class="card timerCard bg-light">
+                <div id="timer-card" className="card timerCard bg-light">
                     <h3 className="card-title text-center">
                         <div className="d-flex flex-wrap justify-content-center mt-2">
                             <p id="timer-label">{this.props.timerLabel}</p>
@@ -35,31 +35,21 @@ class Timer extends React.Component {
      * initializes a timer that updates the visual element of a timer very second.
      */
     startCountdown() {
-
-        // set up the timer actor for a new countdown
-        // TODO: remove className bg-yellow from timer-card
-
-        let timerID = setInterval(this.everySecond, 1000);
-
-        return timerID;
+        return setInterval(() => this.everySecond(this.props.timeLeft), 1000);
     }
 
     /**
      * the behavior of the timer for every second the timer ticks.
+     * ! the interval technically doesn't clear. Will that screw up setting up timers after the first one?
      */
-    everySecond() {
-        let i = this.props.timeLeft;
+    everySecond(timeLeft) {
+        let i = timeLeft;
         if (i === 0) {
-            // clear the timer
-            clearInterval(this.props.timerObject); // ! Check on App.js whether the interval was cleared
-            this.props.updateGame("timerObject", null); // ! test this
-            // TODO: add className bg-yellow
-
-            console.log(this.props.timerObject); 
+            clearInterval(this.props.timerObject); // clear the timer
+            this.props.updateGame("timerObject", null);
         } else {
             i--;
             this.props.updateGame("timeLeft", i);
-            console.log("tick!");
         }
     }
 
@@ -70,7 +60,7 @@ class Timer extends React.Component {
      */
     convertToMinutes(seconds) {
         if (seconds === 0) {
-            document.getElementById("timer-card").classList.add("bg-yellow"); // TODO: does this work
+            document.getElementById("timer-card").classList.add("bg-yellow");
             return "Time's up!";
         } else {
             let min = Math.trunc(seconds / 60);

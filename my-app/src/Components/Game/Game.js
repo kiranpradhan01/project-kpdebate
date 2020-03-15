@@ -11,13 +11,15 @@ import '../../css/game.css';
  * @prop {string} player1 - name of the first player
  * @prop {string} player2 - name of the second player
  * @prop {string} topic - the argument being debated
+ * @prop {object} timerObject - the object representing the timer.
+ * @prop {number} timeLeft - number of seconds left in the round.
+ * @prop {string} timerLabel - the message labeling the current phase
  * @prop {function} updateGame - callback function to change the state of App
  */
 class Game extends React.Component {
     render() {
         if (this.props.sessionID && this.props.player1 && 
             this.props.player2 && this.props.topic) {
-                console.log(this.props);
                 return(
                     <div>
                         <Scoreboard 
@@ -26,9 +28,9 @@ class Game extends React.Component {
                             topic={this.props.topic} 
                         />
                         <Timer 
-                            timerObject={null}
-                            timeLeft={60}
-                            timerLabel={"Patrin's Opening Statement"}
+                            timerObject={this.props.timerObject}
+                            timeLeft={this.props.timeLeft}
+                            timerLabel={this.props.timerLabel}
                             updateGame={this.props.updateGame}/>
                         <Vote />
                         <AudienceJoin code={this.props.sessionID}/>

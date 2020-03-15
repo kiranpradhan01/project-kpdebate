@@ -10,23 +10,23 @@ import '../../css/game.css';
 class Scoreboard extends React.Component {
     render() {
         return (
-            <section class="first gameContainer">
+            <section className="first gameContainer">
                 {/* Row with names */}
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         <h1 id="player-1">{this.props.player1}</h1>
                         <h2>is arguing Pro</h2>
                     </div>
 
-                    <div class="col">
+                    <div className="col">
                         <h1 id="player-2">{this.props.player2}</h1>
                         <h2>is arguing Con</h2>
                     </div>
                 </div>
 
                 {/* Row with topic */}
-                <div class="row">
-                    <h3 id="topic" class="font-weight-bold mb-0">{this.props.topic}</h3>
+                <div className="row">
+                    <h3 id="topic" className="font-weight-bold mb-0">{this.props.topic}</h3>
                 </div>
             </section>
         );

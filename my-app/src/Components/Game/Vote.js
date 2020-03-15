@@ -12,8 +12,8 @@ class Vote extends React.Component {
 
     render(){
         return (
-        <section class="gameContainer">
-            <div class="text-center">
+        <section className="gameContainer">
+            <div className="text-center">
                 <Button variant="primary" size="lg" onClick={() => {this.setState({modal: true})}}>Vote</Button>
                 <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
                     <Modal.Header closeButton>
@@ -21,16 +21,16 @@ class Vote extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <p>Who won the debate?</p>
-                        <div class="modal-vote-row row">
-                        <div class="col">
+                        <div className="modal-vote-row row">
+                        <div className="col">
                         <Button variant="secondary" onClick={() => {this.setState({modal: false})}}>
                             Kiran
                         </Button>
                         </div>
-                        <div class="col">
-                            <p class="my-2">OR</p>
+                        <div className="col">
+                            <p className="my-2">OR</p>
                         </div>
-                        <div class="col">
+                        <div className="col">
                         <Button variant="secondary" onClick={() => {this.setState({modal: false})}}>
                             Patrin
                         </Button>

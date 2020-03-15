@@ -25,7 +25,7 @@ class App extends React.Component {
       // currentSpeaker: 0,
       // timerObject: null
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 60
+      timeLeft: 5
     }
   }
 
@@ -34,7 +34,6 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    console.log(this);
   }
 
   render() {
@@ -50,7 +49,6 @@ class App extends React.Component {
           <Navbar />  
           <Switch>
             <Route path="/game" component={Game}> 
-<<<<<<< HEAD
               <Game 
                 sessionID={gameProps.code}
                 player1={gameProps.p1} 
@@ -60,9 +58,6 @@ class App extends React.Component {
                 timeLeft={this.state.timeLeft}
                 timerLabel={"Patrin's Opening Statement"}
                 updateGame={this.handleChange.bind(this)} />
-=======
-              <Game player1={"Patrin"} player2={"Kiran"} topic={"Qdoba is better than Chipotle"} />
->>>>>>> 6e46860888dc75a1b9a0166296ce88f1d1745451
             </Route>
             <Route path="/#how-to-play">
               {/* how do we route to a lower part of the page */}

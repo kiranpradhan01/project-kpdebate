@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-/**
- * renders the title of the Home page.
- * No props.
- * onClick={() => history.push('/create-game')}
- */
 class TitleCard extends React.Component {
   constructor(props) {
     super(props);

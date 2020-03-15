@@ -6,7 +6,9 @@ class Vote extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        modal: false
+        modal: false,
+        disableVoting: this.props.disableVoting,
+        voted: false
       }
   }
 
@@ -14,7 +16,7 @@ class Vote extends React.Component {
         return (
         <section class="gameContainer">
             <div class="text-center">
-                <Button variant="primary" size="lg" onClick={() => {this.setState({modal: true})}}>Vote</Button>
+                <Button variant="primary" size="lg" disabled={this.state.disableVoting} onClick={() => {this.setState({modal: true, voted: true, disableVoting: true})}}>Vote</Button>
                 <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Final Vote</Modal.Title>

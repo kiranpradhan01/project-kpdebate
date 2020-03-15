@@ -17,7 +17,7 @@ class TitleCard extends React.Component {
 
   handleInput = (event, value) => {
     this.props.onInput("sessionID", event.target.value);
-    let buttonDisabled = (event.target.value.length != 4)
+    let buttonDisabled = (event.target.value.length !== 4)
     this.setState({disabled: buttonDisabled});
     console.log(event.target.value);
     console.log(buttonDisabled);
@@ -50,7 +50,7 @@ class TitleCard extends React.Component {
                   <input id="session-name" className="border border-secondary" type="text"
                     placeholder="Enter Game Code" maxLength={4} onChange={this.handleInput}/>
                 </form>
-                <Link to="/game"><button id="btn-join" className="btn btn-primary btn-md join" href="game.html" role="button" disabled={this.state.disabled}>Join!</button></Link>
+                <Link to="/game"><button id="btn-join" className="btn btn-primary btn-md join" href="game.html" disabled={this.state.disabled}>Join!</button></Link>
               </div>
               <h2 className="lead my-4">OR</h2>
               <Link to="/create-game"><a className="btn btn-primary btn-lg create" href="create-game.html" role="button">Create New Game</a></Link>

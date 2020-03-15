@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/game.css';
 
 /**
  * controls the timer of the current round in the game.
@@ -16,7 +17,7 @@ class Timer extends React.Component {
     render() {
         let minutesLeft = this.convertToMinutes(this.props.timeLeft);
         return (
-        <section className="gameContainer">
+        <section className="gameContainer"> 
             <div className="timer col-md-6">
                 <div id="timer-card" class="card timerCard bg-light">
                     <h3 className="card-title text-center">
@@ -48,19 +49,19 @@ class Timer extends React.Component {
      * the behavior of the timer for every second the timer ticks.
      */
     everySecond() {
-        let i = this.props.timeLeft;
-        if (i === 0) {
-            // clear the timer
-            clearInterval(this.props.timerObject); // ! Check on App.js whether the interval was cleared
-            this.props.updateGame("timerObject", null); // ! test this
-            // TODO: add className bg-yellow
+        // let i = this.props.timeLeft;
+        // if (i === 0) {
+        //     // clear the timer
+        //     clearInterval(this.props.timerObject); // ! Check on App.js whether the interval was cleared
+        //     this.props.updateGame("timerObject", null); // ! test this
+        //     // TODO: add className bg-yellow
 
-            console.log(this.props.timerObject); 
-        } else {
-            i--;
-            this.props.updateGame("timeLeft", i);
-            console.log("tick!");
-        }
+        //     console.log(this.props.timerObject); 
+        // } else {
+        //     i--;
+        //     this.props.updateGame("timeLeft", i);
+        //     console.log("tick!");
+        // }
     }
 
     /**

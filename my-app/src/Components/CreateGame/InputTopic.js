@@ -1,6 +1,4 @@
 import React from 'react';
-import TopicModal from './GetTopicModal.js';
-import '../../css/create-game.css'
 import GetTopicModal from './GetTopicModal.js';
 import * as d3 from 'd3';
 import topics from '../../data/topics.csv';
@@ -41,7 +39,6 @@ export class InputTopic extends React.Component {
         this.setState(stateChanges);
         // bind selected topic to the topic textbox on the create-game page
 
-        console.log(this.state);
     }
 
     generateCategories() {

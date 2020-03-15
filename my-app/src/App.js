@@ -5,7 +5,6 @@ import Home from './Components/Home/Home.js';
 import CreateGame from './Components/CreateGame/CreateGame.js';
 import AdminGame from './Components/Game/AdminGame.js';
 import Game from './Components/Game/Game.js'
-import history from './history.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,9 +23,12 @@ class App extends React.Component {
       // currentPhase: phases[0],
       // currentSpeaker: 0,
       // timerObject: null
+      enable: false,
+      displayWinner: false,
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
       timeLeft: 60
     }
+    console.log(this.state);
   }
 
   handleChange = (key, value) => {
@@ -45,7 +47,7 @@ class App extends React.Component {
     };
     return (
       <div className="App">
-        <Router history={history}>
+        <Router>
           <Navbar />  
           <Switch>
             <Route path="/game" component={Game}> 
@@ -57,7 +59,10 @@ class App extends React.Component {
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 timerLabel={"Patrin's Opening Statement"}
-                updateGame={this.handleChange.bind(this)} />
+                updateGame={this.handleChange.bind(this)}
+                disableVoting={!this.state.enable}
+                displayWinner={this.state.displayWinner}
+                />
             </Route>
             <Route path="/#how-to-play">
               {/* how do we route to a lower part of the page */}
@@ -66,7 +71,7 @@ class App extends React.Component {
               <CreateGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/admin-game" component={Game}> 
-              <AdminGame/>
+              <AdminGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/" component={Home}>
               <Home updateGame={this.handleChange.bind(this)}/>

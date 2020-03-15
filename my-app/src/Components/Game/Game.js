@@ -32,7 +32,8 @@ class Game extends React.Component {
                             timeLeft={this.props.timeLeft}
                             timerLabel={this.props.timerLabel}
                             updateGame={this.props.updateGame}/>
-                        <Vote />
+                        <Vote disableVoting={this.props.disableVoting}
+                        displayWinner={this.props.displayWinner}/>
                         <AudienceJoin code={this.props.sessionID}/>
                     </div>
                 );

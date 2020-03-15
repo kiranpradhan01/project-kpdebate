@@ -7,7 +7,7 @@ class AudienceJoin extends React.Component {
                 <div>
                     <p>
                         Invite audience members to join this debate at<a href="kpdebate.com">kpdebate.com</a> with game
-                        code<span className="code">{this.props.code}</span>
+                        code<span className="code"> {this.props.code}</span>
                     </p>
                 </div>
             </section>

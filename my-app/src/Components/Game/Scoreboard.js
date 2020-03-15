@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/game.css';
 
 /**
  * displays the topic, the names of the players, and their stance on the argument

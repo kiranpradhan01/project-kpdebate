@@ -11,7 +11,7 @@ import '../../css/game.css';
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        // this.startCountdown();
+        this.startCountdown();
     }
 
     render() {
@@ -35,24 +35,25 @@ class Timer extends React.Component {
     /**
      * initializes a timer that updates the visual element of a timer very second.
      */
-    // startCountdown() {
-    //     return setInterval(() => this.everySecond(this.props.timeLeft), 1000);
-    // }
+    startCountdown() {
+        return setInterval(() => this.everySecond(this.props.timeLeft), 1000);
+    }
 
     /**
      * the behavior of the timer for every second the timer ticks.
      * ! the interval technically doesn't clear. Will that screw up setting up timers after the first one?
      */
-    // everySecond(timeLeft) {
-    //     let i = timeLeft;
-    //     if (i === 0) {
-    //         clearInterval(this.props.timerObject); // clear the timer
-    //         this.props.updateGame("timerObject", null);
-    //     } else {
-    //         i--;
-    //         this.props.updateGame("timeLeft", i);
-    //     }
-    // }
+    everySecond(timeLeft) {
+        let i = timeLeft;
+        console.log("tick");
+        if (i === 0) {
+            clearInterval(this.props.timerObject); // clear the timer
+            this.props.updateGame("timerObject", null);
+        } else {
+            i--;
+            this.props.updateGame("timeLeft", i);
+        }
+    }
 
     /**
      * If seconds is greater than 60, returns it in a minutes-converted format.

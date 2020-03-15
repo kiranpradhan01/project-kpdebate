@@ -11,6 +11,7 @@ import {
   Route
 } from 'react-router-dom'; 
 
+// TODO: Whenever state of the current game changes in Firebase, update this.state
 class App extends React.Component {
   constructor(props) {
     super(props);

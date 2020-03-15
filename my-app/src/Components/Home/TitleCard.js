@@ -11,18 +11,16 @@ class TitleCard extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      disabled: false
-      // return this to false!!!!!
+      disabled: true
     }
   }
 
-  handleInput = (event) => {
-    let buttonDisabled = (this.state.sessionID !== null || this.state.sessionID.length < 4);
-    let stateChanges = {
-      disabled: buttonDisabled
-    };
-    this.setState(stateChanges);
-    console.log(this.state.sessionID);
+  handleInput = (event, value) => {
+    this.props.onInput("sessionID", event.target.value);
+    let buttonDisabled = (event.target.value.length != 4)
+    this.setState({disabled: buttonDisabled});
+    console.log(event.target.value);
+    console.log(buttonDisabled);
   }
 
   render() {
@@ -50,7 +48,7 @@ class TitleCard extends React.Component {
               <div className="d-flex justify-content-center align-items-center">
                 <form className="mb-2 mr-sm-2">
                   <input id="session-name" className="border border-secondary" type="text"
-                    placeholder="Enter Game Code" maxLength={4} onChange={(event, value) => this.props.onInput("sessionID", event.target.value)}/>
+                    placeholder="Enter Game Code" maxLength={4} onChange={this.handleInput}/>
                 </form>
                 <Link to="/game"><button id="btn-join" className="btn btn-primary btn-md join" href="game.html" role="button" disabled={this.state.disabled}>Join!</button></Link>
               </div>

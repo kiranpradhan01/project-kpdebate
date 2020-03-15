@@ -19,7 +19,6 @@ class GetTopicModal extends React.Component {
     this.setState({category: event.target.value});
     this.props.onCategorySelection(event, value);
     console.log("category has been selected");
-    // this.getRandomTopics();
   }
 
   render() {

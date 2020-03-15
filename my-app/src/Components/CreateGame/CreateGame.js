@@ -14,14 +14,6 @@ class CreateGame extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     d3.csv(topics).then((data) => {
-    //         this.setState({
-    //             data: data
-    //         });
-    //     });
-    // }
-
     render() {
         return(
             <div>

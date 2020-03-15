@@ -7,6 +7,9 @@ import '../../css/create-game.css';
 class CreateGame extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            sessionID: ""
+        }
     }
 
     render(){

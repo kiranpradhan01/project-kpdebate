@@ -1,5 +1,4 @@
 import React from 'react';
-import history from '../../history.js';
 import { Link } from 'react-router-dom';
 
 

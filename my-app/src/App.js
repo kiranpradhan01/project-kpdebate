@@ -53,7 +53,7 @@ class App extends React.Component {
             <Route path="/admin-game" component={Game}> 
               <AdminGame/>
             </Route>
-            <Route exact path="/" component={Home}>
+            <Route path="/" component={Home}>
               <Home updateGame={this.handleChange.bind(this)}/>
             </Route>
           </Switch>

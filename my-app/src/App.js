@@ -25,7 +25,7 @@ class App extends React.Component {
       // currentSpeaker: 0,
       // timerObject: null
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 5
+      timeLeft: 60
     }
   }
 

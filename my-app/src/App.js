@@ -23,7 +23,9 @@ class App extends React.Component {
       // topic: "Is cereal a soup?",
       // currentPhase: phases[0],
       // currentSpeaker: 0,
-      // timer: null
+      // timerObject: null
+      timerLabel: "Patrin's Opening Statement", // should probably be null at first
+      timeLeft: 60
     }
   }
 
@@ -32,22 +34,32 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    console.log(this.state);
+    console.log(this);
   }
 
   render() {
+    let gameProps = { // ! This is hardcoded content to make sure the `Game` page is working
+      code: 1234,
+      p1: "Patrin",
+      p2: "Kiran",
+      topic: "Qdoba is better than Chipotle"
+    };
     return (
       <div className="App">
         <Router history={history}>
           <Navbar />  
           <Switch>
             <Route path="/game" component={Game}> 
-<<<<<<< HEAD
-              <Game player1={"Patrin"} player2={"Kiran"} topic={"Qdoba is better than Chipotle"} />
-=======
-              <Game/>
+              <Game 
+                sessionID={gameProps.code}
+                player1={gameProps.p1} 
+                player2={gameProps.p2} 
+                topic={gameProps.topic} 
+                timerObject={this.state.timerObject}
+                timeLeft={this.state.timeLeft}
+                timerLabel={"Patrin's Opening Statement"}
+                updateGame={this.handleChange.bind(this)} />
             </Route>
->>>>>>> a94b5e377b8ff506c40be8a72e11047c305a33bc
             <Route path="/#how-to-play">
               {/* how do we route to a lower part of the page */}
             </Route>
@@ -61,7 +73,7 @@ class App extends React.Component {
               <Home updateGame={this.handleChange.bind(this)}/>
             </Route>
           </Switch>
-          <Footer />
+          <Footer />  
       </Router>
       </div>
     );

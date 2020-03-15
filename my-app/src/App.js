@@ -26,7 +26,7 @@ class App extends React.Component {
       enable: false,
       displayWinner: false,
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 60
+      timeLeft: 5
     }
   }
 

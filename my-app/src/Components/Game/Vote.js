@@ -23,16 +23,16 @@ class Vote extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <p>Who won the debate?</p>
-                        <div class="modal-vote-row row">
-                        <div class="col">
+                        <div className="modal-vote-row row">
+                        <div className="col">
                         <Button variant="secondary" onClick={() => {this.setState({modal: false})}}>
                             Kiran
                         </Button>
                         </div>
-                        <div class="col">
-                            <p class="my-2">OR</p>
+                        <div className="col">
+                            <p className="my-2">OR</p>
                         </div>
-                        <div class="col">
+                        <div className="col">
                         <Button variant="secondary" onClick={() => {this.setState({modal: false})}}>
                             Patrin
                         </Button>

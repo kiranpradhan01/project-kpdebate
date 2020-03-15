@@ -5,15 +5,14 @@ import '../../css/game.css';
  * controls the timer of the current round in the game.
  * @prop {object} timerObject - the object representing the timer.
  * @prop {number} timeLeft - number of seconds left in the round.
- * @prop {string} timerLabel - the message labeling the current phase
+ * @prop {number} phaseIndex - the current phase of the debate.
+ * @prop {object} phases - const object of the phases of the debate.
+ * @prop {boolean} isAdminTimer - determines whether this timer is in Admin Game.
  * @prop {function} updateGame - the callback function used to update App's state
  */
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            backgroundCol: "bg-light"
-        }
         this.startCountdown();
     }
 
@@ -22,10 +21,10 @@ class Timer extends React.Component {
         return (
         <section className="gameContainer"> 
             <div className="timer col-md-6">
-                <div id="timer-card" className={"card timerCard " + this.state.backgroundCol}>
+                <div id="timer-card" className={"card timerCard " + this.isBackgroundYellow()}>
                     <h3 className="card-title text-center">
-                        <div className="d-flex flex-wrap justify-content-center mt-2">
-                            <p id="timer-label">{this.props.timerLabel}</p>
+                        <div className="col mt-2">
+                            <p id="timer-label">{this.getPhaseName()}</p>
                             <p id="timer" className="mb-0">{minutesLeft}</p>
                         </div>
                     </h3>
@@ -33,6 +32,21 @@ class Timer extends React.Component {
             </div>
         </section> 
         );
+    }
+
+    /**
+     * returns a suitable name for the current Phase.
+     * format: "CURRENT_SPEAKER - CURRENT PHASE"
+     */
+    getPhaseName() {
+        let currentPhase = this.props.phases[this.props.phaseIndex];
+        if (currentPhase.title === "Voting") {
+            return "Time to Vote!";
+        }
+
+        let outputString = (currentPhase.speaker === 1 ? this.props.player1 : this.props.player2);
+        outputString += " - " + currentPhase.title;
+        return outputString;
     }
 
     /**
@@ -48,13 +62,15 @@ class Timer extends React.Component {
      */
     everySecond(timeLeft) {
         let i = timeLeft;
-        console.log("tick");
-        if (i === 0) {
+        if (i === 0 && this.props.isAdminTimer) {
             clearInterval(this.props.timerObject); // clear the timer
             this.props.updateGame("timerObject", null);
-        } else {
+        } else if (this.props.isAdminTimer){
             i--;
             this.props.updateGame("timeLeft", i);
+            console.log("time left:" + timeLeft);
+        } else {
+            // console.log("not an admin timer!");
         }
     }
 
@@ -65,10 +81,12 @@ class Timer extends React.Component {
      */
     convertToMinutes(seconds) {
         if (seconds === 0) {
-            document.getElementById("timer-card").classList.add("bg-yellow");
-            return "Time's up!";
+            if (this.props.phases[this.props.phaseIndex].title !== "Voting") {
+                return "Time's up!";
+            } else {
+                return "";
+            }
         } else {
-            // document.getElementById("timer-card").classList.remove("bg-yellow");
             let min = Math.trunc(seconds / 60);
             let sec = seconds % 60; // number of seconds left in the current minute
             if (sec < 10) {
@@ -76,6 +94,14 @@ class Timer extends React.Component {
             }
             return min + ":" + sec;
         }
+    }
+
+    /**
+     * defines the color of the timer depending on how much time is left.
+     * The timer turns yellow when time runs out.
+     */
+    isBackgroundYellow() {
+        return (this.props.timeLeft === 0) ? "bg-yellow" : "bg-light";
     }
 }
 

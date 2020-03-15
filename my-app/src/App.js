@@ -16,18 +16,60 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
       // sessionID: "4343",
       // player1: "Kiran",
       // player2: "Patrin",
       // topic: "Is cereal a soup?",
-      // currentPhase: phases[0],
       // currentSpeaker: 0,
       // timerObject: null
+      currentPhase: 8,
       enable: false,
       displayWinner: false,
-      timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 60
+      timeLeft: 0,
+      phases: [{
+        title: "Opening Statement",
+        speaker: 1,
+        seconds: 60
+      },
+      {
+        title: "Opening Statement",
+        speaker: 2,
+        seconds: 60
+      },
+      {
+        title: "Rebuttal",
+        speaker: 1,
+        seconds: 60
+      },
+      {
+        title: "Rebuttal",
+        speaker: 2,
+        seconds: 60
+      },
+      {
+        title: "Cross Examination",
+        speaker: 1,
+        seconds: 180
+      },
+      {
+        title: "Cross Examination",
+        speaker: 2,
+        seconds: 180
+      },
+      {
+        title: "Closing Statements",
+        speaker: 1,
+        seconds: 60
+      },
+      {
+        title: "Closing Statements",
+        speaker: 2,
+        seconds: 60
+      },
+      {
+        title: "Voting",
+        seconds: 0
+      }]
     }
     console.log(this.state);
   }
@@ -59,8 +101,8 @@ class App extends React.Component {
                 topic={gameProps.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
-                timerLabel={this.state.timerLabel}
                 updateGame={this.handleChange.bind(this)}
+                phases={this.state.phases}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
                 />
@@ -80,6 +122,8 @@ class App extends React.Component {
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 timerLabel={this.state.timerLabel}
+                currentPhase={this.state.currentPhase}
+                phases={this.state.phases}
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}

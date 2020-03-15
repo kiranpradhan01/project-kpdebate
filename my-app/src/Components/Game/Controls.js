@@ -44,16 +44,16 @@ class Controls extends React.Component {
 
     render() {
         return (
-            <div class="text-center"> 
-                <div class="btn-group btn-group-lg" role="group" aria-label="">
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                            class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
+            <div className="text-center"> 
+                <div className="btn-group btn-group-lg" role="group" aria-label="">
+                    <button type="button" className="btn btn-outline-primary btn-secondary"><i
+                            className="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
                             aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                            class="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
+                    <button onClick={this.nextPhase} type="button" className="btn btn-outline-primary btn-secondary"><i
+                            className="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
                 </div>
 
-                <section class="buttonContainer">
+                <section className="buttonContainer">
                     <Button variant="primary" disabled={this.state.enable} onClick={()=> this.buttonClicked("enable")}>
                         Enable Voting
                     </Button>
@@ -66,6 +66,20 @@ class Controls extends React.Component {
                 </section>
             </div>
         )
+    }
+
+    /**
+     * moves on to the next phase of the debate
+     */
+    nextPhase() {
+        console.log("next!");
+    }
+
+    /**
+     * moves to the previous phase of the debate
+     */
+    prevPhase() {
+        console.log("previous!");
     }
 }
 

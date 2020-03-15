@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Scrollchor from 'react-scrollchor';
 /**
  * renders the website navbar.
  * static

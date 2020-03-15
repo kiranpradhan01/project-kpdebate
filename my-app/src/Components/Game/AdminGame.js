@@ -36,9 +36,13 @@ class AdminGame extends React.Component {
                         topic={this.props.topic} 
                     />
                     <Timer 
+                        player1={this.props.player1}
+                        player2={this.props.player2}
                         timerObject={this.props.timerObject}
                         timeLeft={this.props.timeLeft}
-                        timerLabel={this.props.timerLabel}
+                        phaseIndex={this.props.currentPhase}
+                        phases={this.props.phases}
+                        isAdminTimer={true}
                         updateGame={this.props.updateGame}
                     />
                     <Controls onClick={this.props.updateGame} />

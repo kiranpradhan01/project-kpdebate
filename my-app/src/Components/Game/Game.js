@@ -30,7 +30,9 @@ class Game extends React.Component {
                         <Timer 
                             timerObject={this.props.timerObject}
                             timeLeft={this.props.timeLeft}
-                            timerLabel={this.props.timerLabel}
+                            phaseIndex={this.props.currentPhase}
+                            phases={this.props.phases}
+                            isAdminGame={false}
                             updateGame={this.props.updateGame}/>
                         <Vote disableVoting={this.props.disableVoting}
                         displayWinner={this.props.displayWinner}/>

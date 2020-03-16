@@ -1,9 +1,10 @@
 import React from 'react';
 import { InputTopic } from './InputTopic.js';
 import { InputPlayers } from './InputPlayers.js';
+import LogIn from '../../Components/LogIn.js';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase/app';
 import '../../css/create-game.css';
+import firebase from 'firebase/app';
 
 class CreateGame extends React.Component {
     constructor(props) {
@@ -28,35 +29,49 @@ class CreateGame extends React.Component {
         this.sessionRef = firebase.database().ref('sessions/' + sessionID);
     }
 
+    componentDidMount() {
+        this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+            (user) => {
+                this.setState({
+                    isSignedIn: !!user
+                }, () => {
+                    this.props.updateGame("isSignedIn", !!user)
+                    // this.props.updateGame("uid", user.uid)
+                })
+
+            }
+        );
+    }
+
+    // why do we need to this again? should it be in here or App?
+    componentWillUnmount() {
+        this.unregisterAuthObserver();
+    }
+
     onChange = (key, value) => {
         this.setState({ [key]: value });
         this.props.updateGame(key, value);
     }
 
-    updateFirebase = () => {
-        this.sessionRef.set(
-            this.state
-            // "topic": this.state.topic,
-            // "player1": this.state.player1,
-            // "player2": this.state.player2,
-            // votes: 0
-        );
-        console.log("updated firebase");
-    }
-
     render() {
+        // must sign in to access admin game page
+        if (!this.state.isSignedIn) {
+            return (
+                <LogIn uiConfig ={this.props.uiConfig} fbAuth = {firebase.auth()}/>
+            );
+        } else {
         return(
             <div className="w-70 mx-auto">
                 <InputTopic onInput={this.onChange}/>
                 <InputPlayers onInput={this.onChange}/>
                 <section class="createGameContainer">
                     <div class="text-center">
-                        <Link to="/admin-game"><button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto" disabled={this.state.topic === "" || this.state.player1 === "" || this.state.player2 === ""}
-                        onClick={this.updateFirebase}>Begin Debate</button></Link>
+                        <Link to="/admin-game"><button id="btn-start" class="btn btn-primary btn-lg mt-2 mx-auto" disabled={this.state.topic === "" || this.state.player1 === "" || this.state.player2 === ""}>Begin Debate</button></Link>
                     </div>
                 </section>
             </div>
         )
+        }
     }
 }
 

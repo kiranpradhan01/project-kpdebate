@@ -6,7 +6,7 @@ class LogIn extends React.Component {
         return (
             <div id="login">
                 <h1>Please sign in</h1>
-                <p>To host a Debate.</p>
+                <p>to host a debate</p>
                 <StyledFirebaseAuth uiConfig={this.props.uiConfig} firebaseAuth={this.props.fbAuth}/>
             </div>
         )

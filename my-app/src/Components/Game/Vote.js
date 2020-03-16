@@ -12,11 +12,16 @@ class Vote extends React.Component {
         voted: false
       }
       console.log(this.state);
-      this.votesRef = firebase.database().ref('sessions/' + this.props.code);
+      // move to onClick when done testing
       // use once snapshot to get current vote #
   }
 
-  onClick = () => {
+  onClick = (key) => {
+    // firebase.database().ref('sessions/' + this.props.code + '/votes').once('value', (snapshot) => {
+    //     let num = snapshot.val();
+    //     console.log(num);
+    // })
+    console.log(key)
     // tally votes
     // player1 clicked +1
     // player2 clicked -1
@@ -29,7 +34,7 @@ class Vote extends React.Component {
             <p>Who won the debate?</p>
             <div className="modal-vote-row row">
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick}>
+                <Button variant="secondary" onClick={this.onClick("player1")}>
                     Kiran
                 </Button>
                 </div>
@@ -37,7 +42,7 @@ class Vote extends React.Component {
                     <p className="my-2">OR</p>
                 </div>
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick}>
+                <Button variant="secondary" onClick={this.onClick("player2")}>
                     Patrin
                 </Button>
                 </div>

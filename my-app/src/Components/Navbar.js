@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
       (user) => {

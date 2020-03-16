@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import WinnerModal from './WinnerModal.js';
 import firebase from 'firebase/app';
 
 class Vote extends React.Component {
@@ -77,20 +78,21 @@ class Vote extends React.Component {
 
     render(){
         return (
-        <section className="gameContainer">
-            <div className="text-center">
-                <Button variant="primary" size="lg" disabled={this.state.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
-                <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Final Vote</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {this.state.voted ? this.votingMessage() : this.modalBody()}
-                    </Modal.Body>
-                    <Modal.Footer></Modal.Footer>
-                </Modal>
-            </div>
-        </section>
+            <section className="gameContainer">
+                <div className="text-center">
+                    <Button variant="primary" size="lg" disabled={this.state.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
+                    <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Final Vote</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {this.state.voted ? this.votingMessage() : this.modalBody()}
+                        </Modal.Body>
+                        <Modal.Footer></Modal.Footer>
+                    </Modal>
+                    <WinnerModal show={this.props.displayWinner} winner={this.props.code}/>
+                </div>
+            </section>
         )
     }
 }

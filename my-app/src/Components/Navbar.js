@@ -29,7 +29,7 @@ class Navbar extends React.Component {
   signInOrOut() {
     if (this.props.isSignedIn === true) {
       return (
-        <span onClick= {() => firebase.auth().signOut()}><b>Sign Out</b></span>
+        <span onClick= {() => firebase.auth().signOut()}><strong>Sign Out</strong></span>
       )
     
     } else {

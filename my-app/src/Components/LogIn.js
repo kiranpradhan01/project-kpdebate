@@ -4,9 +4,9 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 class LogIn extends React.Component {
     render() {
         return (
-            <div>
-                <h1>My App</h1>
-                <p>Please sign in</p>
+            <div id="login">
+                <h1>Please sign in</h1>
+                <p>To host a Debate.</p>
                 <StyledFirebaseAuth uiConfig={this.props.uiConfig} firebaseAuth={this.props.fbAuth}/>
             </div>
         )

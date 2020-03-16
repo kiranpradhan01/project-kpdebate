@@ -42,7 +42,7 @@ class CreateGame extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="w-70 mx-auto">
                 <InputTopic onInput={this.onChange}/>
                 <InputPlayers onInput={this.onChange}/>
                 <section class="createGameContainer">

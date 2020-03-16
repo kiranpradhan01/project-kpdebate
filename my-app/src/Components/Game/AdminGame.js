@@ -64,6 +64,7 @@ class AdminGame extends React.Component {
                         topic={this.props.topic} 
                     />
                     <Timer 
+                        sessionID={this.props.sessionID}
                         player1={this.props.player1}
                         player2={this.props.player2}
                         timerObject={this.props.timerObject}

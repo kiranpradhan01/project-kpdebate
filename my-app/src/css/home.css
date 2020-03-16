@@ -38,9 +38,10 @@ nav {
   border-bottom: solid #efefef 1px;
 }
 
-nav a:hover {
+nav a:hover, nav span {
   color: black;
-  text-decoration: none;
+  text-decoration: none; 
+  cursor: pointer;
 }
 
 /** Title Card */
@@ -124,9 +125,10 @@ h3 {
 footer {
   background-color: #ffae27;
   padding: 5px;
-  margin-top: 5rem;
+  margin-top: 4rem;
   border-top: solid #F9C784 1px;
 
+  /* position: fixed; */
   left:0;
   bottom:0;
   right:0;

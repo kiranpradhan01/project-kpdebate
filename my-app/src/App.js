@@ -4,7 +4,8 @@ import Footer from './Components/Footer.js';
 import Home from './Components/Home/Home.js';
 import CreateGame from './Components/CreateGame/CreateGame.js';
 import AdminGame from './Components/Game/AdminGame.js';
-import Game from './Components/Game/Game.js'
+import Game from './Components/Game/Game.js';
+import LogIn from './Components/LogIn.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +13,6 @@ import {
 } from 'react-router-dom'; 
 
 import firebase from 'firebase/app';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import 'firebase/auth';
 import 'firebase/database';
 
@@ -29,6 +29,17 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: 'popup',
+  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+  signInSuccessUrl: '/signedIn',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID
+  ]
+};
+
 // TODO: Whenever state of the current game changes in Firebase, update this.state
 class App extends React.Component {
   constructor(props) {
@@ -41,11 +52,13 @@ class App extends React.Component {
       // topic: "Is cereal a soup?",
       // currentPhase: phases[0],
       // currentSpeaker: 0,
-      // timerObject: null
+      // timerObject: null,
+      // uid: 
       enable: false,
       displayWinner: false,
       timerLabel: "Patrin's Opening Statement", // should probably be null at first
-      timeLeft: 60
+      timeLeft: 60,
+      isSignedIn: false // local sign-in state
     }
     console.log(this.state);
   }
@@ -68,7 +81,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Navbar />  
+          <Navbar isSignedIn={this.state.isSignedIn} 
+            updateGame={this.handleChange.bind(this)}/>  
           <Switch>
             <Route path="/game" component={Game}> 
               <Game 
@@ -102,7 +116,11 @@ class App extends React.Component {
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
+                uiConfig={uiConfig}
                 />
+            </Route>
+            <Route path="/sign-in">
+              <LogIn uiConfig ={uiConfig} fbAuth = {firebase.auth()}/>                         
             </Route>
             <Route path="/" component={Home}>
               <Home updateGame={this.handleChange.bind(this)}/>

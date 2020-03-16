@@ -1,12 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Scrollchor from 'react-scrollchor';
-/**
- * renders the website navbar.
- * static
- * used on all pages
- */
+import firebase from 'firebase/app';
+
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+      (user) => {
+        this.setState({
+          isSignedIn: !!user
+        }, () => {
+          this.props.updateGame("isSignedIn", !!user)
+          // this.props.updateGame("uid", user.uid)
+        })
+
+      }
+    );
+  }
+  
+  // why do we need to this again? should it be in here or App?
+  componentWillUnmount() {
+    this.unregisterAuthObserver();
+  }
+
+  signInOrOut() {
+    if (this.props.isSignedIn === true) {
+      return (
+        <span onClick= {() => firebase.auth().signOut()}><b>Sign Out</b></span>
+      )
+    
+    } else {
+      return (
+        <Link to="/sign-in">Sign In</Link>
+      )
+    }
+  }
+
   render() {
     return(
       <nav className="navbar fixed-top navbar-light">
@@ -18,9 +50,8 @@ class Navbar extends React.Component {
         </div>
         <div id="nav-links">
           <Link to="/">Home</Link>
-          {/* <Scrollchor to="/#how-to-play">How to Play</Scrollchor>*/}
-          <Link to="/#how-to-play">How to Play</Link>
           <Link to="/create-game">Create New Game</Link>
+          {this.signInOrOut()}
         </div>
       </nav>
     );

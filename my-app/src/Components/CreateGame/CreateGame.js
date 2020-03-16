@@ -2,6 +2,7 @@ import React from 'react';
 import { InputTopic } from './InputTopic.js';
 import { InputPlayers } from './InputPlayers.js';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/app';
 import '../../css/create-game.css';
 
 class CreateGame extends React.Component {
@@ -12,10 +13,18 @@ class CreateGame extends React.Component {
             player1: false,
             player2: false
         }
+        let sessionsRef = firebase.database().ref('sessions');
         // generate and lift up random sessionID
+        /* TODO: check if randomID is not so random and already exists in firebase */
         let sessionID = Math.floor(1000 + Math.random() * 9000);
         this.props.updateGame("sessionID", sessionID);
+        this.sessionRef = firebase.database().ref('sessions/' + sessionID);
     }
+
+    // firebase testing
+    // 
+    // let session = firebase.database().ref('sessions/2222');
+    // session.set({"topic": "cats or dogs", "player1": "Kiran", "player2": "Patrin"});
     
     onChange = (key, value) => {
         if (value !== "") {
@@ -28,6 +37,7 @@ class CreateGame extends React.Component {
             });
         }
         this.props.updateGame(key, value);
+        this.sessionRef.set({[key]: value});
     }
 
     render() {

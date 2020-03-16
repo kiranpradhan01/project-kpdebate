@@ -86,8 +86,6 @@ const phases = [{
     seconds: 0
   }];
 
-// ! firebase won't update if sessionID is empty.
-// ! test that the new version of phase, in a CONSTANT is still working
 class App extends React.Component {
   constructor(props) {
     super(props);

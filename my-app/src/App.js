@@ -107,6 +107,11 @@ class App extends React.Component {
     }
   }
 
+  /**
+   * callback function provided to subcomponents.
+   * updates App's state for various changes made.
+   * Also updates firebase to maintain a decentralized connection.
+   */
   handleChange = (key, value) => {
     let stateChanges = {
       [key]: value

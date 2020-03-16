@@ -15,29 +15,64 @@ import '../../css/game.css';
  * @prop {object} timerObject - the object representing the timer.
  * @prop {number} timeLeft - number of seconds left in the round.
  * @prop {string} timerLabel - the message labeling the current phase
+ * @prop {object} phases - const object of the phases of the debate.
  * @prop {function} updateGame - callback function to change the state of App
  */
 class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sessionIsGood: false
+            sessionIsGood: false,
+            firebaseListener: null
+
+            /* The following are fields retrieved from Firebase:
+                player1
+                player2
+                topic
+                timerObject?
+                timeLeft
+                currentPhase
+                disableVoting
+                displayWinner
+            */
         } 
     }
     
-    // check if sessionID entered exists in firebase
+    /**
+     * establish a firebase connection to init the page, as well as
+     * a timer that can update the page every second using firebase information
+     */
     componentDidMount() {
-        firebase.database().ref('sessions/' + this.props.sessionID).once('value', (snapshot) => {
-            if (snapshot.exists()) {
-                let sesh = snapshot.val();
-                console.log(sesh);
-                this.setState({
-                    player1: sesh.player1,
-                    player2: sesh.player2,
-                    topic: sesh.topic, 
-                    sessionIsGood: true});
-            }
-        })
+        
+        // set up a timer that updates App's state every 1 second with firebase data about
+        // the game with session=this.props.sessionID
+        // ? wait theres totally an event listener for whenever Firebase info changes
+        this.state.firebaseListener = setInterval(() => {
+            firebase.database().ref('sessions/' + this.props.sessionID).once('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    let sesh = snapshot.val();
+                    console.log(sesh);
+                    this.setState({
+                        player1: sesh.player1,
+                        player2: sesh.player2,
+                        topic: sesh.topic, 
+                        timeLeft: sesh.timeLeft,
+                        currentPhase: sesh.currentPhase,
+                        disableVoting: !sesh.enable,
+                        displayWinner: sesh.displayWinner,
+                        sessionIsGood: true});
+                }
+            });
+        }, 300);
+    }
+
+    /**
+     * removes the timer listening for Firebase changes.
+     */
+    componentWillUnmount() {
+        // remove the timer/event listener that updates based on Firebase changes
+        clearInterval(this.state.firebaseListener);
+        this.state.firebaseListener = null;
     }
 
     render() {
@@ -52,16 +87,16 @@ class Game extends React.Component {
                         <Timer 
                             player1={this.state.player1}
                             player2={this.state.player2}
-                            timerObject={this.props.timerObject}
-                            timeLeft={this.props.timeLeft}
-                            phaseIndex={this.props.currentPhase}
+                            timerObject={this.props.timerObject} // useless
+                            timeLeft={this.state.timeLeft}
+                            phaseIndex={this.state.currentPhase}
                             phases={this.props.phases}
                             isAdminTimer={false}
                             updateGame={this.props.updateGame}
                         />
                         <Vote 
-                            disableVoting={this.props.disableVoting}
-                            displayWinner={this.props.displayWinner}
+                            disableVoting={this.state.disableVoting}
+                            displayWinner={this.state.displayWinner}
                             code={this.props.sessionID}
                         />
                         <AudienceJoin code={this.props.sessionID}/>
@@ -70,10 +105,10 @@ class Game extends React.Component {
         } else {
             return(
                 <div>
-                    <h2 id="error">Session does not yet exist.</h2>
+                    <h2 id="error">Error. This session does not yet exist.</h2>
                 </div>
             );
-        }        
+        }     
     }
 }
 

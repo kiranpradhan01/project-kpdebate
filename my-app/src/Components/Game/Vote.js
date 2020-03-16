@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import firebase from 'firebase/app';
 
 class Vote extends React.Component {
     constructor(props) {
@@ -10,11 +11,16 @@ class Vote extends React.Component {
         disableVoting: this.props.disableVoting,
         voted: false
       }
-      console.log(this.state)
+      console.log(this.state);
+      this.votesRef = firebase.database().ref('sessions/' + this.props.code);
+      // use once snapshot to get current vote #
   }
 
   onClick = () => {
-      this.setState({voted: true});
+    // tally votes
+    // player1 clicked +1
+    // player2 clicked -1
+    this.setState({voted: true});
   }
 
   modalBody() {

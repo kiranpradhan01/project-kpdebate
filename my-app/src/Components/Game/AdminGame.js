@@ -45,7 +45,11 @@ class AdminGame extends React.Component {
                         isAdminTimer={true}
                         updateGame={this.props.updateGame}
                     />
-                    <Controls onClick={this.props.updateGame} />
+                    <Controls 
+                        phaseIndex={this.props.currentPhase}
+                        phases={this.props.phases}
+                        updateGame={this.props.updateGame} 
+                    />
                     <AudienceJoin code={this.props.sessionID} />
                 </div>
             );

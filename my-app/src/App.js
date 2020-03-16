@@ -40,10 +40,10 @@ class App extends React.Component {
       // topic: "Is cereal a soup?",
       // currentSpeaker: 0,
       // timerObject: null
-      currentPhase: 8,
+      currentPhase: 0,
       enable: false,
       displayWinner: false,
-      timeLeft: 0,
+      timeLeft: 60,
       phases: [{
         title: "Opening Statement",
         speaker: 1,
@@ -97,7 +97,6 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    console.log(this.state);
   }
 
   render() {
@@ -120,8 +119,9 @@ class App extends React.Component {
                 topic={gameProps.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
-                updateGame={this.handleChange.bind(this)}
+                currentPhase={this.state.currentPhase}
                 phases={this.state.phases}
+                updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
                 />
@@ -140,7 +140,6 @@ class App extends React.Component {
                 topic={gameProps.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
-                timerLabel={this.state.timerLabel}
                 currentPhase={this.state.currentPhase}
                 phases={this.state.phases}
                 updateGame={this.handleChange.bind(this)}

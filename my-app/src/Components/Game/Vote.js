@@ -3,6 +3,14 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import firebase from 'firebase/app';
 
+/**
+ * @prop {string} sessionID - the ID of the session being accessed
+ * @prop {number} votes - the current sum of votes toward the speakers.
+ * @prop {string} player1 - name of the first player
+ * @prop {string} player2 - name of the second player
+ * @prop {boolean} disableVoting - determines whether the vote button should currently be disabled
+ * @prop {boolean} displayWinner - determines whether the winner should be disclosed.
+ */
 class Vote extends React.Component {
     constructor(props) {
       super(props);
@@ -12,20 +20,34 @@ class Vote extends React.Component {
         voted: false
       }
       console.log(this.state);
-      // move to onClick when done testing
+      console.log("votes: " + this.props.votes);
+      // move to castVote when done testing
       // use once snapshot to get current vote #
   }
 
-  onClick = (key) => {
-    // firebase.database().ref('sessions/' + this.props.code + '/votes').once('value', (snapshot) => {
-    //     let num = snapshot.val();
-    //     console.log(num);
-    // })
-    console.log(key)
-    // tally votes
-    // player1 clicked +1
-    // player2 clicked -1
-    this.setState({voted: true});
+  /**
+   * casts this particular audience member's vote.
+   * the if/else wrapper in this function protects against people manually editing
+   * the HTML to vote when voting is still disabled.
+   * @param {string} votedPlayer - "player1" if the button to vote for player 1 was clicked. 
+   */
+  castVote (votedPlayer) {
+    let tally = (votedPlayer === "player1" ? 1 : -1); // calculate who I voted for
+    if (!this.disableVoting) {
+        this.setState({voted: true}); // locks you out from voting again
+        this.props.updateGame("votes", this.props.votes + tally); // might not be necessary
+
+        // reference the "votes" key in the current session
+        // TODO: How do I specifically update an endpoint, like "votes"? I don't want to change anything else in Firebase
+        let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
+        let voteSum = this.props.votes + tally;
+        sessionRef.set({
+            votes: voteSum
+        }).catch(err => console.log(err));
+    } else {
+        console.log("debug: uh oh! looks like you voted when the button should be disabled");
+    }
+    
   }
 
   modalBody() {
@@ -34,16 +56,16 @@ class Vote extends React.Component {
             <p>Who won the debate?</p>
             <div className="modal-vote-row row">
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick("player1")}>
-                    Kiran
+                <Button variant="secondary" onClick={() => this.castVote("player1")}>
+                    {this.props.player1}
                 </Button>
                 </div>
                 <div className="col">
                     <p className="my-2">OR</p>
                 </div>
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick("player2")}>
-                    Patrin
+                <Button variant="secondary" onClick={() => this.castVote("player2")}>
+                {this.props.player2}
                 </Button>
                 </div>
             </div>

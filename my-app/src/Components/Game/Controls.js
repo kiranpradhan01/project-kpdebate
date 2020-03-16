@@ -87,6 +87,12 @@ class Controls extends React.Component {
         } else {
             // do nothing. edge case: we are already at the last phase
         }
+
+        // shouldn't run ever, but this is a sanity check in case the currentPhase
+        // ends up being bigger than the length of Phases
+        if (this.props.phaseIndex > this.props.phases.length - 1) {
+            this.props.updateGame("currentPhase", this.props.phases.length - 1);
+        }
     }
 
     /**

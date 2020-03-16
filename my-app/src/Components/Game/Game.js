@@ -84,9 +84,13 @@ class Game extends React.Component {
                             updateGame={this.props.updateGame}
                         />
                         <Vote 
+                            player1={this.state.player1}
+                            player2={this.state.player2}
+                            votes={this.props.votes}
+                            sessionID={this.props.sessionID}
                             disableVoting={this.state.disableVoting}
                             displayWinner={this.state.displayWinner}
-                            code={this.props.sessionID}
+                            updateGame={this.props.updateGame}
                         />
                         <AudienceJoin code={this.props.sessionID}/>
                     </div>

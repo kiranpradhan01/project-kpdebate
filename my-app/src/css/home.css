@@ -130,6 +130,10 @@ h3 {
   text-decoration: underline;
 }
 
+.extra-space {
+  margin-bottom: 400px;
+}
+
 /** Footer */
 footer {
   background-color: #ffae27;

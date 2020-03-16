@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b9e729fd6b34781da52cec7a8c277378",
+    "revision": "f25b55a2423bacab1ba88c80b54f0aeb",
     "url": "/project-kpdebate/index.html"
   },
   {
-    "revision": "dcf9de8df8bed2b2dc8f",
+    "revision": "5ae4366b9cca00d42a83",
     "url": "/project-kpdebate/static/css/main.9cb49164.chunk.css"
   },
   {
-    "revision": "37fa008f56e022634b88",
-    "url": "/project-kpdebate/static/js/2.b59f7c31.chunk.js"
+    "revision": "88c725a2fbdac8e0e43d",
+    "url": "/project-kpdebate/static/js/2.35781f67.chunk.js"
   },
   {
     "revision": "251a0311a1a98b6222e36dcdd0d8ed4d",
-    "url": "/project-kpdebate/static/js/2.b59f7c31.chunk.js.LICENSE.txt"
+    "url": "/project-kpdebate/static/js/2.35781f67.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dcf9de8df8bed2b2dc8f",
-    "url": "/project-kpdebate/static/js/main.2d6b57bc.chunk.js"
+    "revision": "5ae4366b9cca00d42a83",
+    "url": "/project-kpdebate/static/js/main.ca2b0e2e.chunk.js"
   },
   {
     "revision": "e01d9acbe06853859f06",

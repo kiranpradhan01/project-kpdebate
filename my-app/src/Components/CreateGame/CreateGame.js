@@ -57,7 +57,7 @@ class CreateGame extends React.Component {
         // must sign in to access admin game page
         if (!this.state.isSignedIn) {
             return (
-                <LogIn uiConfig ={this.props.uiConfig} fbAuth = {firebase.auth()}/>
+                <LogIn uiConfig={this.props.uiConfig} fbAuth={firebase.auth()}/>
             );
         } else {
         return(

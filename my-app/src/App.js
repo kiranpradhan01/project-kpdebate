@@ -41,7 +41,53 @@ const uiConfig = {
   ]
 };
 
-// TODO: Whenever state of the current game changes in Firebase, update this.state
+const phases = [{
+    title: "Opening Statement",
+    speaker: 1,
+    seconds: 60
+  },
+  {
+    title: "Opening Statement",
+    speaker: 2,
+    seconds: 60
+  },
+  {
+    title: "Rebuttal",
+    speaker: 1,
+    seconds: 60
+  },
+  {
+    title: "Rebuttal",
+    speaker: 2,
+    seconds: 60
+  },
+  {
+    title: "Cross Examination",
+    speaker: 1,
+    seconds: 180
+  },
+  {
+    title: "Cross Examination",
+    speaker: 2,
+    seconds: 180
+  },
+  {
+    title: "Closing Statements",
+    speaker: 1,
+    seconds: 60
+  },
+  {
+    title: "Closing Statements",
+    speaker: 2,
+    seconds: 60
+  },
+  {
+    title: "Voting",
+    seconds: 0
+  }];
+
+// ! firebase won't update if sessionID is empty.
+// ! test that the new version of phase, in a CONSTANT is still working
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -57,51 +103,9 @@ class App extends React.Component {
       displayWinner: false,
       isSignedIn: false,
       timeLeft: 60,
-      phases: [{
-        title: "Opening Statement",
-        speaker: 1,
-        seconds: 60
-      },
-      {
-        title: "Opening Statement",
-        speaker: 2,
-        seconds: 60
-      },
-      {
-        title: "Rebuttal",
-        speaker: 1,
-        seconds: 60
-      },
-      {
-        title: "Rebuttal",
-        speaker: 2,
-        seconds: 60
-      },
-      {
-        title: "Cross Examination",
-        speaker: 1,
-        seconds: 180
-      },
-      {
-        title: "Cross Examination",
-        speaker: 2,
-        seconds: 180
-      },
-      {
-        title: "Closing Statements",
-        speaker: 1,
-        seconds: 60
-      },
-      {
-        title: "Closing Statements",
-        speaker: 2,
-        seconds: 60
-      },
-      {
-        title: "Voting",
-        seconds: 0
-      }]
+      votes: 0
     }
+    console.log(this.state.sessionID);
   }
 
   handleChange = (key, value) => {
@@ -109,7 +113,11 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    // this.sessionRef = firebase.database().ref('sessions/' + sessionID);
+
+    if (this.state.sessionID) {
+      this.sessionRef = firebase.database().ref('sessions/' + this.state.sessionID);
+      this.sessionRef.set(this.state);
+    }
   }
 
   render() {
@@ -128,7 +136,7 @@ class App extends React.Component {
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 currentPhase={this.state.currentPhase}
-                phases={this.state.phases}
+                phases={phases}
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
@@ -146,7 +154,7 @@ class App extends React.Component {
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 currentPhase={this.state.currentPhase}
-                phases={this.state.phases}
+                phases={phases}
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}

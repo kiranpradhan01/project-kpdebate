@@ -135,16 +135,8 @@ class App extends React.Component {
             <Route path="/game" component={Game}> 
               <Game 
                 sessionID={this.state.sessionID}
-                player1={this.state.player1} 
-                player2={this.state.player2} 
-                topic={this.state.topic} 
-                timerObject={this.state.timerObject}
-                timeLeft={this.state.timeLeft}
-                currentPhase={this.state.currentPhase}
                 phases={phases}
                 updateGame={this.handleChange.bind(this)}
-                disableVoting={!this.state.enable}
-                displayWinner={this.state.displayWinner}
                 />
             </Route>
             <Route path="/create-game" component={CreateGame}>

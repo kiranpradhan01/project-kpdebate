@@ -57,6 +57,7 @@ class AdminGame extends React.Component {
                 </div>
             );
         }
+        
         if (this.props.sessionID && this.props.player1 && 
             this.props.player2 && this.props.topic) {
             return(

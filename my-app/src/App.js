@@ -101,7 +101,6 @@ class App extends React.Component {
         seconds: 0
       }]
     }
-    console.log(this.state);
   }
 
   handleChange = (key, value) => {
@@ -109,15 +108,10 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
+    console.log(this.state);
   }
 
   render() {
-    let gameProps = { // ! This is hardcoded content to make sure the `Game` page is working
-      code: 1234,
-      p1: "Patrin",
-      p2: "Kiran",
-      topic: "Qdoba is better than Chipotle"
-    };
     return (
       <div className="App">
         <Router>
@@ -126,10 +120,10 @@ class App extends React.Component {
           <Switch>
             <Route path="/game" component={Game}> 
               <Game 
-                sessionID={gameProps.code}
-                player1={gameProps.p1} 
-                player2={gameProps.p2} 
-                topic={gameProps.topic} 
+                sessionID={this.state.sessionID}
+                player1={this.state.player1} 
+                player2={this.state.player2} 
+                topic={this.state.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 currentPhase={this.state.currentPhase}
@@ -139,18 +133,15 @@ class App extends React.Component {
                 displayWinner={this.state.displayWinner}
                 />
             </Route>
-            <Route path="/#how-to-play">
-              {/* how do we route to a lower part of the page */}
-            </Route>
             <Route path="/create-game" component={CreateGame}>
               <CreateGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/admin-game" component={Game}> 
               <AdminGame 
-                sessionID={gameProps.code}
-                player1={gameProps.p1} 
-                player2={gameProps.p2} 
-                topic={gameProps.topic} 
+                sessionID={this.state.sessionID}
+                player1={this.state.player1} 
+                player2={this.state.player2} 
+                topic={this.state.topic} 
                 timerObject={this.state.timerObject}
                 timeLeft={this.state.timeLeft}
                 currentPhase={this.state.currentPhase}

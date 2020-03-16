@@ -18,12 +18,13 @@ class CreateGame extends React.Component {
         let sessionID = Math.floor(1000 + Math.random() * 9000);
         let existingSesssions = firebase.database().ref('sessions');
         existingSesssions.on('value', (snapshot) => {
-            let sesh = snapshot.val();
-            let ids = Object.keys(sesh);
-            while (ids.includes(sessionID)) {
-                sessionID = Math.floor(1000 + Math.random() * 9000);
+            if (snapshot.exists()) {
+                let sesh = snapshot.val();
+                let ids = Object.keys(sesh);
+                while (ids.includes(sessionID)) { // to avoid duplicate ids
+                    sessionID = Math.floor(1000 + Math.random() * 9000);
+                }
             }
-            console.log(sesh);
         })
         this.props.updateGame("sessionID", sessionID);
         this.sessionRef = firebase.database().ref('sessions/' + sessionID);
@@ -36,14 +37,11 @@ class CreateGame extends React.Component {
                     isSignedIn: !!user
                 }, () => {
                     this.props.updateGame("isSignedIn", !!user)
-                    // this.props.updateGame("uid", user.uid)
                 })
-
             }
         );
     }
 
-    // why do we need to this again? should it be in here or App?
     componentWillUnmount() {
         this.unregisterAuthObserver();
     }
@@ -54,7 +52,7 @@ class CreateGame extends React.Component {
     }
 
     render() {
-        // must sign in to access admin game page
+        // must sign in to host a debate
         if (!this.state.isSignedIn) {
             return (
                 <LogIn uiConfig={this.props.uiConfig} fbAuth={firebase.auth()}/>

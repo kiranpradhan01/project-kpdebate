@@ -8,18 +8,13 @@ class GetTopicModal extends React.Component {
       super(props);
       this.state = {
         nestedModal: false,
-        category: "Anything",
-        topic1: this.props.topic1,
-        topic2: this.props.topic2
+        category: "Anything"
       }
-      console.log(this.state.topic1 + ',' + this.state.topic2);
-      console.log('modal' + this.props.data);
   }
 
   onCategorySelected = (event, value) => {
     this.setState({category: event.target.value});
     this.props.onCategorySelection(event, value);
-    console.log("category has been selected");
   }
 
   render() {
@@ -45,12 +40,12 @@ class GetTopicModal extends React.Component {
               <Modal.Title>Debate about:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Button variant="secondary" onClick={(event, value) => this.props.handleClose(this.state.topic1)}>
-                  {this.state.topic1}
+                <Button variant="secondary" onClick={() => this.props.handleClose(this.props.topic1)}>
+                  {this.props.topic1}
                 </Button>
                 <p class="my-2">OR</p>
-                <Button variant="secondary" onClick={(event, value) => this.props.handleClose(this.state.topic2)}>
-                  {this.state.topic2}
+                <Button variant="secondary" onClick={() => this.props.handleClose(this.props.topic2)}>
+                  {this.props.topic2}
                 </Button>
             </Modal.Body>
             <Modal.Footer>

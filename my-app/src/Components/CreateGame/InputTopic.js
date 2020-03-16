@@ -9,14 +9,13 @@ export class InputTopic extends React.Component {
         super(props);
         this.state = {
             data: [],
-            modal: false, // has no knowledge of nested modal
+            modal: false,
             closeAll: false,
-            category: "Anything", // how to send category up to input topic from gettopicmodal?
+            category: "Anything",
             selectedTopic: "",
             topic1: "Is Adidas better than Nike?",
             topic2: "Is cereal a soup?" // start with default topics
         }
-        console.log(this.state)
     }
 
     componentDidMount() {
@@ -24,7 +23,6 @@ export class InputTopic extends React.Component {
             this.setState({
                 data: data
             });
-            console.log(this.state.data)
         });
     }
 
@@ -38,8 +36,6 @@ export class InputTopic extends React.Component {
             modal: false
         };
         this.setState(stateChanges);
-        // bind selected topic to the topic textbox on the create-game page
-
     }
 
     generateCategories() {
@@ -57,9 +53,8 @@ export class InputTopic extends React.Component {
 
     // after a category is selected in GetTopicModal,
     // update state and generate 2 random topics from category
-    onCategorySelection = (event, value) => {
+    onCategorySelection = (event) => {
         let selected = event.target.value
-        console.log('set category to', selected);
         // after a category is selected, generate 2 random topics
         let categoryTopics = [];
         // evaluate what subcategory to "query" from
@@ -68,29 +63,22 @@ export class InputTopic extends React.Component {
                 let topic = this.state.data[i];
                 if (topic.category === selected) {
                     categoryTopics.push(topic);
-                    console.log(topic);
                 }
             }
         } else {
             categoryTopics = this.state.data;
-            console.log('anything data');
         }
         // randomly select 2 topics from the described category
-        // let twoTopics = []
         let firstTopic = Math.floor((Math.random() * categoryTopics.length));
         let secondTopic = null;
-        this.setState({"topic1": categoryTopics[firstTopic]});
-        // twoTopics.push(categoryTopics[firstTopic]);
-        console.log(categoryTopics)
-        console.log('topic1, ' + firstTopic);
         while (secondTopic === null || secondTopic === firstTopic) { // to avoid duplicates
             secondTopic = Math.floor((Math.random() * categoryTopics.length));
         }
-        this.setState({"topic2": categoryTopics[secondTopic]});
-        // twoTopics.push(categoryTopics[secondTopic]);
-        console.log('topic2, ' + secondTopic);
-        // return twoTopics;
-        this.setState({category: selected}); // update state with category selected
+        this.setState({
+            category: selected,
+            "topic2": categoryTopics[secondTopic].topic,
+            "topic1": categoryTopics[firstTopic].topic 
+        });
     }
 
     onInput = (input) => {

@@ -34,7 +34,7 @@ const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/signedIn',
+  signInSuccessUrl: '/',
   // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
@@ -105,17 +105,13 @@ class App extends React.Component {
     }
   }
 
-  /**
-   * callback function provided to subcomponents.
-   * updates App's state for various changes made.
-   * Also updates firebase to maintain a decentralized connection.
-   */
+  // callback function provided to all components
+  // updates state and firebase to maintain a decentralized connection
   handleChange = (key, value) => {
     let stateChanges = {
       [key]: value
     };
     this.setState(stateChanges);
-
     if (this.state.sessionID) {
       this.sessionRef = firebase.database().ref('sessions/' + this.state.sessionID);
       this.sessionRef.set(this.state);

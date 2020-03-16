@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogIn from './LogIn.js';
 import firebase from 'firebase/app';
 
 class Navbar extends React.Component {

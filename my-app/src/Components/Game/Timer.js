@@ -15,7 +15,7 @@ import '../../css/game.css';
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
+        // this.sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
         this.startCountdown();
     }
 
@@ -80,7 +80,7 @@ class Timer extends React.Component {
     updateFirebase() {
         // hmm shouldn't this be declared in App
     }
-    
+
     /**
      * If seconds is greater than 60, returns it in a minutes-converted format.
      * Also, if seconds=0, converts the message to "Time's Up!"

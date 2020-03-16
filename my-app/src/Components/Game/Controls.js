@@ -28,22 +28,22 @@ class Controls extends React.Component {
                 "winner": true
             };
             // lift up voting state to App
-            this.props.onClick("enable", true); // enable audience voting
+            this.props.updateGame("enable", true); // enable audience voting
         } else if (key === "disable") {
             stateChanges = {
                 "enable": false,
                 "disable": true,
                 "winner": false
             };
-            this.props.onClick("enable", false); // disable audience voting
+            this.props.updateGame("enable", false); // disable audience voting
         } else {
             stateChanges = {
                 "enable": true,
                 "disable": true,
                 "winner": true
             };
-            this.props.onClick("enable", false); // disable audience voting
-            this.props.onClick("displayWinner", true); // display winner to audience
+            this.props.updateGame("enable", false); // disable audience voting
+            this.props.updateGame("displayWinner", true); // display winner to audience
         }
         this.setState(stateChanges);
     }

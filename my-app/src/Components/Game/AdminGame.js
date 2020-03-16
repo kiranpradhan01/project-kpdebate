@@ -3,6 +3,7 @@ import AudienceJoin from './AudienceJoin.js';
 import Scoreboard from './Scoreboard.js';
 import Timer from './Timer.js';
 import Controls from './Controls';
+import LogIn from '../../Components/LogIn.js';
 import '../../css/game.css';
 
 import firebase from 'firebase/app';
@@ -49,12 +50,7 @@ class AdminGame extends React.Component {
         // must sign in to access admin game page
         if (!this.state.isSignedIn) {
             return (
-                <div>
-                <h1>DebateNOW</h1>
-                <br></br>
-                <p>Please sign-in:</p>
-                <StyledFirebaseAuth uiConfig={this.props.uiConfig} firebaseAuth={firebase.auth()}/>
-                </div>
+                <LogIn uiConfig ={this.props.uiConfig} fbAuth = {firebase.auth()}/>
             );
         }
         

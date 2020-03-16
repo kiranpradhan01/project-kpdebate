@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/project-kpdebate/static/css/main.9cb49164.chunk.css",
-    "main.js": "/project-kpdebate/static/js/main.fdc004a9.chunk.js",
-    "main.js.map": "/project-kpdebate/static/js/main.fdc004a9.chunk.js.map",
+    "main.js": "/project-kpdebate/static/js/main.2d6b57bc.chunk.js",
+    "main.js.map": "/project-kpdebate/static/js/main.2d6b57bc.chunk.js.map",
     "runtime-main.js": "/project-kpdebate/static/js/runtime-main.762c1fd0.js",
     "runtime-main.js.map": "/project-kpdebate/static/js/runtime-main.762c1fd0.js.map",
     "static/js/2.b59f7c31.chunk.js": "/project-kpdebate/static/js/2.b59f7c31.chunk.js",
     "static/js/2.b59f7c31.chunk.js.map": "/project-kpdebate/static/js/2.b59f7c31.chunk.js.map",
     "index.html": "/project-kpdebate/index.html",
-    "precache-manifest.3e41ccdfa213adb6fa3097ea6942b24c.js": "/project-kpdebate/precache-manifest.3e41ccdfa213adb6fa3097ea6942b24c.js",
+    "precache-manifest.b2506b30064028d831267c9ccf8f16c3.js": "/project-kpdebate/precache-manifest.b2506b30064028d831267c9ccf8f16c3.js",
     "service-worker.js": "/project-kpdebate/service-worker.js",
     "static/css/main.9cb49164.chunk.css.map": "/project-kpdebate/static/css/main.9cb49164.chunk.css.map",
     "static/js/2.b59f7c31.chunk.js.LICENSE.txt": "/project-kpdebate/static/js/2.b59f7c31.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.762c1fd0.js",
     "static/js/2.b59f7c31.chunk.js",
     "static/css/main.9cb49164.chunk.css",
-    "static/js/main.fdc004a9.chunk.js"
+    "static/js/main.2d6b57bc.chunk.js"
   ]
 }

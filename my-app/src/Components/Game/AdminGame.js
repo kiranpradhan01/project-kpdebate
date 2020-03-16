@@ -3,10 +3,7 @@ import AudienceJoin from './AudienceJoin.js';
 import Scoreboard from './Scoreboard.js';
 import Timer from './Timer.js';
 import Controls from './Controls';
-import LogIn from '../../Components/LogIn.js';
 import '../../css/game.css';
-
-import firebase from 'firebase/app';
 
 /**
  * manages the game's scoreboard and timer.
@@ -28,31 +25,7 @@ class AdminGame extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
-            (user) => {
-                this.setState({isSignedIn: !!user}, () => {
-                    this.props.updateGame("isSignedIn", !!user)
-                    // this.props.updateGame("uid", user.uid)
-                })
-
-            }
-        );
-    }
-
-    // why do we need to this again? should it be in here or App?
-    componentWillUnmount() {
-        this.unregisterAuthObserver();
-    }
-
     render() {
-        // must sign in to access admin game page
-        if (!this.state.isSignedIn) {
-            return (
-                <LogIn uiConfig ={this.props.uiConfig} fbAuth = {firebase.auth()}/>
-            );
-        }
-        
         if (this.props.sessionID && this.props.player1 && 
             this.props.player2 && this.props.topic) {
             return(

@@ -134,23 +134,12 @@ class App extends React.Component {
             <Route path="/game" component={Game}> 
               <Game 
                 sessionID={this.state.sessionID}
-                player1={this.state.player1} 
-                player2={this.state.player2} 
-                topic={this.state.topic} 
-                timerObject={this.state.timerObject}
-                timeLeft={this.state.timeLeft}
-                currentPhase={this.state.currentPhase}
                 phases={phases}
                 updateGame={this.handleChange.bind(this)}
-                disableVoting={!this.state.enable}
-                displayWinner={this.state.displayWinner}
                 />
             </Route>
             <Route path="/create-game" component={CreateGame}>
-              <CreateGame 
-                updateGame={this.handleChange.bind(this)}
-                uiConfig={uiConfig}
-              />
+              <CreateGame updateGame={this.handleChange.bind(this)}/>
             </Route>
             <Route path="/admin-game" component={Game}> 
               <AdminGame 
@@ -165,6 +154,7 @@ class App extends React.Component {
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
+                uiConfig={uiConfig}
                 />
             </Route>
             <Route path="/sign-in">

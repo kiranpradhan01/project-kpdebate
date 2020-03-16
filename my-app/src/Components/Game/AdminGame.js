@@ -7,6 +7,7 @@ import '../../css/game.css';
 
 /**
  * manages the game's scoreboard and timer.
+ * closing the Admin Game of a session will pause the timer and end the debate.
  * @prop {string} sessionID - the ID of the session being accessed
  * @prop {string} player1 - name of the first player
  * @prop {string} player2 - name of the second player

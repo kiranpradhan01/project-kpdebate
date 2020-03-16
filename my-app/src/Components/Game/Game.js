@@ -7,14 +7,9 @@ import firebase from 'firebase/app';
 import '../../css/game.css';
 
 /**
+ * intended for audience members who join an existing game.
  * manages the game's scoreboard and timer.
  * @prop {string} sessionID - the ID of the session being accessed
- * @prop {string} player1 - name of the first player
- * @prop {string} player2 - name of the second player
- * @prop {string} topic - the argument being debated
- * @prop {object} timerObject - the object representing the timer.
- * @prop {number} timeLeft - number of seconds left in the round.
- * @prop {string} timerLabel - the message labeling the current phase
  * @prop {object} phases - const object of the phases of the debate.
  * @prop {function} updateGame - callback function to change the state of App
  */
@@ -29,7 +24,6 @@ class Game extends React.Component {
                 player1
                 player2
                 topic
-                timerObject?
                 timeLeft
                 currentPhase
                 disableVoting
@@ -39,18 +33,16 @@ class Game extends React.Component {
     }
     
     /**
-     * establish a firebase connection to init the page, as well as
-     * a timer that can update the page every second using firebase information
+     * establish a firebase connection. Every x seconds, this pings firebase for updates
+     * provided from AdminGame.
      */
     componentDidMount() {
-        // set up a timer that updates App's state every 1 second with firebase data about
-        // the game with session=this.props.sessionID
-        // ? wait theres totally an event listener for whenever Firebase info changes
+        let updateInterval = 300; /* CONFIG: length of time between each server ping */
+
         this.state.firebaseListener = setInterval(() => {
             firebase.database().ref('sessions/' + this.props.sessionID).once('value', (snapshot) => {
                 if (snapshot.exists()) {
                     let sesh = snapshot.val();
-                    console.log(sesh);
                     this.setState({
                         player1: sesh.player1,
                         player2: sesh.player2,
@@ -62,14 +54,13 @@ class Game extends React.Component {
                         sessionIsGood: true});
                 }
             });
-        }, 300);
+        }, updateInterval);
     }
 
     /**
      * removes the timer listening for Firebase changes.
      */
     componentWillUnmount() {
-        // remove the timer/event listener that updates based on Firebase changes
         clearInterval(this.state.firebaseListener);
         this.state.firebaseListener = null;
     }
@@ -86,7 +77,6 @@ class Game extends React.Component {
                         <Timer 
                             player1={this.state.player1}
                             player2={this.state.player2}
-                            timerObject={this.props.timerObject} // useless
                             timeLeft={this.state.timeLeft}
                             phaseIndex={this.state.currentPhase}
                             phases={this.props.phases}

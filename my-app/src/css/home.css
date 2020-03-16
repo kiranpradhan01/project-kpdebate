@@ -121,7 +121,7 @@ h3 {
   display: none;
 }
 
-p, ol, #how-to-play a {
+#how-to-play p, ol, #how-to-play a {
   font-size: 14px;
 }
 

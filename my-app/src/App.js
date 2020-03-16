@@ -139,7 +139,10 @@ class App extends React.Component {
                 />
             </Route>
             <Route path="/create-game" component={CreateGame}>
-              <CreateGame updateGame={this.handleChange.bind(this)}/>
+              <CreateGame 
+                updateGame={this.handleChange.bind(this)}
+                uiConfig={uiConfig}
+              />
             </Route>
             <Route path="/admin-game" component={Game}> 
               <AdminGame 
@@ -154,7 +157,6 @@ class App extends React.Component {
                 updateGame={this.handleChange.bind(this)}
                 disableVoting={!this.state.enable}
                 displayWinner={this.state.displayWinner}
-                uiConfig={uiConfig}
                 />
             </Route>
             <Route path="/sign-in">

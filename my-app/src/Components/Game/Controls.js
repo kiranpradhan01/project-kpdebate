@@ -2,6 +2,12 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import '../../css/game.css';
 
+/**
+ * used to control which phase of the debate currently going.
+ * @prop {number} phaseIndex - the current phase of the debate.
+ * @prop {object} phases - const object of the phases of the debate.
+ * @prop {function} updateGame - the callback function used to update App's state
+ */
 class Controls extends React.Component {
     constructor(props) {
         super(props);
@@ -44,18 +50,16 @@ class Controls extends React.Component {
 
     render() {
         return (
-            <div class="text-center"> 
-                <div class="btn-group btn-group-lg" role="group" aria-label="">
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                            class="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
+            <div className="text-center"> 
+                <div className="btn-group btn-group-lg" role="group" aria-label="">
+                    <button onClick={() => this.prevPhase()} type="button" className="btn btn-outline-primary btn-secondary"><i
+                            className="fa fa-step-forward fa-flip-horizontal" aria-label="backward"
                             aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary middle-btn"><i
-                            class="fa fa-pause" aria-label="pause" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-outline-primary btn-secondary"><i
-                            class="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
+                    <button onClick={() => this.nextPhase()} type="button" className="btn btn-outline-primary btn-secondary"><i
+                            className="fa fa-step-forward" aria-label="forward" aria-hidden="true"></i></button>
                 </div>
 
-                <section class="buttonContainer">
+                <section className="buttonContainer">
                     <Button variant="primary" disabled={this.state.enable} onClick={()=> this.buttonClicked("enable")}>
                         Enable Voting
                     </Button>
@@ -68,6 +72,38 @@ class Controls extends React.Component {
                 </section>
             </div>
         )
+    }
+
+    /**
+     * moves to the next phase of debate by updating the game state.
+     * if already on last phase, does nothing.
+     */
+    nextPhase() {
+        // update the game to have a currentPhase of currentPhase + 1
+        if (this.props.phases[this.props.phaseIndex + 1]) { 
+            let newPhase = this.props.phaseIndex + 1;
+            this.props.updateGame("currentPhase", newPhase);
+            this.props.updateGame("timeLeft", this.props.phases[newPhase].seconds);
+        } else {
+            // do nothing. edge case: we are already at the last phase
+        }
+    }
+
+    /**
+     * moves to the previous phase of the debate
+     */
+    prevPhase() {
+        console.log("previous!");
+        if (this.props.phaseIndex > 0) {
+            // update the game to have a currentPhase of currentPhase - 1
+            // update timeLeft
+            let newPhase = this.props.phaseIndex - 1;
+            this.props.updateGame("currentPhase", newPhase);
+            this.props.updateGame("timeLeft", this.props.phases[newPhase].seconds);
+        } else {
+            // set timeLeft to be this.props.phases[0].seconds
+            this.props.updateGame("timeLeft", this.props.phases[0].seconds);
+        }
     }
 }
 

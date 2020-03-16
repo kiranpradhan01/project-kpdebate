@@ -28,10 +28,15 @@ class Game extends React.Component {
                             topic={this.props.topic} 
                         />
                         <Timer 
+                            player1={this.props.player1}
+                            player2={this.props.player2}
                             timerObject={this.props.timerObject}
                             timeLeft={this.props.timeLeft}
-                            timerLabel={this.props.timerLabel}
-                            updateGame={this.props.updateGame}/>
+                            phaseIndex={this.props.currentPhase}
+                            phases={this.props.phases}
+                            isAdminTimer={false}
+                            updateGame={this.props.updateGame}
+                        />
                         <Vote disableVoting={this.props.disableVoting}
                         displayWinner={this.props.displayWinner}/>
                         <AudienceJoin code={this.props.sessionID}/>

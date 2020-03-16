@@ -33,7 +33,7 @@ class AdminGame extends React.Component {
             (user) => {
                 this.setState({isSignedIn: !!user}, () => {
                     this.props.updateGame("isSignedIn", !!user)
-                    this.props.updateGame("uid", user.uid)
+                    // this.props.updateGame("uid", user.uid)
                 })
 
             }
@@ -67,12 +67,20 @@ class AdminGame extends React.Component {
                         topic={this.props.topic} 
                     />
                     <Timer 
+                        player1={this.props.player1}
+                        player2={this.props.player2}
                         timerObject={this.props.timerObject}
                         timeLeft={this.props.timeLeft}
-                        timerLabel={this.props.timerLabel}
+                        phaseIndex={this.props.currentPhase}
+                        phases={this.props.phases}
+                        isAdminTimer={true}
                         updateGame={this.props.updateGame}
                     />
-                    <Controls onClick={this.props.updateGame} />
+                    <Controls 
+                        phaseIndex={this.props.currentPhase}
+                        phases={this.props.phases}
+                        updateGame={this.props.updateGame} 
+                    />
                     <AudienceJoin code={this.props.sessionID} />
                 </div>
             );

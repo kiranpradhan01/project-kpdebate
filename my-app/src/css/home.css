@@ -101,12 +101,12 @@ input {
   box-shadow: 14px 14px 32px 0 rgba(18, 19, 19, 0.379);
 }
 
-.display-4 {
-  font-size: 3rem;
+.subcaption {
+  font-size: 18px;
 }
 
-ul {
-  font-size: 18px;
+li {
+  margin-bottom: 5px;
 }
 
 h3 {
@@ -119,6 +119,15 @@ h3 {
 .content-image {
   margin: 2rem;
   display: none;
+}
+
+p, ol, #how-to-play a {
+  font-size: 14px;
+}
+
+#how-to-play a {
+  margin: 0px;
+  text-decoration: underline;
 }
 
 /** Footer */

@@ -7,6 +7,7 @@ import firebase from 'firebase/app';
 import '../../css/game.css';
 
 /**
+ * intended for audience members who join an existing game.
  * manages the game's scoreboard and timer.
  * @prop {string} sessionID - the ID of the session being accessed
  * @prop {object} phases - const object of the phases of the debate.

@@ -20,10 +20,7 @@ import '../../css/game.css';
 class AdminGame extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // maybe we store the account name of the admin? So only the owner of this session
-            // can access this session's AdminGame page
-        }
+        this.state = {};
     }
 
     render() {
@@ -59,6 +56,7 @@ class AdminGame extends React.Component {
             return(
                 <div>
                     <h2 id="error">Session does not yet exist.</h2>
+                    <div class="extra-space"></div>
                 </div>
             );
         }

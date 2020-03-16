@@ -7,7 +7,6 @@ import LogIn from '../../Components/LogIn.js';
 import '../../css/game.css';
 
 import firebase from 'firebase/app';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 /**
  * manages the game's scoreboard and timer.

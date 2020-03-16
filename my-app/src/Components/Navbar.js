@@ -31,7 +31,6 @@ class Navbar extends React.Component {
       return (
         <span onClick= {() => firebase.auth().signOut()}><b>Sign Out</b></span>
       )
-    
     } else {
       return (
         <Link to="/sign-in">Sign In</Link>

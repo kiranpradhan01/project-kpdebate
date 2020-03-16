@@ -13,15 +13,17 @@ class CreateGame extends React.Component {
             player1: "",
             player2: ""
         }
-        let sessionsRef = firebase.database().ref('sessions');
         // generate and lift up random sessionID
-        /* TODO: check if randomID is not so random and already exists in firebase */
+        let sessionID = Math.floor(1000 + Math.random() * 9000);
         let existingSesssions = firebase.database().ref('sessions');
         existingSesssions.on('value', (snapshot) => {
-            
+            let sesh = snapshot.val();
+            let ids = Object.keys(sesh);
+            while (ids.includes(sessionID)) {
+                sessionID = Math.floor(1000 + Math.random() * 9000);
+            }
+            console.log(sesh);
         })
-
-        let sessionID = Math.floor(1000 + Math.random() * 9000);
         this.props.updateGame("sessionID", sessionID);
         this.sessionRef = firebase.database().ref('sessions/' + sessionID);
     }
@@ -32,11 +34,13 @@ class CreateGame extends React.Component {
     }
 
     updateFirebase = () => {
-        this.sessionRef.set({
-            "topic": this.state.topic,
-            "player1": this.state.player1,
-            "player2": this.state.player2
-        });
+        this.sessionRef.set(
+            this.state
+            // "topic": this.state.topic,
+            // "player1": this.state.player1,
+            // "player2": this.state.player2,
+            // votes: 0
+        );
         console.log("updated firebase");
     }
 

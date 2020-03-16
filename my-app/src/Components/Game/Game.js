@@ -43,7 +43,6 @@ class Game extends React.Component {
      * a timer that can update the page every second using firebase information
      */
     componentDidMount() {
-        
         // set up a timer that updates App's state every 1 second with firebase data about
         // the game with session=this.props.sessionID
         // ? wait theres totally an event listener for whenever Firebase info changes

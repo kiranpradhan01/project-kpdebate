@@ -11,20 +11,33 @@ class Vote extends React.Component {
         disableVoting: this.props.disableVoting,
         voted: false
       }
-      console.log(this.state);
-      // move to onClick when done testing
-      // use once snapshot to get current vote #
+      console.log(this.state)
   }
 
-  onClick = (key) => {
-    // firebase.database().ref('sessions/' + this.props.code + '/votes').once('value', (snapshot) => {
-    //     let num = snapshot.val();
-    //     console.log(num);
-    // })
-    console.log(key)
-    // tally votes
-    // player1 clicked +1
-    // player2 clicked -1
+  componentDidMount() {
+    let sessionRef = firebase.database().ref('sessions/' + this.props.code);
+    sessionRef.on('value', (snapshot) => {
+        let sesh = snapshot.val();
+        this.setState({numVotes: sesh.votes})
+        console.log(sesh.votes);
+    })
+  }
+
+  // tally votes with onClick event- voted player 1? numVotes + 1
+  //                               - voted player 2? numVotes - 1
+  onClickPlayer1 = () => {
+    // let sessionRef = firebase.database().ref('sessions').child(this.props.code);
+    // sessionRef.set({
+    //     votes: this.state.numVotes + 1
+    // }).catch(err => console.log(err));
+    this.setState({voted: true});
+  }
+
+  onClickPlayer2 = () => {
+    // let sessionRef = firebase.database().ref('sessions').child(this.props.code);
+    // sessionRef.set({
+    //     votes: this.state.numVotes + 1
+    // }).catch(err => console.log(err));
     this.setState({voted: true});
   }
 
@@ -34,7 +47,7 @@ class Vote extends React.Component {
             <p>Who won the debate?</p>
             <div className="modal-vote-row row">
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick("player1")}>
+                <Button variant="secondary" onClick={this.onClickPlayer1()}>
                     Kiran
                 </Button>
                 </div>
@@ -42,7 +55,7 @@ class Vote extends React.Component {
                     <p className="my-2">OR</p>
                 </div>
                 <div className="col">
-                <Button variant="secondary" onClick={this.onClick("player2")}>
+                <Button variant="secondary" onClick={this.onClickPlayer2()}>
                     Patrin
                 </Button>
                 </div>
@@ -66,7 +79,7 @@ class Vote extends React.Component {
         return (
         <section className="gameContainer">
             <div className="text-center">
-                <Button variant="primary" size="lg" disabled={this.props.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
+                <Button variant="primary" size="lg" disabled={this.state.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
                 <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Final Vote</Modal.Title>

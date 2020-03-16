@@ -6,6 +6,7 @@ import CreateGame from './Components/CreateGame/CreateGame.js';
 import AdminGame from './Components/Game/AdminGame.js';
 import Game from './Components/Game/Game.js';
 import LogIn from './Components/LogIn.js';
+import './css/firebaseui-styling.global.css';
 import {
   BrowserRouter as Router,
   Switch,

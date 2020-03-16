@@ -43,34 +43,27 @@ class Game extends React.Component {
      * a timer that can update the page every second using firebase information
      */
     componentDidMount() {
-        firebase.database().ref('sessions/' + this.props.sessionID).once('value', (snapshot) => {
-            if (snapshot.exists()) {
-                let sesh = snapshot.val();
-                console.log(sesh);
-                this.setState({
-                    player1: sesh.player1,
-                    player2: sesh.player2,
-                    topic: sesh.topic, 
-                    timeLeft: sesh.timeLeft,
-                    currentPhase: sesh.currentPhase,
-                    disableVoting: sesh.enable,
-                    displayWinner: sesh.displayWinner,
-                    sessionIsGood: true});
-            }
-        });
+        
         // set up a timer that updates App's state every 1 second with firebase data about
         // the game with session=this.props.sessionID
         // ? wait theres totally an event listener for whenever Firebase info changes
         this.state.firebaseListener = setInterval(() => {
             firebase.database().ref('sessions/' + this.props.sessionID).once('value', (snapshot) => {
                 if (snapshot.exists()) {
-                    console.log("snapshot found!");
-                } else {
-                    console.log("snapshot missing.");
-                    this.state.sessionID = "error";
+                    let sesh = snapshot.val();
+                    console.log(sesh);
+                    this.setState({
+                        player1: sesh.player1,
+                        player2: sesh.player2,
+                        topic: sesh.topic, 
+                        timeLeft: sesh.timeLeft,
+                        currentPhase: sesh.currentPhase,
+                        disableVoting: !sesh.enable,
+                        displayWinner: sesh.displayWinner,
+                        sessionIsGood: true});
                 }
             });
-        }, 1000);
+        }, 300);
     }
 
     /**

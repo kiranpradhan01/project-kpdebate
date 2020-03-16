@@ -38,7 +38,12 @@ const uiConfig = {
   // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID
-  ]
+  ],
+  callbacks: {
+    signInSuccess: function (currentUser, credential, redirectUrl) {
+      return false;
+    }
+  }
 };
 
 const phases = [{
@@ -126,8 +131,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Navbar isSignedIn={this.state.isSignedIn} 
-            updateGame={this.handleChange.bind(this)}/>  
+          <Navbar 
+            isSignedIn={this.state.isSignedIn} 
+            updateGame={this.handleChange.bind(this)}
+            uiConfig ={uiConfig}
+            />  
           <Switch>
             <Route path="/game" component={Game}> 
               <Game 

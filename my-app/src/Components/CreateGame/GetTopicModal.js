@@ -6,7 +6,7 @@ import '../../css/create-game.css';
 class GetTopicModal extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {
+      this.state = { 
         nestedModal: false,
         category: "Anything"
       }

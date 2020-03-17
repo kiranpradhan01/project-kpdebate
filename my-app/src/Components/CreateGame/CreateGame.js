@@ -62,7 +62,6 @@ class CreateGame extends React.Component {
             <div className="w-70 mx-auto">
                 <InputTopic 
                     onInput={this.onChange}
-                    updateGame={this.props.updateGame}
                 />
                 <InputPlayers onInput={this.onChange}/>
                 <section class="createGameContainer">

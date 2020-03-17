@@ -17,16 +17,22 @@ export class InputTopic extends React.Component {
             modal: false,
             closeAll: false,
             category: "Anything",
-            selectedTopic: "",
-            topic1: "Is Adidas better than Nike?",
-            topic2: "Is cereal a soup?" // start with default topics
+            selectedTopic: ""
         }
     }
 
     componentDidMount() {
         d3.csv(topics).then((data) => {
+            // choose 2 random default topics
+            let firstTopic = Math.floor((Math.random() * data.length));
+            let secondTopic = null;
+            while (secondTopic === null || secondTopic === firstTopic) { // to avoid duplicates
+                secondTopic = Math.floor((Math.random() * data.length));
+            }
             this.setState({
-                data: data
+                data: data,
+                "topic2": data[secondTopic].topic,
+                "topic1": data[firstTopic].topic
             });
         });
     }
@@ -60,7 +66,7 @@ export class InputTopic extends React.Component {
     // after a category is selected in GetTopicModal,
     // update state and generate 2 random topics from category
     onCategorySelection = (event) => {
-        let selected = event.target.value
+        let selected = event.target.value;
         // after a category is selected, generate 2 random topics
         let categoryTopics = [];
         // evaluate what subcategory to "query" from
@@ -92,8 +98,13 @@ export class InputTopic extends React.Component {
         this.props.onInput("topic", input);
     }
 
+    // closeAndUpdate = (topic) => {
+    //     this.closeModal.bind(this);
+        // this.setState({"selectedTopic": topic});
+    // }
+
     render(){
-        return (
+        return ( 
             <section id="topic" className="createGameFirst createGameContainer">
             <div className="card createGameCard">
                 <div className="card-body">
@@ -109,7 +120,7 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.modal} handleClose={this.closeModal.bind(this)} onCategorySelection={this.onCategorySelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal} onCategorySelection={this.onCategorySelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
             </div>
             </section>
         )

@@ -69,7 +69,6 @@ class Timer extends React.Component {
         } else if (this.props.isAdminTimer){
             i--;
             this.props.updateGame("timeLeft", i);
-            // console.log("time left:" + timeLeft);
         }
     }
 

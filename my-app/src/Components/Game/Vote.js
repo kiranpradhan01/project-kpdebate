@@ -20,8 +20,6 @@ class Vote extends React.Component {
         disableVoting: this.props.disableVoting,
         voted: false
       }
-      console.log(this.state);
-      console.log("votes: " + this.props.votes);
       // move to castVote when done testing
       // use once snapshot to get current vote #
   }
@@ -43,8 +41,6 @@ class Vote extends React.Component {
         let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID + '/');
         sessionRef.once('value', (snapshot) => {
             let currentVotes = snapshot.val().votes;
-            console.log("votes in state: " + this.props.votes);
-            console.log("firebase votes: " + currentVotes);
             sessionRef.update({votes: currentVotes + tally});
         });
     }

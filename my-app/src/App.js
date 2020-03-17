@@ -179,7 +179,7 @@ class App extends React.Component {
       if (snapshot.exists()) {
         let firebaseState = snapshot.val();
         if (this.state.votes !== firebaseState.votes) {
-          this.state.votes = firebaseState.votes;
+          this.setState({votes: firebaseState.votes});
         }
       }
     });

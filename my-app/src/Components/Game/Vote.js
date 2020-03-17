@@ -90,8 +90,7 @@ class Vote extends React.Component {
         } else if (this.props.votes < 0) {
             return this.props.player2;
         } else {
-            console.log(this.props.player1, ",", this.props.player2)
-            return ("both ", this.props.player1, " and ", this.props.player2, "! It's a tie");
+            return("both " + this.props.player1 + " and " + this.props.player2 + "! It's a tie");
         }
     }
 
@@ -109,7 +108,7 @@ class Vote extends React.Component {
                         </Modal.Body>
                         <Modal.Footer></Modal.Footer>
                     </Modal>
-                    <WinnerModal show={this.props.displayWinner} winner={() => {return this.getWinner()}}/>
+                    <WinnerModal show={this.props.displayWinner} winner={this.getWinner()}/>
                 </div>
             </section>
         )

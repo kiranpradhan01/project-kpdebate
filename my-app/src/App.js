@@ -112,14 +112,11 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    if (true) {
+    if (this.state.sessionID) {
       this.sessionRef = firebase.database().ref('sessions/' + this.state.sessionID);
+      if (this.state.listenForVotes) { this.checkForNewVotes(); }
       this.sessionRef.set(this.state);
     }
-
-    console.log("key: " + key);
-    console.log("value: " + value);
-    console.log(this.state);
   }
 
   render() {
@@ -173,6 +170,21 @@ class App extends React.Component {
       </div>
     );
   } 
+
+  /**
+   * checks if the num of votes in Firebase is different than in state.
+   * This implies someone voted, and therefore we should keep the Firebase number.
+   */
+  checkForNewVotes() {
+    this.sessionRef.on('value', (snapshot) => {
+      if (snapshot.exists()) {
+        let firebaseState = snapshot.val();
+        if (this.state.votes !== firebaseState.votes) {
+          this.state.votes = firebaseState.votes;
+        }
+      }
+    });
+  }
 }
 
 export default App;

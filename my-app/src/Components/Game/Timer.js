@@ -55,12 +55,11 @@ class Timer extends React.Component {
      * initializes a timer that updates the visual element of a timer very second.
      */
     startCountdown() {
-        return setInterval(() => this.everySecond(this.props.timeLeft), 1000);
+        return setInterval(() => this.everySecond(this.props.timeLeft), 5000);
     }
 
     /**
      * the behavior of the timer for every second the timer ticks.
-     * ! the interval technically doesn't clear. Will that screw up setting up timers after the first one?
      */
     everySecond(timeLeft) {
         let i = timeLeft;
@@ -70,9 +69,7 @@ class Timer extends React.Component {
         } else if (this.props.isAdminTimer){
             i--;
             this.props.updateGame("timeLeft", i);
-            console.log("time left:" + timeLeft);
-        } else {
-            // console.log("not an admin timer!");
+            // console.log("time left:" + timeLeft);
         }
     }
 

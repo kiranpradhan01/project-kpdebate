@@ -35,35 +35,29 @@ class Vote extends React.Component {
   castVote (votedPlayer) {
     let tally = (votedPlayer === "player1" ? 1 : -1); // calculate who I voted for
     if (!this.disableVoting) {
-        // this.setState({voted: true}); // locks you out from voting again
-        // this.props.updateGame("votes", this.props.votes + tally); // might not be necessary
-
-        // // reference the "votes" key in the current session
-        // // TODO: How do I specifically update an endpoint, like "votes"? I don't want to change anything else in Firebase
-        // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
-        // let voteSum = this.props.votes + tally;
-        // sessionRef.set({
-        //     votes: voteSum
-        // }).catch(err => console.log(err));
-        console.log("voted for " + votedPlayer);
-    } else {
-        console.log("debug: uh oh! looks like you voted when the button should be disabled");
+        this.setState({voted: true}); // locks you out from voting again
+        let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID + '/');
+        sessionRef.once('value', (snapshot) => {
+            let currentVotes = snapshot.val().votes;
+            console.log("votes in state: " + this.props.votes);
+            console.log("firebase votes: " + currentVotes);
+            sessionRef.update({votes: currentVotes + tally});
+        });
     }
   }
 
   componentDidMount() {
-    let sessionRef = firebase.database().ref('sessions/' + this.props.code);
-    sessionRef.on('value', (snapshot) => {
+    let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
+    sessionRef.once('value', (snapshot) => {
         let sesh = snapshot.val();
         this.setState({numVotes: sesh.votes})
-        console.log(sesh.votes);
     })
   }
 
   // tally votes with onClick event- voted player 1? numVotes + 1
   //                               - voted player 2? numVotes - 1
   onClickPlayer1 = () => {
-    // let sessionRef = firebase.database().ref('sessions').child(this.props.code);
+    // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
     // sessionRef.set({
     //     votes: this.state.numVotes + 1
     // }).catch(err => console.log(err));
@@ -71,7 +65,7 @@ class Vote extends React.Component {
   }
 
   onClickPlayer2 = () => {
-    // let sessionRef = firebase.database().ref('sessions').child(this.props.code);
+    // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
     // sessionRef.set({
     //     votes: this.state.numVotes + 1
     // }).catch(err => console.log(err));

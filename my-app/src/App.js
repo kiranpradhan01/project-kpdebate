@@ -101,9 +101,8 @@ class App extends React.Component {
       displayWinner: false,
       isSignedIn: false,
       timeLeft: 60,
-      votes: 0
+      votes: 0,
     }
-
   }
 
   // callback function provided to all components

@@ -51,7 +51,7 @@ class AdminGame extends React.Component {
                         updateGame={this.props.updateGame} 
                     />
                     <AudienceJoin code={this.props.sessionID} />
-                    <WinnerModal show={this.props.displayWinner} winner={() => {return this.getWinner()}}/>
+                    <WinnerModal show={this.props.displayWinner} winner={this.getWinner()}/>
                 </div>
             );
         } else {
@@ -70,7 +70,7 @@ class AdminGame extends React.Component {
         } else if (this.props.votes < 0) {
             return this.props.player2;
         } else {
-            return ("both ", this.props.player1, " and ", this.props.player2, "! It's a tie");
+            return("both " + this.props.player1 + " and " + this.props.player2 + "! It's a tie");
         }
     }
 }

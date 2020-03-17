@@ -8,7 +8,7 @@ class WinnerModal extends React.Component {
         return(
             <Modal show={this.props.show} onHide={!this.props.show} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>{"Congrats " + this.props.winner() + "!"}</Modal.Title>
+                    <Modal.Title>{"Congrats " + this.props.winner + "!"}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="winnerBody">

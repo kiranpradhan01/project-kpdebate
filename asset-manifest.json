@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/project-kpdebate/static/css/main.bb4aa6ba.chunk.css",
-    "main.js": "/project-kpdebate/static/js/main.cdea3068.chunk.js",
-    "main.js.map": "/project-kpdebate/static/js/main.cdea3068.chunk.js.map",
+    "main.js": "/project-kpdebate/static/js/main.9339477f.chunk.js",
+    "main.js.map": "/project-kpdebate/static/js/main.9339477f.chunk.js.map",
     "runtime-main.js": "/project-kpdebate/static/js/runtime-main.762c1fd0.js",
     "runtime-main.js.map": "/project-kpdebate/static/js/runtime-main.762c1fd0.js.map",
     "static/js/2.710474e2.chunk.js": "/project-kpdebate/static/js/2.710474e2.chunk.js",
     "static/js/2.710474e2.chunk.js.map": "/project-kpdebate/static/js/2.710474e2.chunk.js.map",
     "index.html": "/project-kpdebate/index.html",
-    "precache-manifest.1772a6aeec272e47bba289ff467550c9.js": "/project-kpdebate/precache-manifest.1772a6aeec272e47bba289ff467550c9.js",
+    "precache-manifest.c6fddc92a7498a058ba78711be84423b.js": "/project-kpdebate/precache-manifest.c6fddc92a7498a058ba78711be84423b.js",
     "service-worker.js": "/project-kpdebate/service-worker.js",
     "static/css/main.bb4aa6ba.chunk.css.map": "/project-kpdebate/static/css/main.bb4aa6ba.chunk.css.map",
     "static/js/2.710474e2.chunk.js.LICENSE.txt": "/project-kpdebate/static/js/2.710474e2.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.762c1fd0.js",
     "static/js/2.710474e2.chunk.js",
     "static/css/main.bb4aa6ba.chunk.css",
-    "static/js/main.cdea3068.chunk.js"
+    "static/js/main.9339477f.chunk.js"
   ]
 }

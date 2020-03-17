@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d2fdcfbfbee110d4a49967865fa28ec3",
+    "revision": "ccbab73c106a37cf2e622f795eeec1e2",
     "url": "/project-kpdebate/index.html"
   },
   {
-    "revision": "fe16c97f29b702ef8fa0",
+    "revision": "aad5ea280f8d11d16e6f",
     "url": "/project-kpdebate/static/css/main.bb4aa6ba.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/project-kpdebate/static/js/2.710474e2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fe16c97f29b702ef8fa0",
-    "url": "/project-kpdebate/static/js/main.9339477f.chunk.js"
+    "revision": "aad5ea280f8d11d16e6f",
+    "url": "/project-kpdebate/static/js/main.9677e782.chunk.js"
   },
   {
     "revision": "e01d9acbe06853859f06",
@@ -44,8 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/project-kpdebate/static/media/law.79e97b25.png"
   },
   {
-    "revision": "b3d8a1b2916498551f261f2b4cb8913d",
-    "url": "/project-kpdebate/static/media/topics.b3d8a1b2.csv"
+    "revision": "59b50c5894a1ad0753519c259a1be507",
+    "url": "/project-kpdebate/static/media/topics.59b50c58.csv"
   },
   {
     "revision": "49d728a1fe3c22bf16b26693a26037be",

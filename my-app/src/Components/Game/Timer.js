@@ -55,7 +55,7 @@ class Timer extends React.Component {
      * initializes a timer that updates the visual element of a timer very second.
      */
     startCountdown() {
-        return setInterval(() => this.everySecond(this.props.timeLeft), 5000);
+        return setInterval(() => this.everySecond(this.props.timeLeft), 1000);
     }
 
     /**

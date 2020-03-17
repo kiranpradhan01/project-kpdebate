@@ -53,7 +53,6 @@ class Game extends React.Component {
                         displayWinner: sesh.displayWinner,
                         votes: sesh.votes,
                         sessionIsGood: true});
-                    console.log(this.state);
                 }
             });
         }, updateInterval);

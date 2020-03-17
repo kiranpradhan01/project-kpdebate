@@ -3,6 +3,7 @@ import AudienceJoin from './AudienceJoin.js';
 import Scoreboard from './Scoreboard.js';
 import Timer from './Timer.js';
 import Controls from './Controls';
+import WinnerModal from './WinnerModal.js';
 import '../../css/game.css';
 
 /**
@@ -50,6 +51,7 @@ class AdminGame extends React.Component {
                         updateGame={this.props.updateGame} 
                     />
                     <AudienceJoin code={this.props.sessionID} />
+                    <WinnerModal show={this.props.displayWinner} winner={() => {return this.getWinner()}}/>
                 </div>
             );
         } else {
@@ -59,6 +61,16 @@ class AdminGame extends React.Component {
                     <div class="extra-space"></div>
                 </div>
             );
+        }
+    }
+
+    getWinner() {
+        if (this.props.votes > 0) {
+            return this.props.player1;
+        } else if (this.props.votes < 0) {
+            return this.props.player2;
+        } else {
+            return "both of you! You tied!";
         }
     }
 }

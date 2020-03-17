@@ -27,7 +27,7 @@ class Vote extends React.Component {
   }
 
   componentDidMount() {
-      
+
   }
 
   /**
@@ -116,7 +116,7 @@ class Vote extends React.Component {
                         </Modal.Body>
                         <Modal.Footer></Modal.Footer>
                     </Modal>
-                    <WinnerModal show={this.props.displayWinner} winner={() => {this.getWinner()}}/>
+                    <WinnerModal show={this.props.displayWinner} winner={() => {return this.getWinner()}}/>
                 </div>
             </section>
         )

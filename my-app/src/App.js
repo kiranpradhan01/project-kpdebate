@@ -103,6 +103,7 @@ class App extends React.Component {
       timeLeft: 60,
       votes: 0
     }
+
   }
 
   // callback function provided to all components
@@ -114,7 +115,7 @@ class App extends React.Component {
     this.setState(stateChanges);
     if (this.state.sessionID) {
       this.sessionRef = firebase.database().ref('sessions/' + this.state.sessionID);
-      if (this.state.listenForVotes) { this.checkForNewVotes(); }
+      if (this.state.enable) { this.checkForNewVotes(); }
       this.sessionRef.set(this.state);
     }
   }
@@ -175,7 +176,7 @@ class App extends React.Component {
    * This implies someone voted, and therefore we should keep the Firebase number.
    */
   checkForNewVotes() {
-    this.sessionRef.on('value', (snapshot) => {
+    this.sessionRef.once('value', (snapshot) => {
       if (snapshot.exists()) {
         let firebaseState = snapshot.val();
         if (this.state.votes !== firebaseState.votes) {

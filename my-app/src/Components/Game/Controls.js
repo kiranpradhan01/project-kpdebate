@@ -99,7 +99,6 @@ class Controls extends React.Component {
      * moves to the previous phase of the debate
      */
     prevPhase() {
-        console.log("previous!");
         if (this.props.phaseIndex > 0) {
             // update the game to have a currentPhase of currentPhase - 1
             // update timeLeft

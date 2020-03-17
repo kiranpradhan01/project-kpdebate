@@ -98,6 +98,11 @@ export class InputTopic extends React.Component {
         this.props.onInput("topic", input);
     }
 
+    // closeAndUpdate = (topic) => {
+    //     this.closeModal.bind(this);
+        // this.setState({"selectedTopic": topic});
+    // }
+
     render(){
         return ( 
             <section id="topic" className="createGameFirst createGameContainer">
@@ -115,7 +120,7 @@ export class InputTopic extends React.Component {
                         </div>
                     </div>
                 </div>
-                <GetTopicModal show={this.state.modal} handleClose={this.closeModal.bind(this)} onCategorySelection={this.onCategorySelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
+                <GetTopicModal show={this.state.modal} handleClose={this.closeModal} onCategorySelection={this.onCategorySelection} options={this.generateCategories()} topic1={this.state.topic1} topic2={this.state.topic2}/>
             </div>
             </section>
         )

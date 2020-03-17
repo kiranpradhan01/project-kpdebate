@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/project-kpdebate/precache-manifest.b098ccfff283f6f83b0e2691ef4e5254.js"
+  "/project-kpdebate/precache-manifest.1772a6aeec272e47bba289ff467550c9.js"
 );
 
 self.addEventListener('message', (event) => {

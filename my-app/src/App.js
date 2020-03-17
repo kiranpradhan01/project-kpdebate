@@ -133,7 +133,6 @@ class App extends React.Component {
               <Game 
                 sessionID={this.state.sessionID}
                 phases={phases}
-                votes={this.state.votes}
                 updateGame={this.handleChange.bind(this)}
                 />
             </Route>

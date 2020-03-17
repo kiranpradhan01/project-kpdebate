@@ -26,6 +26,10 @@ class Vote extends React.Component {
       // use once snapshot to get current vote #
   }
 
+  componentDidMount() {
+      
+  }
+
   /**
    * casts this particular audience member's vote.
    * the if/else wrapper in this function protects against people manually editing
@@ -50,26 +54,8 @@ class Vote extends React.Component {
     let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
     sessionRef.once('value', (snapshot) => {
         let sesh = snapshot.val();
-        this.setState({numVotes: sesh.votes})
+        this.setState({numVotes: sesh.votes});
     })
-  }
-
-  // tally votes with onClick event- voted player 1? numVotes + 1
-  //                               - voted player 2? numVotes - 1
-  onClickPlayer1 = () => {
-    // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
-    // sessionRef.set({
-    //     votes: this.state.numVotes + 1
-    // }).catch(err => console.log(err));
-    this.setState({voted: true});
-  }
-
-  onClickPlayer2 = () => {
-    // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
-    // sessionRef.set({
-    //     votes: this.state.numVotes + 1
-    // }).catch(err => console.log(err));
-    this.setState({voted: true});
   }
 
   modalBody() {
@@ -106,6 +92,16 @@ class Vote extends React.Component {
       )
   }
 
+    getWinner() {
+        if (this.props.votes > 0) {
+            return this.props.player1;
+        } else if (this.props.votes < 0) {
+            return this.props.player2;
+        } else {
+            return "both of you! You tied!";
+        }
+    }
+
     render(){
         return (
             <section className="gameContainer">
@@ -120,7 +116,7 @@ class Vote extends React.Component {
                         </Modal.Body>
                         <Modal.Footer></Modal.Footer>
                     </Modal>
-                    <WinnerModal show={this.props.displayWinner} winner={this.props.sessionID}/>
+                    <WinnerModal show={this.props.displayWinner} winner={() => {this.getWinner()}}/>
                 </div>
             </section>
         )

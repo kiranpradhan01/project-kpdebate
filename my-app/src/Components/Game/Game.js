@@ -51,7 +51,9 @@ class Game extends React.Component {
                         currentPhase: sesh.currentPhase,
                         disableVoting: !sesh.enable,
                         displayWinner: sesh.displayWinner,
+                        votes: sesh.votes,
                         sessionIsGood: true});
+                    console.log(this.state);
                 }
             });
         }, updateInterval);
@@ -86,7 +88,7 @@ class Game extends React.Component {
                         <Vote 
                             player1={this.state.player1}
                             player2={this.state.player2}
-                            votes={this.props.votes}
+                            votes={this.state.votes}
                             sessionID={this.props.sessionID}
                             disableVoting={this.state.disableVoting}
                             displayWinner={this.state.displayWinner}

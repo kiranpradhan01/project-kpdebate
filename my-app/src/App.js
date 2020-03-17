@@ -112,10 +112,14 @@ class App extends React.Component {
       [key]: value
     };
     this.setState(stateChanges);
-    if (this.state.sessionID) {
+    if (true) {
       this.sessionRef = firebase.database().ref('sessions/' + this.state.sessionID);
       this.sessionRef.set(this.state);
     }
+
+    console.log("key: " + key);
+    console.log("value: " + value);
+    console.log(this.state);
   }
 
   render() {

@@ -4,6 +4,11 @@ import * as d3 from 'd3';
 import topics from '../../data/topics.csv';
 import '../../css/create-game.css'
 
+/**
+ * Controls the input form for selecting a topic.
+ * Exists in Create Game page.
+ * @prop {function} updateGame - callback function to change the state of App
+ */
 export class InputTopic extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +41,7 @@ export class InputTopic extends React.Component {
             modal: false
         };
         this.setState(stateChanges);
+        this.props.updateGame("topic", value);
     }
 
     generateCategories() {

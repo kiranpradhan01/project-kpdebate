@@ -60,7 +60,10 @@ class CreateGame extends React.Component {
         } else {
         return(
             <div className="w-70 mx-auto">
-                <InputTopic onInput={this.onChange}/>
+                <InputTopic 
+                    onInput={this.onChange}
+                    updateGame={this.props.updateGame}
+                />
                 <InputPlayers onInput={this.onChange}/>
                 <section class="createGameContainer">
                     <div class="text-center">

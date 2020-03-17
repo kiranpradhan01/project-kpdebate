@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f25b55a2423bacab1ba88c80b54f0aeb",
+    "revision": "36efed2b8707e6a6c5e4276c38214b1c",
     "url": "/project-kpdebate/index.html"
   },
   {
-    "revision": "5ae4366b9cca00d42a83",
-    "url": "/project-kpdebate/static/css/main.9cb49164.chunk.css"
+    "revision": "4ddbdf0729be995abbc4",
+    "url": "/project-kpdebate/static/css/main.bb4aa6ba.chunk.css"
   },
   {
     "revision": "88c725a2fbdac8e0e43d",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/project-kpdebate/static/js/2.35781f67.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5ae4366b9cca00d42a83",
-    "url": "/project-kpdebate/static/js/main.ca2b0e2e.chunk.js"
+    "revision": "4ddbdf0729be995abbc4",
+    "url": "/project-kpdebate/static/js/main.1dc0a66e.chunk.js"
   },
   {
     "revision": "e01d9acbe06853859f06",

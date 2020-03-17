@@ -41,7 +41,7 @@ export class InputTopic extends React.Component {
             modal: false
         };
         this.setState(stateChanges);
-        this.props.updateGame("topic", value);
+        this.onInput(value);
     }
 
     generateCategories() {

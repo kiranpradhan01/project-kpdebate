@@ -35,21 +35,20 @@ class Vote extends React.Component {
   castVote (votedPlayer) {
     let tally = (votedPlayer === "player1" ? 1 : -1); // calculate who I voted for
     if (!this.disableVoting) {
-        this.setState({voted: true}); // locks you out from voting again
-        this.props.updateGame("votes", this.props.votes + tally); // might not be necessary
+        // this.setState({voted: true}); // locks you out from voting again
+        // this.props.updateGame("votes", this.props.votes + tally); // might not be necessary
 
-        // reference the "votes" key in the current session
-        // TODO: How do I specifically update an endpoint, like "votes"? I don't want to change anything else in Firebase
-        let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
-        let voteSum = this.props.votes + tally;
-        sessionRef.set({
-            votes: voteSum
-        }).catch(err => console.log(err));
+        // // reference the "votes" key in the current session
+        // // TODO: How do I specifically update an endpoint, like "votes"? I don't want to change anything else in Firebase
+        // let sessionRef = firebase.database().ref('sessions').child(this.props.sessionID);
+        // let voteSum = this.props.votes + tally;
+        // sessionRef.set({
+        //     votes: voteSum
+        // }).catch(err => console.log(err));
+        console.log("voted for " + votedPlayer);
     } else {
         console.log("debug: uh oh! looks like you voted when the button should be disabled");
     }
-    
-      console.log(this.state)
   }
 
   componentDidMount() {
@@ -117,7 +116,7 @@ class Vote extends React.Component {
         return (
             <section className="gameContainer">
                 <div className="text-center">
-                    <Button variant="primary" size="lg" disabled={this.state.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
+                    <Button variant="primary" size="lg" disabled={this.props.disableVoting} onClick={() => {this.setState({modal: true, disableVoting: true})}}>Vote</Button>
                     <Modal show={this.state.modal} onHide={() => {this.setState({modal: false})}} centered>
                         <Modal.Header closeButton>
                             <Modal.Title>Final Vote</Modal.Title>
@@ -127,7 +126,7 @@ class Vote extends React.Component {
                         </Modal.Body>
                         <Modal.Footer></Modal.Footer>
                     </Modal>
-                    <WinnerModal show={this.props.displayWinner} winner={this.props.code}/>
+                    <WinnerModal show={this.props.displayWinner} winner={this.props.sessionID}/>
                 </div>
             </section>
         )

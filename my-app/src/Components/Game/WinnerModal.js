@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 import '../../css/game.css';
 
 class WinnerModal extends React.Component {
@@ -16,7 +17,7 @@ class WinnerModal extends React.Component {
                     <br></br>
                     We hope you learned lots during this debate and hope you bring the spirit of debate with you as you go about your daily lives!
                 </Modal.Body>
-                <Modal.Footer></Modal.Footer>
+                <Modal.Footer>Return to <Link to="/">Home</Link></Modal.Footer>
             </Modal>
         )
     }

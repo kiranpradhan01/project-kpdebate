@@ -22,40 +22,36 @@ class Vote extends React.Component {
       }
       // move to castVote when done testing
       // use once snapshot to get current vote #
-  }
-
-  componentDidMount() {
-
-  }
-
-  /**
-   * casts this particular audience member's vote.
-   * the if/else wrapper in this function protects against people manually editing
-   * the HTML to vote when voting is still disabled.
-   * @param {string} votedPlayer - "player1" if the button to vote for player 1 was clicked. 
-   */
-  castVote (votedPlayer) {
-    let tally = (votedPlayer === "player1" ? 1 : -1); // calculate who I voted for
-    if (!this.disableVoting) {
-        this.setState({voted: true}); // locks you out from voting again
-        let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID + '/');
-        sessionRef.once('value', (snapshot) => {
-            let currentVotes = snapshot.val().votes;
-            sessionRef.update({votes: currentVotes + tally});
-        });
     }
-  }
 
-  componentDidMount() {
-    let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
-    sessionRef.once('value', (snapshot) => {
-        let sesh = snapshot.val();
-        this.setState({numVotes: sesh.votes});
-    })
-  }
+    /**
+     * casts this particular audience member's vote.
+     * the if/else wrapper in this function protects against people manually editing
+     * the HTML to vote when voting is still disabled.
+     * @param {string} votedPlayer - "player1" if the button to vote for player 1 was clicked. 
+     */
+    castVote (votedPlayer) {
+        let tally = (votedPlayer === "player1" ? 1 : -1); // calculate who I voted for
+        if (!this.disableVoting) {
+            this.setState({voted: true}); // locks you out from voting again
+            let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID + '/');
+            sessionRef.once('value', (snapshot) => {
+                let currentVotes = snapshot.val().votes;
+                sessionRef.update({votes: currentVotes + tally});
+            });
+        }
+    }
 
-  modalBody() {
-      return (
+    componentDidMount() {
+        let sessionRef = firebase.database().ref('sessions/' + this.props.sessionID);
+        sessionRef.once('value', (snapshot) => {
+            let sesh = snapshot.val();
+            this.setState({numVotes: sesh.votes});
+        })
+    }
+
+    modalBody() {
+        return (
         <div className="votingBody">
             <p>Who won the debate?</p>
             <div className="modal-vote-row row">
@@ -74,19 +70,19 @@ class Vote extends React.Component {
                 </div>
             </div>
         </div>
-      )
-  }
+        )
+    }
 
-  votingMessage() {
-      return (
+    votingMessage() {
+        return (
         <div className="votingMessage">
             <p>
                 Hang tight as we tally the votes! <br/>
                 Click anywhere to close this modal!
             </p>
         </div>
-      )
-  }
+        )
+    }
 
     getWinner() {
         if (this.props.votes > 0) {
@@ -94,7 +90,8 @@ class Vote extends React.Component {
         } else if (this.props.votes < 0) {
             return this.props.player2;
         } else {
-            return "both of you! You tied!";
+            console.log(this.props.player1, ",", this.props.player2)
+            return ("both ", this.props.player1, " and ", this.props.player2, "! It's a tie");
         }
     }
 

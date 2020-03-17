@@ -70,7 +70,7 @@ class AdminGame extends React.Component {
         } else if (this.props.votes < 0) {
             return this.props.player2;
         } else {
-            return "both of you! You tied!";
+            return ("both ", this.props.player1, " and ", this.props.player2, "! It's a tie");
         }
     }
 }
